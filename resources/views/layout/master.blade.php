@@ -8,57 +8,31 @@
   <title>LARAVEL CRUD USERS DEMO</title>
   <link rel="stylesheet" href="{{asset('./css/bootstrap.css')}}">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <link rel="stylesheet" href="{{asset('./css/main.css')}}">
   <link rel="stylesheet" href="{{asset('./css/themify-icons.css')}}">
-    <link rel="stylesheet" href="css/linearicons.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/nouislider.min.css">
-    <link rel="stylesheet" href="css/ion.rangeSlider.css" />
-    <link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css" />
-    <link rel="stylesheet" href="css/magnific-popup.css">
-  <!-- Slider Revolution CSS Files -->
-  <link rel="stylesheet" type="text/css" href="{{asset('./css/rev-slider/css/settings.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('./css/rev-slider/css/layers.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('./css/rev-slider/css/navigation.css')}}">
+    <link rel="stylesheet" href="{{asset('./css/linearicons.css')}}">
+    <link rel="stylesheet" href="{{asset('./css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('./css/themify-icons.css')}}">
+	<link rel="stylesheet" href="{{asset('./css/nice-select.css')}}">
+	<link rel="stylesheet" href="{{asset('./css/owl.carousel.css')}}">
+    <link rel="stylesheet" href="{{asset('./css/nouislider.min.css')}}">
+    <link rel="stylesheet" href="{{asset('./css/ion.rangeSlider.css')}}">
+    <link rel="stylesheet" href="{{asset('./css/ion.rangeSlider.skinFlat.css')}}">
+	<link rel="stylesheet" href="{{asset('./css/magnific-popup.css')}}">
+	<link rel="stylesheet" href="{{asset('./css/main.css')}}">
 </head>
 
 <body>
   @include('layout.header')
  
 <div class="main-home">
-<section class="banner-area">
-		<div class="container">
-			<div class="row fullscreen align-items-center justify-content-start">
-				<div class="col-lg-12">
-					<div class="active-banner-slider owl-carousel">
-						<!-- single-slide -->
-						<div class="row single-slide align-items-center d-flex">
-							<div class="col-lg-5 col-md-6">
-								<div class="banner-content">
-									<h1>Nike New <br>Collection!</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-									<div class="add-bag d-flex align-items-center">
-										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-										<span class="add-text text-uppercase">Add to Bag</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-7">
-								<div class="banner-img">
-									<img class="img-fluid" src="{{asset('./images/banner/banner-img.png')}}" alt="image">
-								</div>
-							</div>
-						</div>
-						<!-- single-slide -->
-						
-					</div>
-				</div>
-			</div>
-		</div>
+    <section class="banner">
+           <div class="container">
+			   <div class="row">
+				   <div class="col-lg-12">
+				        <img src="img/banner/banner-img.png" alt="">
+				   </div>
+			   </div>
+		   </div>
 	</section>
 	<!-- End banner Area -->
 
@@ -779,40 +753,7 @@
 					<a href="" class="primary-btn">Shop Now</a>
 				</div>
 				<div class="col-lg-6 no-padding exclusive-right">
-					<div class="active-exclusive-product-slider">
-						<!-- single exclusive carousel -->
-						<div class="single-exclusive-slider">
-							<img class="img-fluid" src="img/product/e-p1.png" alt="">
-							<div class="product-details">
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<h4>addidas New Hammer sole
-									for Sports person</h4>
-								<div class="add-bag d-flex align-items-center justify-content-center">
-									<a class="add-btn" href=""><span class="ti-bag"></span></a>
-									<span class="add-text text-uppercase">Add to Bag</span>
-								</div>
-							</div>
-						</div>
-						<!-- single exclusive carousel -->
-						<div class="single-exclusive-slider">
-							<img class="img-fluid" src="img/product/e-p1.png" alt="">
-							<div class="product-details">
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<h4>addidas New Hammer sole
-									for Sports person</h4>
-								<div class="add-bag d-flex align-items-center justify-content-center">
-									<a class="add-btn" href=""><span class="ti-bag"></span></a>
-									<span class="add-text text-uppercase">Add to Bag</span>
-								</div>
-							</div>
-						</div>
-					</div>
+				     <img src="{{asset('./images/product/e-p1.png')}}" alt="">
 				</div>
 			</div>
 		</div>
@@ -984,8 +925,20 @@
   @include('layout.footer')
   <script src="{{asset('./js/jquery-2.2.4.min.js')}}"></script>
   <script src="{{asset('./js/bootstrap.min.js')}}"></script>
+	<!--gmaps Js-->
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	 crossorigin="anonymous"></script>
+	<script src="{{asset('./js/jquery.ajaxchimp.min.js')}}"></script>
+	<script src="{{asset('./js/jquery.nice-select.min.js')}}"></script>
+	<script src="{{asset('./js/jquery.sticky.js')}}"></script>
+	<script src="{{asset('./js/nouislider.min.js')}}"></script>
+	<script src="{{asset('./js/countdown.js')}}"></script>
+	<script src="{{asset('./js/jquery.magnific-popup.min.js')}}"></script>
 	<script src="{{asset('./js/owl.carousel.min.js')}}"></script>
 	<!--gmaps Js-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="{{asset('./js/gmaps.min.js')}}"></script>
 	<script src="{{asset('./js/main.js')}}"></script>
 </body>
 
