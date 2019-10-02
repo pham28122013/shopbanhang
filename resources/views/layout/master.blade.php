@@ -29,7 +29,7 @@
            <div class="container">
 			   <div class="row">
 				   <div class="col-lg-12">
-				        <img src="img/banner/banner-img.png" alt="">
+				        <img src="{{asset('./images/banner/banner-img.png')}}" alt="">
 				   </div>
 			   </div>
 		   </div>
@@ -154,7 +154,7 @@
 	<!-- End category Area -->
 
 	<!-- start product Area -->
-	<section class="owl-carousel active-product-area section_gap">
+	<section class="product">
 		<!-- single product slide -->
 		<div class="single-product-slider">
 			<div class="container">
