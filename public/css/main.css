@@ -5791,10 +5791,3 @@ label {
     color: #ffba00; }
 
 /*# sourceMappingURL=main.css.map */
-.exclusive-deal-area .exclusive-left {
-  position: realtive;
-  background: url(../images/exclusive.jpg) center no-repeat;
-  background-size: cover;
-  text-align: center;
-  padding: 275px 0;
-}
