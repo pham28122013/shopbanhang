@@ -18,3 +18,6 @@ Route::get('/home', function() {
     return view('pages.index');
 });
 
+Route::get('/product-sale', function(){
+    return view('pages.product-sale');
+});
