@@ -18,3 +18,6 @@ Route::get('/home', function() {
     return view('pages.index');
 });
 
+Route::get('/cart', function(){
+    return view('pages.cart');
+});
