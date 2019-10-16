@@ -17,19 +17,19 @@
 
 </head>
 
-<body>
-
-    <div id="wrapper">
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
 
         <!-- Navigation -->
         
-        @include('admin.layout.menu')
+        @include('admin.layout.header')
 
-        <!-- Page Content -->
-        @yield('content')
-        <!-- /#page-wrapper -->
+        <div class="app-body">
+            @include('admin.layout.sidebar')
+           
+             @yield('content')
+           
+        </div>
 
-    </div>
     <!-- /#wrapper -->
     <script src="{{asset('./js/jquery-2.2.4.min.js')}}"></script>
   <script src="{{asset('./js/bootstrap.min.js')}}"></script>
