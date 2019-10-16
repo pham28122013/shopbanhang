@@ -16398,3 +16398,7 @@ body {
 .btn-default {
   border: 1px solid #6E6C6C;
 }
+
+.btn-default:hover {
+  background-color: #007ee5;
+}
