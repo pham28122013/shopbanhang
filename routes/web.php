@@ -18,3 +18,18 @@ Route::get('/home', function() {
     return view('pages.index');
 });
 
+Route::get('/admin', function(){
+    return view('admin.index');
+});
+
+Route::get('/accessories/list', function(){
+    return view('admin.accessories.list');
+});
+
+Route::get('/accessories/edit', function(){
+    return view('admin.accessories.edit');
+});
+
+Route::get('/accessories/add', function(){
+    return view('admin.accessories.add');
+});
