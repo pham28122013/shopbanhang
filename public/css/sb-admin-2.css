@@ -16398,3 +16398,7 @@ body {
 .btn-default {
   border: 1px solid #6E6C6C;
 }
+
+.login-admin {
+  margin: 50px auto;
+}

@@ -33,3 +33,7 @@ Route::get('/product-highlights/edit', function(){
 Route::get('/product-highlights/add', function(){
     return view('admin.product-highlights.add');
 });
+
+Route::get('/home/login', function(){
+    return view('admin.login');
+});
