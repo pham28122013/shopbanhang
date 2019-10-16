@@ -18,3 +18,14 @@ Route::get('/home', function() {
     return view('pages.index');
 });
 
+Route::get('/admin', function(){
+    return view('admin.index');
+});
+
+Route::get('/bill/list', function(){
+    return view('admin.bill.list');
+});
+
+Route::get('/bill/view', function(){
+    return view('admin.bill.view');
+});
