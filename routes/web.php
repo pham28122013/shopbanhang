@@ -22,14 +22,14 @@ Route::get('/admin', function(){
     return view('admin.index');
 });
 
-Route::get('/product-highlights/list', function(){
-    return view('admin.product-highlights.list');
+Route::get('/product-sale/list', function(){
+    return view('admin.product-sale.list');
 });
 
-Route::get('/product-highlights/edit', function(){
-    return view('admin.product-highlights.edit');
+Route::get('/product-sale/edit', function(){
+    return view('admin.product-sale.edit');
 });
 
-Route::get('/product-highlights/add', function(){
-    return view('admin.product-highlights.add');
+Route::get('/product-sale/add', function(){
+    return view('admin.product-sale.add');
 });
