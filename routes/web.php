@@ -18,6 +18,6 @@ Route::get('/home', function() {
     return view('pages.index');
 });
 
-Route::get('/detail', function(){
-    return view('pages.detail');
+Route::namespace('Frontend')->group(function () {
+    Route::get('/detail-product/{id}','ProductController@products');
 });
