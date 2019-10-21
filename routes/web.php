@@ -18,3 +18,6 @@ Route::get('/home', function() {
     return view('pages.index');
 });
 
+Route::namespace('Frontend')->group(function () {
+    Route::get('/phukien/{id}','ProductController@accessories');
+});
