@@ -18,12 +18,6 @@ Route::get('/home', function() {
     return view('pages.index');
 });
 
-// Route::get('/phukien/{id}','Frontend\ProductController@accessories');
-
-// Route::group(['prefix'=>'Frontend'],function(){
-//     Route::get('/phukien/{id}','ProductController@accessories');
-// });
-
 Route::namespace('Frontend')->group(function () {
     Route::get('/phukien/{id}','ProductController@accessories');
 });
