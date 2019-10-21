@@ -15,6 +15,6 @@ class ProductController extends Controller
      */
     public function accessories($id)
     {
-        return view('pages.detail-accessories', ['accessories'=> $accessories]);
+        return view('pages.detail-accessories');
     }
 }
