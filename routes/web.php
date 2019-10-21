@@ -18,6 +18,4 @@ Route::get('/home', function() {
     return view('pages.index');
 });
 
-Route::get('/detail-acces', function() {
-    return view('pages.detail-accessories');
-});
+Route::get('/phukien/{id}','Frontend\ProductController@accessories');
