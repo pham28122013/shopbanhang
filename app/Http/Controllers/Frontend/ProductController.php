@@ -13,8 +13,21 @@ class ProductController extends Controller
      * @param  int  $id
      * @return View
      */
-    public function accessories($id)
+    public function accessory($id)
     {
-        return view('pages.detail-accessories');
+        return view('products.detail-accessories');
     }
+
+    /**
+     * Show the profile for the given products.
+     *
+     * @param  int  $id
+     * @return View
+     */
+    public function product($id)
+    {
+        return view('products.detail');
+    }
+
+
 }
