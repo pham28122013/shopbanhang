@@ -19,6 +19,6 @@ Route::get('/home', function() {
 });
 
 Route::namespace('Frontend')->group(function () {
-    Route::get('/detail-product/{id}','ProductController@products');
-    Route::get('/phukien/{id}','ProductController@accessories');
+    Route::get('/detail-sanpham/{id}','ProductController@product');
+    Route::get('/phukien/{id}','ProductController@accessory');
 });

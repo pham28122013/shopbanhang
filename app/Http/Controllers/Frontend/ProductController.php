@@ -13,9 +13,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return View
      */
-    public function accessories($id)
+    public function accessory($id)
     {
-        return view('pages.detail-accessories');
+        return view('products.detail-accessories');
     }
 
     /**
@@ -24,9 +24,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return View
      */
-    public function products($id)
+    public function product($id)
     {
-        return view('pages.detail');
+        return view('products.detail');
     }
 
 
