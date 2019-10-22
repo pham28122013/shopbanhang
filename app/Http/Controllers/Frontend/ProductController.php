@@ -49,7 +49,6 @@ class ProductController extends Controller
         return view('products.product-sale');
     }
 
-    
     /**
      * Show the list cart.
      *
@@ -58,5 +57,15 @@ class ProductController extends Controller
     public function cart()
     {
         return view('products.cart');
+    }
+
+    /**
+     * Show the list accessories.
+     *
+     * @return View
+     */
+    public function accessoriesList()
+    {
+        return view('products.accessories');
     }
 }
