@@ -15,9 +15,13 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function() {
-    return view('pages.index');
+    return view('products.index');
 });
 
 Route::get('/accessories', function(){
     return view('pages.accessories');
+});
+
+Route::namespace('Frontend')->group(function () {
+    Route::get('/phukien','ProductController@accessory');
 });
