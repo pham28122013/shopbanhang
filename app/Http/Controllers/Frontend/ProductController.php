@@ -30,9 +30,8 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the profile for the given products-highlights.
+     * Show the list products-highlights.
      *
-     * @param  int  $id
      * @return View
      */
     public function highlight()
@@ -41,13 +40,22 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the profile for the given products-sale.
+     * Show the list products-sale.
      *
-     * @param  int  $id
      * @return View
      */
     public function sale()
     {
         return view('products.product-sale');
+    }
+
+    /**
+     * Show the list accessories.
+     *
+     * @return View
+     */
+    public function accessoriesList()
+    {
+        return view('products.accessories');
     }
 }

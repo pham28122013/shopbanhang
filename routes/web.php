@@ -23,5 +23,5 @@ Route::namespace('Frontend')->group(function () {
     Route::get('/phukien/{id}','ProductController@accessory');
     Route::get('/sanpham-highlight','ProductController@highlight');
     Route::get('/sanpham-sale','ProductController@sale');
+    Route::get('/phukien','ProductController@accessoriesList');
 });
-
