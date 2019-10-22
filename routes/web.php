@@ -15,9 +15,15 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function() {
-    return view('pages.index');
+    return view('products.index');
 });
 
-Route::get('/checkout', function(){
-    return view('pages.checkout');
+Route::namespace('Frontend')->group(function () {
+    Route::get('/detail-sanpham/{id}','ProductController@product');
+    Route::get('/phukien/{id}','ProductController@accessory');
+    Route::get('/sanpham-highlight','ProductController@highlight');
+    Route::get('/sanpham-sale','ProductController@sale');
+    Route::get('/giohang','ProductController@cart');
+    Route::get('/phukien','ProductController@accessoriesList');
+    Route::get('/thanhtoan','ProductController@checkout');
 });

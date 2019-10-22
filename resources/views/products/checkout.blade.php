@@ -1,4 +1,4 @@
-@extends('pages.master')
+@extends('products.master')
 @section('content')
 
 <div class="checkout">
