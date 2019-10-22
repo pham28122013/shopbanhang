@@ -18,10 +18,10 @@ Route::get('/home', function() {
     return view('products.index');
 });
 
-Route::get('/accessories', function(){
-    return view('pages.accessories');
-});
-
 Route::namespace('Frontend')->group(function () {
-    Route::get('/phukien','ProductController@accessory');
+    Route::get('/detail-sanpham/{id}','ProductController@product');
+    Route::get('/phukien/{id}','ProductController@accessory');
+    Route::get('/sanpham-highlight','ProductController@highlight');
+    Route::get('/sanpham-sale','ProductController@sale');
+    Route::get('/phukien','ProductController@pageaccessory');
 });

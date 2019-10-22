@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>LARAVEL CRUD USERS DEMO</title>
+  <title>SHOP BAN HANG</title>
   <link rel="stylesheet" href="{{asset('./css/bootstrap.css')}}">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('./css/themify-icons.css')}}">
@@ -22,11 +22,11 @@
 </head>
 
 <body>
-  @include('pages.layout.header')
+  @include('products.layout.header')
  
   @yield('content')
 
-  @include('pages.layout.footer')
+  @include('products.layout.footer')
   <script src="{{asset('./js/jquery-2.2.4.min.js')}}"></script>
   <script src="{{asset('./js/bootstrap.min.js')}}"></script>
 	<!--gmaps Js-->
