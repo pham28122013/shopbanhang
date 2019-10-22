@@ -25,4 +25,5 @@ Route::namespace('Frontend')->group(function () {
     Route::get('/sanpham-sale','ProductController@sale');
     Route::get('/giohang','ProductController@cart');
     Route::get('/phukien','ProductController@accessoriesList');
+    Route::get('/thanhtoan','ProductController@checkout');
 });

@@ -68,4 +68,14 @@ class ProductController extends Controller
     {
         return view('products.accessories');
     }
+
+    /**
+     * Show the checkout.
+     *
+     * @return View
+     */
+    public function checkout()
+    {
+        return view('products.checkout');
+    }
 }
