@@ -22,4 +22,6 @@ Route::namespace('Frontend')->group(function () {
     Route::get('/detail-sanpham/{id}','ProductController@product');
     Route::get('/phukien/{id}','ProductController@accessory');
     Route::get('/sanpham-highlight','ProductController@highlight');
+    Route::get('/sanpham-sale','ProductController@sale');
 });
+

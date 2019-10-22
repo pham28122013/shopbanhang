@@ -5791,7 +5791,9 @@ label {
     color: #ffba00; }
 
 /*# sourceMappingURL=main.css.map */
-
+ .product-sale {
+   margin-top: 200px;
+ }
 .exclusive-deal-area .exclusive-left {
   position: realtive;
   background: url(../images/exclusive.jpg) center no-repeat;
@@ -5799,8 +5801,6 @@ label {
   text-align: center;
   padding: 275px 0;
 }
-
 .product-highlights {
   margin-top: 200px;
 }
-

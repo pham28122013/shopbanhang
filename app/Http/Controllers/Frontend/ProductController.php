@@ -40,5 +40,14 @@ class ProductController extends Controller
         return view('products.product-highlights');
     }
 
-
+    /**
+     * Show the profile for the given products-sale.
+     *
+     * @param  int  $id
+     * @return View
+     */
+    public function sale()
+    {
+        return view('products.product-sale');
+    }
 }
