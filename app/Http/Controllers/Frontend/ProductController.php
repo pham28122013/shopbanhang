@@ -30,9 +30,8 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the profile for the given products-highlights.
+     * Show the list products-highlights.
      *
-     * @param  int  $id
      * @return View
      */
     public function highlight()
@@ -41,9 +40,8 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the profile for the given products-sale.
+     * Show the list products-sale.
      *
-     * @param  int  $id
      * @return View
      */
     public function sale()
@@ -53,9 +51,8 @@ class ProductController extends Controller
 
     
     /**
-     * Show the profile for the given cart.
+     * Show the list cart.
      *
-     * @param  int  $id
      * @return View
      */
     public function cart()
