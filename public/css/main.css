@@ -3875,7 +3875,7 @@ label {
 /* Single Product Area css
 ============================================================================================ */
 .product_image_area {
-  padding-top: 120px; }
+  padding-top: 200px; }
 
 .s_Product_carousel .owl-dots {
   position: absolute;
@@ -5794,3 +5794,13 @@ label {
  .product-sale {
    margin-top: 200px;
  }
+.exclusive-deal-area .exclusive-left {
+  position: realtive;
+  background: url(../images/exclusive.jpg) center no-repeat;
+  background-size: cover;
+  text-align: center;
+  padding: 275px 0;
+}
+.product-highlights {
+  margin-top: 200px;
+}

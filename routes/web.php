@@ -15,9 +15,13 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function() {
-    return view('pages.index');
+    return view('products.index');
 });
 
-Route::get('/product-sale', function(){
-    return view('pages.product-sale');
+Route::namespace('Frontend')->group(function () {
+    Route::get('/detail-sanpham/{id}','ProductController@product');
+    Route::get('/phukien/{id}','ProductController@accessory');
+    Route::get('/sanpham-highlight','ProductController@highlight');
+    Route::get('/sanpham-sale','ProductController@sale');
 });
+
