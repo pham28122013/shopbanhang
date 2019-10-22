@@ -50,6 +50,16 @@ class ProductController extends Controller
     }
 
     /**
+     * Show the list cart.
+     *
+     * @return View
+     */
+    public function cart()
+    {
+        return view('products.cart');
+    }
+
+    /**
      * Show the list accessories.
      *
      * @return View
