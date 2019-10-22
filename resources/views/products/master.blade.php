@@ -22,11 +22,11 @@
 </head>
 
 <body>
-  @include('pages.layout.header')
+  @include('products.layout.header')
  
   @yield('content')
 
-  @include('pages.layout.footer')
+  @include('products.layout.footer')
   <script src="{{asset('./js/jquery-2.2.4.min.js')}}"></script>
   <script src="{{asset('./js/bootstrap.min.js')}}"></script>
 	<!--gmaps Js-->
