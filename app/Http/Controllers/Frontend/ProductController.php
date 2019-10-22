@@ -29,5 +29,16 @@ class ProductController extends Controller
         return view('products.detail');
     }
 
+    /**
+     * Show the profile for the given products-highlights.
+     *
+     * @param  int  $id
+     * @return View
+     */
+    public function highlight()
+    {
+        return view('products.product-highlights');
+    }
+
 
 }
