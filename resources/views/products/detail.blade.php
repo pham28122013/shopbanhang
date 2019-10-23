@@ -29,6 +29,17 @@
 						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
 							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
 							during the winter.</p>
+						<div class="attr-group">
+                                        <div class="attr-name">Chọn size của bạn</div>
+                                        <div class="clearfix"></div>
+                                        <span class="size req" column="i5">
+                                    <a rel="nofollow" value="321992" href="javascript:void(0)"
+                                        class="">35</a><a rel="nofollow" value="321993" href="javascript:void(0)"
+                                        class="">36</a><a rel="nofollow" value="321994" href="javascript:void(0)"
+                                        class="">37</a><a rel="nofollow" value="321995" href="javascript:void(0)"
+                                        class="">38</a><a rel="nofollow" value="321996" href="javascript:void(0)"
+                                        class="">39</a>                                </span>
+                        </div>
 						<div class="product_count">
 							<label for="qty">Quantity:</label>
 							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
