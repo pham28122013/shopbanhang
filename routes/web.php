@@ -27,3 +27,8 @@ Route::namespace('Frontend')->group(function () {
     Route::get('/phukien','ProductController@accessoriesList');
     Route::get('/thanhtoan','ProductController@checkout');
 });
+
+Route::namespace('Backend')->group(function(){
+    Route::get('/admin','AdminController@index');
+});
+
