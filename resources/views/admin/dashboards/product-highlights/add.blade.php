@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('admin.dashboards.master')
 @section('content')
     <!-- Page Content -->
 <main class="main">
@@ -8,7 +8,7 @@
                 <input type="hidden" name="_token" value="">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Sửa
+                        <h1 class="page-header"> Thêm
                             <small>sản phẩm</small>
                         </h1>
                     </div>
@@ -28,11 +28,16 @@
                         </div>
                         <div class="form-group">
                             <label>Up hình sản phẩm</label>
-                            <p><img width="200" src=""></p>
                             <input type="file" accept="image/*" name="image">
                         </div>
-                        <button type="submit" class="btn btn-default">Sửa</button>
+                        <button type="submit" class="btn btn-default">Thêm</button>
                         <button type="reset" class="btn btn-default">Reset</button>  
+                    </div>
+                    <div class="col-lg-4 col-lg-offset-1">
+                            <div class="form-group">
+                                <label>Up hình ảnh chi tiết</label>
+                                <input type="file" accept="image/*" name="imagesDetail[]">
+                            </div>
                     </div>
                 </div>
             <form>
@@ -43,15 +48,3 @@
 </main>
     <!-- /#page-wrapper -->
 @endsection
-<style type="text/css">
-    .box_detail{
-        position: relative;
-    }
-    .box_detail a{
-        width: 25px;
-        height: 25px;
-        position: absolute;
-        top: -7px;
-        right: -7px;
-    }
-</style>

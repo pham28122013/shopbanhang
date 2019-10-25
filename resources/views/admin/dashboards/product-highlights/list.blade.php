@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('admin.dashboards.master')
 @section('content')
     <!-- Page Content -->
 <main class="main">

@@ -30,5 +30,12 @@ Route::namespace('Frontend')->group(function () {
 
 Route::namespace('Backend')->group(function(){
     Route::get('/admin','AdminController@index');
+
+    Route::get('/admin/sanpham-highlight/list','AdminController@highlightlist');
+    Route::get('/admin/sanpham-highlight/add','AdminController@highlightadd');
+    Route::post('/admin/sanpham-highlight/add','AdminController@highlightstore');
+    Route::get('/admin/sanpham-highlight/edit/{id}','AdminController@highlightedit');
+    Route::post('/admin/sanpham-highlight/edit/{id}','AdminController@highlightupdate');
+    Route::get('/admin/sanpham-highlight/{id}','AdminController@highlightdelete');
 });
 
