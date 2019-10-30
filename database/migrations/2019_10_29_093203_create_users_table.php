@@ -16,11 +16,11 @@ class CreateUsersTable extends Migration
         if (Schema::hasTable('users')) {
             Schema::create('users', function (Blueprint $table) {
                 $table->increments('id');
-                $table->integer('role_id');
+                $table->integer('role_id')->index();
                 $table->string('name');
                 $table->string('phone');
                 $table->string('email')->unique();
-                $table->string('is_active');
+                $table->boolean('is_active')->comment('1: active, 0: inactive');
                 $table->string('password');
                 $table->remember_token();
                 $table->timestamps();

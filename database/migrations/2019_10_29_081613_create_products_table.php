@@ -16,12 +16,12 @@ class CreateProductsTable extends Migration
         if (Schema::hasTable('products')) {
             Schema::create('products', function (Blueprint $table) {
                 $table->increments('id');
-                $table->integer('product_type_id');
+                $table->integer('product_type_id')->index();
                 $table->string('name');
                 $table->double('price');
                 $table->string('code');
                 $table->integer('quantity');
-                $table->timestamp('delete_at')->nullable();
+                $table->softDeletes('delete_at')->nullable();
                 $table->timestamps();
             });
         }

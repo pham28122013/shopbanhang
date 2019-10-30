@@ -16,7 +16,7 @@ class CreateProductSizesTable extends Migration
         if (Schema::hasTable('product_sizes')) {
             Schema::create('product_sizes', function (Blueprint $table) {
                 $table->increments('id');
-                $table->integer('product_id');
+                $table->integer('product_id')->index();
                 $table->integer('size');
                 $table->timestamps();
             });
