@@ -12,12 +12,14 @@ class CreateProductTypesTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('product_types', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->timestamps();
-        });
+    {   
+        if (Schema::hasTable('product_types')) {
+            Schema::create('product_types', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

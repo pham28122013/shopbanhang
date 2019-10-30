@@ -12,17 +12,19 @@ class CreateOrdersTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->string('customer_name');
-            $table->string('phone');
-            $table->string('address');
-            $table->string('email');
-            $table->longtext('note');
-            $table->timestamps();
-        });
+    {   
+        if (Schema::hasTable('orders')) {
+            Schema::create('orders', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('user_id');
+                $table->string('customer_name');
+                $table->string('phone');
+                $table->string('address');
+                $table->string('email')->unique();
+                $table->string('note');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

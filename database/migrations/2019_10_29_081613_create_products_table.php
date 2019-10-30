@@ -12,17 +12,19 @@ class CreateProductsTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('products', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_type_id');
-            $table->string('name');
-            $table->double('price');
-            $table->string('code');
-            $table->integer('quantity');
-            $table->timestamp('delete_at')->nullable();
-            $table->timestamps();
-        });
+    {  
+        if (Schema::hasTable('products')) {
+            Schema::create('products', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('product_type_id');
+                $table->string('name');
+                $table->double('price');
+                $table->string('code');
+                $table->integer('quantity');
+                $table->timestamp('delete_at')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

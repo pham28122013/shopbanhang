@@ -12,18 +12,20 @@ class CreateUsersTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('role_id');
-            $table->string('name');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('is_active');
-            $table->string('password');
-            $table->string('remember_token');
-            $table->timestamps();
-        });
+    {   
+        if (Schema::hasTable('users')) {
+            Schema::create('users', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('role_id');
+                $table->string('name');
+                $table->string('phone');
+                $table->string('email')->unique();
+                $table->string('is_active');
+                $table->string('password');
+                $table->remember_token();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

@@ -12,13 +12,15 @@ class CreateProductImagesTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('product_images', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_id');
-            $table->string('url');
-            $table->timestamps();
-        });
+    {   
+        if (Schema::hasTable('product_images')) {
+            Schema::create('product_images', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('product_id')->index();
+                $table->string('url');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

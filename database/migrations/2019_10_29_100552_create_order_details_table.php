@@ -12,18 +12,20 @@ class CreateOrderDetailsTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('order_details', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('order_id');
-            $table->integer('quantity');
-            $table->string('product_name');
-            $table->string('code');
-            $table->integer('size');
-            $table->integer('product_id');
-            $table->integer('price');
-            $table->timestamps();
-        });
+    {   
+        if (Schema::hasTable('order_details')) {
+            Schema::create('order_details', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('order_id')->index();
+                $table->integer('product_id');
+                $table->integer('quantity');
+                $table->string('product_name');
+                $table->string('code');
+                $table->integer('size');
+                $table->double('price');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
