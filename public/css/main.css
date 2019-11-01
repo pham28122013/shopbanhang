@@ -5842,3 +5842,26 @@ label {
 .attr-group a:hover {
   border: 1px solid #e42127 !important;
 }
+
+.featured-post {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.post img {
+  max-width: 100%;
+    height: auto;
+	transition: all 1s ease;
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+}
+ 
+.post img:hover {
+	transform: scale(1.1,1.1);
+	-webkit-transform: scale(1.1,1.1);
+	-moz-transform: scale(1.1,1.1);
+	-o-transform: scale(1.1,1.1);
+	-ms-transform: scale(1.1,1.1);
+}

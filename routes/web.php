@@ -14,9 +14,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function() {
-    return view('products.index');
-});
+
+
+Route::get('/home', 'Backend\ProductController@index');
 
 Route::namespace('Frontend')->group(function () {
     Route::get('/detail-sanpham/{id}','ProductController@product');
