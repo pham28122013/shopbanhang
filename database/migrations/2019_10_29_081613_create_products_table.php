@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
                 $table->double('price');
                 $table->string('code');
                 $table->integer('quantity');
-                $table->softDeletes('delete_at')->nullable();
+                $table->softDeletes('delete_at');
                 $table->timestamps();
             });
         }
