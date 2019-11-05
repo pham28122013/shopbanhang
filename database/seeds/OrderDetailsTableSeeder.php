@@ -2,7 +2,6 @@
 use App\OrderDetail;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-
 class OrderDetailsTableSeeder extends Seeder
 {
     /**
@@ -19,7 +18,7 @@ class OrderDetailsTableSeeder extends Seeder
                 'quantity' => ('100'),
                 'product_name' => ('giay adidas'),
                 'code' => $faker->ean13,
-                'Size' => ('M'),
+                'Size' => ('39'),
                 'product_id' => $faker->ean8,
                 'price' => ('50000')
             ]);

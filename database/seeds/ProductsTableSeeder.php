@@ -1,5 +1,4 @@
 <?php
-
 use App\Product;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
