@@ -12,7 +12,7 @@ class CreateOrderDetailsTable extends Migration
      * @return void
      */
     public function up()
-    {   
+    {
         if (Schema::hasTable('order_details')) {
             Schema::create('order_details', function (Blueprint $table) {
                 $table->increments('id');

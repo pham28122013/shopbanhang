@@ -2,7 +2,6 @@
 use App\Role;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-
 class RolesTableSeeder extends Seeder
 {
     /**
