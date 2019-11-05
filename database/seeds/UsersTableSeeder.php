@@ -18,8 +18,10 @@ class UsersTableSeeder extends Seeder
                 'role_id' => $faker->ean8,
                 'name' => $faker->userName,
                 'phone' => $faker->phoneNumber,
+                'email' => $faker->freeEmail,
+                'is_active' => ('0'),
                 'password' => $faker->password,
-                'remember_token' => str_random(10)
+                'remember_token' => $faker->md5
             ]);
         }
     }

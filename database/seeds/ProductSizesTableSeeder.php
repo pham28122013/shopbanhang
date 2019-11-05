@@ -2,7 +2,6 @@
 use App\ProductSize;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-
 class ProductSizesTableSeeder extends Seeder
 {
     /**
@@ -16,7 +15,7 @@ class ProductSizesTableSeeder extends Seeder
         foreach (range(1, 10) as $index) {
             ProductSize::create([
                 'product_id' => $faker->ean8,
-                'Size' => ('M')
+                'size' => ('39')
             ]);
         }
     }
