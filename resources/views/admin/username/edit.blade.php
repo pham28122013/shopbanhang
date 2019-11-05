@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('admin.dashboards.master')
 @section('content')
     <!-- Page Content -->
 <main class="main">
@@ -12,33 +12,19 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
-                    <form action="" method="POST">
-                        <input type="hidden" name="_token" value="">
+                    <form action="{{route('users.update',$user->id)}}" method="POST">
+                    <input type="hidden" name="_method" value="put" /> {{csrf_field()}}
                         <div class="form-group">
                             <label>Tên</label>
-                            <input class="form-control" name="txtUser" value="" />
+                            <input class="form-control" value="{{$user->name}}" name="name" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại</label>
+                            <input  class="form-control" value="{{$user->phone}}" name="phone" placeholder="" />
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" disabled="" value="" name="txtEmail" placeholder="Please Enter Email" />
-                        </div>
-                        <div class="form-group">
-                            <input id="editPass" type="checkbox" name="checkbox">
-                            <label for="editPass" >Sửa mật khẩu</label>
-                            <input disabled="" type="password" class="pass form-control" name="txtPass" placeholder="Please Enter Password" />
-                        </div>
-                        <div class="form-group">
-                            <label>Xác nhận mật khẩu</label>
-                            <input disabled="" type="password" class="pass form-control" name="txtRePass" placeholder="Please Enter RePassword" />
-                        </div>
-                        <div class="form-group">
-                            <label>Quyền</label>
-                            <label class="radio-inline">
-                                <input name="rdoLevel" value="1" type="radio"> Admin
-                            </label>
-                            <label class="radio-inline">
-                                <input name="rdoLevel" value="0" type="radio"> Member
-                            </label>
+                            <input type="email" value="{{$user->email}}" class="form-control" name="email" placeholder="" />
                         </div>
                         <button type="submit" class="btn btn-default">Sửa</button>
                         <button type="reset" class="btn btn-default">Reset</button>

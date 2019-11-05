@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('admin.dashboards.master')
 @section('content')
     <!-- Page Content -->
 <main class="main">
@@ -12,39 +12,37 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
-                    <form action="" method="POST">
-                        <input type="hidden" name="_token" value="">
+                    <form action="{{route('users.store')}}" method="POST">
+                    <input type="hidden" name="_method" value="post" /> {{csrf_field()}}
                         <div class="form-group">
-                            <label>Tên</label>
-                            <input class="form-control" value="" name="txtUser" placeholder="Please Enter Username" />
+                            <label>Role Id</label>
+                            <input class="form-control" value="" name="role_id" placeholder="Please Enter Username" />
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" value="" class="form-control" name="txtEmail" placeholder="Please Enter Email" />
+                            <label>Tên</label>
+                            <input class="form-control" value="" name="name" placeholder="Please Enter Username" />
                         </div>
                         <div class="form-group">
                             <label>Số điện thoại</label>
                             <input type="number" min="0" class="form-control" value="" name="phone" placeholder="Please Enter Username" />
                         </div>
                         <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="" class="form-control" name="email" placeholder="Please Enter Email" />
+                        </div>
+                        <div class="form-group">
                             <label>Mật khẩu</label>
-                            <input type="password" class="form-control" name="txtPass" placeholder="Please Enter Password" />
+                            <input type="password" class="form-control" name="password" placeholder="Please Enter Password" />
                         </div>
                         <div class="form-group">
-                            <label>Xác nhận xật khẩu</label>
-                            <input type="password" class="form-control" name="txtRePass" placeholder="Please Enter RePassword" />
+                            <label>Active</label>
+                            <input type="password" class="form-control" name="is_active" placeholder="Please Enter Password" />
                         </div>
                         <div class="form-group">
-                            <label>User Level</label>
-                            <label class="radio-inline">
-                                <input name="rdoLevel" value="1" checked="" type="radio">Admin
-                            </label>
-                            <label class="radio-inline">
-                                <input name="rdoLevel" value="0" type="radio">Member
-                            </label>
+                            <label>Remember</label>
+                            <input type="password" class="form-control" name="remember_token" placeholder="Please Enter Password" />
                         </div>
                         <button type="submit" class="btn btn-default">Thêm</button>
-                        <button type="reset" class="btn btn-default">Reset</button>
                     <form>
                 </div>
             </div>
