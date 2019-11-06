@@ -1282,7 +1282,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #222222; }
 
 .organic-breadcrumb {
-  background: url(../img/banner/common-banner.jpg) center no-repeat;
+  background: url('public/images/banner/common-banner.jpg') center no-repeat;
   background-size: cover;
   padding-top: 130px; }
   @media (max-width: 991px) {
@@ -3875,7 +3875,7 @@ label {
 /* Single Product Area css
 ============================================================================================ */
 .product_image_area {
-  padding-top: 120px; }
+  padding-top: 200px; }
 
 .s_Product_carousel .owl-dots {
   position: absolute;
@@ -3929,7 +3929,7 @@ label {
     padding-top: 20px;
     border-top: 1px dotted #d5d5d5;
     margin-top: 20px;
-    margin-bottom: 70px; }
+    margin-bottom: 40px; }
   .s_product_text .card_area .primary-btn {
     line-height: 38px;
     padding: 0px 38px;
@@ -5791,3 +5791,55 @@ label {
     color: #ffba00; }
 
 /*# sourceMappingURL=main.css.map */
+
+.accessories {
+  margin-top: 200px;
+}
+ .product-sale {
+   margin-top: 200px;
+ }
+.exclusive-deal-area .exclusive-left {
+  position: realtive;
+  background: url(../images/exclusive.jpg) center no-repeat;
+  background-size: cover;
+  text-align: center;
+  padding: 275px 0;
+}
+.product-highlights {
+  margin-top: 200px;
+}
+.attr-group {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.attr-group .size a {
+  min-width: 30px;
+  width: auto;
+  padding: 0 5px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  display: block;
+  float: left;
+  margin: 0 5px 5px 0;
+  border: solid 1px #ddd;
+  color: #505252;
+  border-radius: 3px;
+}
+
+.attr-group a {
+  display: block;
+  border: 1px solid #e0e0e0;
+  font-weight: 500;
+  padding: 4px 6px;
+  cursor: pointer;
+  background: #f7f7f7;
+  position: relative;
+  font-family: 1px;
+}
+.attr-group a:hover {
+  border: 1px solid #e42127 !important;
+}
+

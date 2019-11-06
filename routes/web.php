@@ -15,12 +15,19 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function() {
-    return view('pages.index');
+    return view('products.index');
 });
 
-Route::get('/admin', function(){
-    return view('admin.index');
+Route::namespace('Frontend')->group(function () {
+    Route::get('/detail-sanpham/{id}','ProductController@product');
+    Route::get('/phukien/{id}','ProductController@accessory');
+    Route::get('/sanpham-highlight','ProductController@highlight');
+    Route::get('/sanpham-sale','ProductController@sale');
+    Route::get('/giohang','ProductController@cart');
+    Route::get('/phukien','ProductController@accessoriesList');
+    Route::get('/thanhtoan','ProductController@checkout');
 });
+
 
 Route::get('/product/list', function(){
     return view('admin.product.list');
@@ -33,3 +40,16 @@ Route::get('/product/edit', function(){
 Route::get('/product/add', function(){
     return view('admin.product.add');
 });
+
+Route::namespace('Backend')->group(function(){
+    Route::get('/admin','AdminController@index');
+
+    Route::get('/admin/product/list','ProductController@productList')->name('products.list');
+    Route::get('/admin/user/add','UserController@useradd')->name('users.add');
+    Route::post('/admin/user','UserController@userstore')->name('users.store');
+    Route::get('/admin/product/show/{id}','ProductController@productshow')->name('products.show');
+    Route::get('/admin/user/{id}/edit','UserController@useredit')->name('users.edit');
+    Route::put('/admin/user/{id}','UserController@userupdate')->name('users.update');
+    Route::delete('/admin/product/{id}','ProductController@productdelete')->name('products.delete');
+});
+
