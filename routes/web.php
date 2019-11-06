@@ -30,5 +30,13 @@ Route::namespace('Frontend')->group(function () {
 
 Route::namespace('Backend')->group(function(){
     Route::get('/admin','AdminController@index');
+
+    Route::get('/admin/user/list','UserController@userlist')->name('users.list');
+    Route::get('/admin/user/add','UserController@useradd')->name('users.add');
+    Route::post('/admin/user','UserController@userstore')->name('users.store');
+    Route::get('/admin/user/show/{id}','UserController@usershow')->name('users.show');
+    Route::get('/admin/user/{id}/edit','UserController@useredit')->name('users.edit');
+    Route::put('/admin/user/{id}','UserController@userupdate')->name('users.update');
+    Route::delete('/admin/user/{id}','UserController@userdelete')->name('users.delete');
 });
 
