@@ -31,6 +31,6 @@ Route::namespace('Frontend')->group(function () {
 Route::namespace('Backend')->group(function(){
     Route::get('/admin','AdminController@index');
 
-    Route::resource('users', 'UserController');
+    Route::resource('users', 'UserController')->only(['index']);
 });
 

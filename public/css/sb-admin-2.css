@@ -16398,3 +16398,11 @@ body {
 .btn-default {
   border: 1px solid #6E6C6C;
 }
+
+td p.inactive {
+   color: red;
+}
+
+td p.active {
+  color: blue;
+}

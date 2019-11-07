@@ -20,38 +20,46 @@
                             <th>Tên</th>
                             <th>Phone</th>
                             <th>E-mail</th>
-                            <th>Is_active</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($users as $user)
-                    <tr class="text-center">
-                        <th scope="row">{{$user->id}}</th>
-                        <td>{{$user->role_id}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->phone}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->is_active}}</td>
-                        <td class="d-flex align-items-center justify-content-around">
-                        <form action="" method="get">
-                            <button class="btn btn-sm btn-primary   rounded-0">
-                            Show
-                            </button>
-                        </form>
-                        <form action="" method="get">
-                            <button class="btn btn-sm btn-warning   rounded-0">
-                            Edit
-                            </button>
-                        </form>
-                        <form action="" method="post">
-                            <input type="hidden" name="_method" value="delete" /> {{csrf_field()}}
-                            <button class="btn btn-sm btn-danger   rounded-0">
-                            Delete
-                            </button>
-                        </form>
-                        </td>
-                    </tr>
+                        <tr class="text-center">
+                            <th scope="row">{{$user->id}}</th>
+                            <td>{{$user->role_id}}</td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->phone}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>
+                                <?php 
+                                    if ($user->is_active == 0) {
+                                        echo '<button class="btn btn-sm btn-danger   rounded-0">'."Inactive".'</button>';
+                                    }else {
+                                        echo '<button class="btn btn-sm btn-success   rounded-0">'."Active".'</button>';
+                                    }
+                                ?>
+                            </td>
+                            <td class="d-flex align-items-center justify-content-around">
+                            <form action="" method="get">
+                                <button class="btn btn-sm btn-primary   rounded-0">
+                                Show
+                                </button>
+                            </form>
+                            <form action="" method="get">
+                                <button class="btn btn-sm btn-warning   rounded-0">
+                                Edit
+                                </button>
+                            </form>
+                            <form action="" method="post">
+                                <input type="hidden" name="_method" value="delete" /> {{csrf_field()}}
+                                <button class="btn btn-sm btn-danger   rounded-0">
+                                Delete
+                                </button>
+                            </form>
+                            </td>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>
