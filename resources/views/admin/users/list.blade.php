@@ -5,10 +5,17 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <h1 class="page-header">Danh sách
                         <small>users</small>
                     </h1>
+                </div>
+                <div class="col-lg-6">
+                    <form action="" method="get">
+                        <button class="btn btn-sm btn-primary   rounded-0 new-users">
+                            Add new User
+                        </button>
+                    </form>
                 </div>
                 <!-- /.col-lg-12 -->
                 <div style="clear: both;"></div>
