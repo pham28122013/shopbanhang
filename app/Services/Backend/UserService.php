@@ -12,8 +12,10 @@ class UserService
      * @return Model
      */
     public function getAllUsers()
-    {
-        return User::paginate(10);
+    {   
+       
+        return User::paginate(User::ITEMS_PER_PAGE);
     }
+
 
 }

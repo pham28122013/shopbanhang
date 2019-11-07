@@ -24,7 +24,7 @@
                         <tr align="center">
                             <th>ID</th>
                             <th>Role_id</th>
-                            <th>Tên</th>
+                            <th>Name</th>
                             <th>Phone</th>
                             <th>E-mail</th>
                             <th>Status</th>
@@ -35,13 +35,23 @@
                     @foreach($users as $user)
                         <tr class="text-center">
                             <th scope="row">{{$user->id}}</th>
-                            <td>{{$user->role_id}}</td>
+                            <td>
+                                <?php 
+                                    if ($user->role_id == App\Models\User::ADMIN ) {
+                                        echo '<button class="btn btn-sm btn-danger   rounded-0">'."Admin".'</button>';
+                                    }elseif ($user->role_id == App\Models\User::SUP_ADMIN ) {
+                                        echo '<button class="btn btn-sm btn-success   rounded-0">'."Sup Admin".'</button>';
+                                    }else {
+                                        echo '<button class="btn btn-sm btn-primary   rounded-0">'."User".'</button>';
+                                    }
+                                ?>
+                            </td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->phone}}</td>
                             <td>{{$user->email}}</td>
                             <td>
                                 <?php 
-                                    if ($user->is_active == 0) {
+                                    if ($user->is_active == App\Models\User::INACTIVE ) {
                                         echo '<button class="btn btn-sm btn-danger   rounded-0">'."Inactive".'</button>';
                                     }else {
                                         echo '<button class="btn btn-sm btn-success   rounded-0">'."Active".'</button>';
@@ -60,7 +70,8 @@
                                 </button>
                             </form>
                             <form action="" method="post">
-                                <input type="hidden" name="_method" value="delete" /> {{csrf_field()}}
+                                <input type="hidden" name="_method" value="delete" /> 
+                                {{csrf_field()}}
                                 <button class="btn btn-sm btn-danger   rounded-0">
                                 Delete
                                 </button>
@@ -70,6 +81,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center">{{ $users->links() }}</div>
             </div>
             <!-- /.row -->
         </div>

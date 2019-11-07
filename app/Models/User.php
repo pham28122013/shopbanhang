@@ -16,6 +16,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $table = 'users';
+    const ITEMS_PER_PAGE = 10;
+    const INACTIVE = 0;
+    const ADMIN = 1;
+    const SUP_ADMIN = 2;
+    const ROLE_ID = [ 'ADMIN' => 1 , 'SUP_ADMIN' => 2, 'USER' => 3];
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -37,4 +42,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
 }

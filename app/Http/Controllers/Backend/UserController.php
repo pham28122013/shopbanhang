@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Services\Backend\UserService;
 
 class UserController extends Controller
@@ -14,6 +13,7 @@ class UserController extends Controller
     private $userService;
 
     /**
+     * initialize the function __construct
      * 
      */
     public function __construct(UserService $userservice)
