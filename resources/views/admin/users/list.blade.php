@@ -39,7 +39,7 @@
                                 @if ($user->role_id == App\Models\User::ROLE['ADMIN'] ) 
                                         <button class="btn btn-sm btn-danger   rounded-0">Admin</button>
                                 @elseif ($user->role_id == App\Models\User::ROLE['SUB_ADMIN'] ) 
-                                    <button class="btn btn-sm btn-success   rounded-0">Sup Admin</button>
+                                    <button class="btn btn-sm btn-success   rounded-0">Sub Admin</button>
                                 @else 
                                     <button class="btn btn-sm btn-primary   rounded-0">User</button>
                                 @endif                          

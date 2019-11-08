@@ -13,9 +13,6 @@ class UserService
      */
     public function getAllUsers()
     {   
-       
         return User::paginate(User::ITEMS_PER_PAGE);
     }
-
-
 }

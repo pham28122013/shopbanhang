@@ -16,9 +16,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $table = 'users';
+
     const ITEMS_PER_PAGE = 10;
+
     const INACTIVE = 0;
+
     const ROLE = [ 'ADMIN' => 1 , 'SUB_ADMIN' => 2, 'USER' => 3];
+    
     protected $fillable = [
         'name', 'email', 'password',
     ];
