@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
-                    <h1 class="page-header">Danh sách
+                    <h1 class="page-header">LIST
                         <small>users</small>
                     </h1>
                 </div>
@@ -23,7 +23,7 @@
                     <thead>
                         <tr align="center">
                             <th>ID</th>
-                            <th>Role_id</th>
+                            <th>Role</th>
                             <th>Name</th>
                             <th>Phone</th>
                             <th>E-mail</th>
@@ -35,28 +35,24 @@
                     @foreach($users as $user)
                         <tr class="text-center">
                             <th scope="row">{{$user->id}}</th>
-                            <td>
-                                <?php 
-                                    if ($user->role_id == App\Models\User::ROLE_ID['ADMIN'] ) {
-                                        echo '<button class="btn btn-sm btn-danger   rounded-0">'."Admin".'</button>';
-                                    }elseif ($user->role_id == App\Models\User::ROLE_ID['SUP_ADMIN'] ) {
-                                        echo '<button class="btn btn-sm btn-success   rounded-0">'."Sup Admin".'</button>';
-                                    }else {
-                                        echo '<button class="btn btn-sm btn-primary   rounded-0">'."User".'</button>';
-                                    }
-                                ?>
+                            <td>     
+                                @if ($user->role_id == App\Models\User::ROLE['ADMIN'] ) 
+                                        <button class="btn btn-sm btn-danger   rounded-0">Admin</button>
+                                @elseif ($user->role_id == App\Models\User::ROLE['SUB_ADMIN'] ) 
+                                    <button class="btn btn-sm btn-success   rounded-0">Sup Admin</button>
+                                @else 
+                                    <button class="btn btn-sm btn-primary   rounded-0">User</button>
+                                @endif                          
                             </td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->phone}}</td>
                             <td>{{$user->email}}</td>
                             <td>
-                                <?php 
-                                    if ($user->is_active == App\Models\User::INACTIVE ) {
-                                        echo '<button class="btn btn-sm btn-danger   rounded-0">'."Inactive".'</button>';
-                                    }else {
-                                        echo '<button class="btn btn-sm btn-success   rounded-0">'."Active".'</button>';
-                                    }
-                                ?>
+                                @if ($user->is_active == App\Models\User::INACTIVE ) 
+                                    <button class="btn btn-sm btn-danger   rounded-0">Inactive</button>
+                                @else 
+                                    <button class="btn btn-sm btn-success   rounded-0">Active</button>
+                                @endif
                             </td>
                             <td class="d-flex align-items-center justify-content-around">
                             <form action="" method="get">

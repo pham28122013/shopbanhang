@@ -18,7 +18,7 @@ class User extends Authenticatable
     protected $table = 'users';
     const ITEMS_PER_PAGE = 10;
     const INACTIVE = 0;
-    const ROLE_ID = [ 'ADMIN' => 1 , 'SUP_ADMIN' => 2, 'USER' => 3];
+    const ROLE = [ 'ADMIN' => 1 , 'SUB_ADMIN' => 2, 'USER' => 3];
     protected $fillable = [
         'name', 'email', 'password',
     ];
