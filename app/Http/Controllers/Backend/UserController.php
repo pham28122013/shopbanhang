@@ -48,7 +48,7 @@ class UserController extends Controller
      * Store for the user.
      *
      * @param Request
-     * @return view
+     * @return route
      */
     public function store(Request $request)
     {
@@ -63,6 +63,4 @@ class UserController extends Controller
         $user->save();
         return redirect()->route('users.index');
     }
-
-
 }

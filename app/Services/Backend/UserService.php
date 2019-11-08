@@ -19,7 +19,7 @@ class UserService
     /**
      * Create new users
      *
-     * @return Model
+     * @return new Model
      */
     public function newUsers()
     {   
