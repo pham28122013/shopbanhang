@@ -15,4 +15,14 @@ class UserService
     {   
         return User::paginate(User::ITEMS_PER_PAGE);
     }
+
+    /**
+     * Create new users
+     *
+     * @return Model
+     */
+    public function newUsers()
+    {   
+        return new User;
+    }
 }

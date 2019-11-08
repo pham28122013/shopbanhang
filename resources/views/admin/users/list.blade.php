@@ -11,7 +11,7 @@
                     </h1>
                 </div>
                 <div class="col-lg-6">
-                    <form action="" method="get">
+                <form action="{{route('users.create')}}" method="get">
                         <button class="btn btn-sm btn-primary   rounded-0 new-users">
                             Add new User
                         </button>
