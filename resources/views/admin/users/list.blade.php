@@ -37,9 +37,9 @@
                             <th scope="row">{{$user->id}}</th>
                             <td>
                                 <?php 
-                                    if ($user->role_id == App\Models\User::ADMIN ) {
+                                    if ($user->role_id == App\Models\User::ROLE_ID['ADMIN'] ) {
                                         echo '<button class="btn btn-sm btn-danger   rounded-0">'."Admin".'</button>';
-                                    }elseif ($user->role_id == App\Models\User::SUP_ADMIN ) {
+                                    }elseif ($user->role_id == App\Models\User::ROLE_ID['SUP_ADMIN'] ) {
                                         echo '<button class="btn btn-sm btn-success   rounded-0">'."Sup Admin".'</button>';
                                     }else {
                                         echo '<button class="btn btn-sm btn-primary   rounded-0">'."User".'</button>';
