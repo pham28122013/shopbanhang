@@ -55,4 +55,14 @@ class UserService
     {   
         return User::find($id);
     }
+
+    /**
+     * Delete users
+     *
+     * @return new Model
+     */
+    public function destroyUsers($id)
+    {   
+        return User::find($id);
+    }
 }

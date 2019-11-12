@@ -101,7 +101,7 @@ class UserController extends Controller
      /**
      * Show for the user.
      *
-     * @param Request
+     * @param id
      * @return route
      */
 
@@ -113,8 +113,8 @@ class UserController extends Controller
      /**
      * Edit for the user.
      *
-     * @param Request
-     * @return route
+     * @param id
+     * @return view
      */
 
     public function edit($id){
@@ -135,6 +135,19 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->save();
+        return redirect()->route('users.index');
+    }
+
+     /**
+     * Edit for the user.
+     *
+     * @param id
+     * @return route
+     */
+
+    public function destroy($id){
+        $user = $this->userService->destroyUsers($id);
+        $user->delete();
         return redirect()->route('users.index');
     }
 }

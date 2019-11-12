@@ -65,7 +65,7 @@
                                 Edit
                                 </button>
                             </form>
-                            <form action="" method="post">
+                            <form action="{{route('users.destroy',$user->id)}}" method="post">
                                 <input type="hidden" name="_method" value="delete" /> 
                                 {{csrf_field()}}
                                 <button class="btn btn-sm btn-danger   rounded-0">
