@@ -3,7 +3,8 @@
 namespace App\Services\Backend;
 
 use App\Models\User;
-
+use Illuminate\Http\Request;
+use Hash;
 class UserService
 {
     /**
@@ -21,18 +22,16 @@ class UserService
      *
      * @return new Model
      */
-    public function newUsers()
+    public function createUsers($request)
     {   
-        return new User;
-    }
-
-    /**
-     * Show users
-     *
-     * @return new Model
-     */
-    public function showUsers($id)
-    {   
-        return User::find($id);
+        $user =  new User;
+        $user->role_id = $request->role_id;
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->is_active = 1;
+        $user->remember_token = $request->_token;
+        $user->save();
     }
 }
