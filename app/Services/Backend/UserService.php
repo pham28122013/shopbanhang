@@ -25,4 +25,14 @@ class UserService
     {   
         return new User;
     }
+
+    /**
+     * Show users
+     *
+     * @return new Model
+     */
+    public function showUsers($id)
+    {   
+        return User::find($id);
+    }
 }

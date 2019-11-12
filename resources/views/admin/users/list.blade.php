@@ -55,7 +55,7 @@
                                 @endif
                             </td>
                             <td class="d-flex align-items-center justify-content-around">
-                            <form action="" method="get">
+                            <form action="{{route('users.show',$user->id)}}" method="get">
                                 <button class="btn btn-sm btn-primary   rounded-0">
                                 Show
                                 </button>

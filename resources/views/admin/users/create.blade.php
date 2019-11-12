@@ -30,14 +30,29 @@
                             <div class="form-group">
                                 <label>Name</label>
                                 <input class="form-control" value="" name="name" placeholder="Please Enter Username" required="required" />
+                                @if ($errors->has('name'))
+                                    <div class="alert alert-danger">
+                                        <strong>{{$errors->first('name')}}</strong>
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label>Phone</label>
                                 <input type="Phone" class="form-control" value="" name="phone" placeholder="Please Enter Phone" required="required" />
+                                @if ($errors->has('phone'))
+                                    <div class="alert alert-danger">
+                                        <strong>{{$errors->first('phone')}}</strong>
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label>E-mail</label>
                                 <input type="email" value="" class="form-control" name="email" placeholder="Please Enter Email" required="required" />
+                                @if ($errors->has('email'))
+                                    <div class="alert alert-danger">
+                                        <strong>{{$errors->first('email')}}</strong>
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
