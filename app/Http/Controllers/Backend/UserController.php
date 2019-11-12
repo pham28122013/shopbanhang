@@ -108,5 +108,33 @@ class UserController extends Controller
      public function show($id){
         $user = $this->userService->showUsers($id);
         return view('admin.users.show', ['user' => $user]);
-     }
+    }
+
+     /**
+     * Edit for the user.
+     *
+     * @param Request
+     * @return route
+     */
+
+    public function edit($id){
+        $user = $this->userService->editUsers($id);
+        return view('admin.users.edit', ['user' => $user]);
+    }
+
+    /**
+     * Update for the user.
+     *
+     * @param Request
+     * @return route
+     */
+
+    public function update(request $request, $id){
+        $user = $this->userService->updateUsers($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->save();
+        return redirect()->route('users.index');
+    }
 }

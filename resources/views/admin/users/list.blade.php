@@ -60,7 +60,7 @@
                                 Show
                                 </button>
                             </form>
-                            <form action="" method="get">
+                            <form action="{{route('users.edit',$user->id)}}" method="get">
                                 <button class="btn btn-sm btn-warning   rounded-0">
                                 Edit
                                 </button>

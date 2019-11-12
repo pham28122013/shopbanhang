@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Danh sách
+                    <h1 class="page-header">Show
                         <small>users</small>
                     </h1>
                 </div>
@@ -16,11 +16,11 @@
                     <thead>
                         <tr align="center">
                             <th>ID</th>
-                            <th>Role_id</th>
-                            <th>Tên</th>
+                            <th>Role</th>
+                            <th>Name</th>
                             <th>Phone</th>
                             <th>E-mail</th>
-                            <th>Is_active</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>

@@ -35,4 +35,24 @@ class UserService
     {   
         return User::find($id);
     }
+
+    /**
+     * Edit users
+     *
+     * @return new Model
+     */
+    public function editUsers($id)
+    {   
+        return User::find($id);
+    }
+
+    /**
+     * Update users
+     *
+     * @return new Model
+     */
+    public function updateUsers($id)
+    {   
+        return User::find($id);
+    }
 }
