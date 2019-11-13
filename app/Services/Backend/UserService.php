@@ -5,6 +5,7 @@ namespace App\Services\Backend;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Hash;
+
 class UserService
 {
     /**
@@ -30,8 +31,7 @@ class UserService
         $user->phone = $request->phone;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->is_active = 1;
-        $user->remember_token = $request->_token;
+        $user->is_active = User::ACTIVE;
         $user->save();
     }
 }

@@ -7,7 +7,7 @@ use App\Services\Backend\UserService;
 use Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreBlogPost;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -52,7 +52,7 @@ class UserController extends Controller
      * @param Request
      * @return route
      */
-    public function store(StoreBlogPost $request)
+    public function store(UserRequest $request)
     {
         $user = $this->userService->createUsers($request);
         return redirect()->route('users.index');
