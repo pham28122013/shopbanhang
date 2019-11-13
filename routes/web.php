@@ -32,5 +32,7 @@ Route::namespace('Backend')->group(function(){
     Route::get('/admin','AdminController@index');
 
     Route::resource('users', 'UserController')->only(['index']);
+
+    Route::resource('products', 'ProductController')->only(['index']);
 });
 
