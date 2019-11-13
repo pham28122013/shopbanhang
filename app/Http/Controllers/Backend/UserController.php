@@ -57,4 +57,16 @@ class UserController extends Controller
         $user = $this->userService->createUsers($request);
         return redirect()->route('users.index');
     }
+
+    /**
+     * Show for the user.
+     *
+     * @param id
+     * @return view
+     */
+    public function show($id)
+    {
+        $user = $this->userService->showUsers($id);
+        return view('admin.users.show', ['user' => $user]);
+    }
 }
