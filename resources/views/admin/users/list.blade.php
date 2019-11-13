@@ -11,11 +11,11 @@
                     </h1>
                 </div>
                 <div class="col-lg-6">
-                    <form action="" method="get">
+                <a href="{{route('users.create')}}">
                         <button class="btn btn-sm btn-primary   rounded-0 new-users">
                             Add new User
                         </button>
-                    </form>
+                </a>
                 </div>
                 <!-- /.col-lg-12 -->
                 <div style="clear: both;"></div>

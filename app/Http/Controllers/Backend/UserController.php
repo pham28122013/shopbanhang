@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Services\Backend\UserService;
+use Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -32,4 +36,25 @@ class UserController extends Controller
         return view('admin.users.list',['users' => $users]);
     }
 
+    /**
+     * Create for the user.
+     *
+     * @return view
+     */
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
+    /**
+     * Store for the user.
+     *
+     * @param Request
+     * @return route
+     */
+    public function store(UserRequest $request)
+    {
+        $user = $this->userService->createUsers($request);
+        return redirect()->route('users.index');
+    }
 }
