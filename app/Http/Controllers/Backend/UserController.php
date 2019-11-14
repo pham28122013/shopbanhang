@@ -8,6 +8,7 @@ use Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -73,24 +74,23 @@ class UserController extends Controller
      /**
      * Edit for the user.
      *
-     * @param Request
+     * @param id
      * @return route
      */
-
     public function edit($id){
-        $user = $this->userService->editUsers($id);
+        $user = $this->userService->getDataByUserId($id);
         return view('admin.users.edit', ['user' => $user]);
     }
 
     /**
      * Update for the user.
      *
-     * @param Request
+     * @param Request 
+     * @param id
      * @return route
      */
-
-    public function update(request $request, $id){
-        $user = $this->userService->updateUsers($request, $id);
+    public function update(UpdateUserRequest $request, $id){
+        $user = $this->userService->updateUser($request, $id);
         return redirect()->route('users.index');
     }
 }

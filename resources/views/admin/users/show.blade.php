@@ -47,18 +47,18 @@
                             @endif
                         </td>
                         <td class="d-flex align-items-center justify-content-around">
-                        <form action="{{route('users.edit',$user->id)}}" method="get">
+                        <a href="{{route('users.edit',$user->id)}}" method="get">
                             <button class="btn btn-sm btn-warning   rounded-0">
                             Edit
                             </button>
-                        </form>
-                        <form action="" method="post">
+                        </a>
+                        <a href="" method="post">
                             <input type="hidden" name="_method" value="delete" /> 
                             {{csrf_field()}}
                             <button class="btn btn-sm btn-danger   rounded-0">
                             Delete
                             </button>
-                        </form>
+                        </a>
                         </td>
                     </tr>
                     </tbody>
