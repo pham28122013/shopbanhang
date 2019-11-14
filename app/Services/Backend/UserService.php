@@ -34,4 +34,14 @@ class UserService
         $user->is_active = User::ACTIVE;
         $user->save();
     }
+
+    /**
+     * Show users
+     *
+     * @return Model
+     */
+    public function showUsers($id)
+    {   
+        return User::find($id);
+    }
 }
