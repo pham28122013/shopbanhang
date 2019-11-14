@@ -46,11 +46,11 @@
                             <label>Status</label>
                             <label class="radio-inline">
                                 <input  @if($user->is_active == App\Models\User::INACTIVE) checked @endif
-                                name="is_active" value="0" type="radio"> Inactive
+                                name="is_active" value="{{App\Models\User::INACTIVE}}" type="radio"> Inactive
                             </label>
                             <label class="radio-inline">
                                 <input @if ($user->is_active == App\Models\User::ACTIVE) checked @endif 
-                                name="is_active" value="1" type="radio"> Active
+                                name="is_active" value="{{App\Models\User::ACTIVE}}" type="radio"> Active
                             </label>
                         </div>
                         <button type="submit" class="btn btn-default">Update</button>
