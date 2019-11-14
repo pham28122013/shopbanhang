@@ -41,7 +41,7 @@
                                 Show
                                 </button>
                             </form>
-                            <form action="" method="get">
+                        <form action="{{route('products.create')}}" method="get">
                                 <button class="btn btn-sm btn-success   rounded-0">
                                 Create
                                 </button>

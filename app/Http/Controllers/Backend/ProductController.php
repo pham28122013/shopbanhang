@@ -17,4 +17,13 @@ class ProductController extends Controller
         $products = $this->productService->getAllProduct();
         return view('admin.products.list',['products' => $products]);
     }
+
+    public function create(){
+        return view('admin.products.create');
+    } 
+
+    public function store(Request $request){
+        $product = $this->productService->createProduct($request);
+        return redirect()->route('products.index');
+    }
 }

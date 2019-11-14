@@ -33,6 +33,9 @@ Route::namespace('Backend')->group(function(){
 
     Route::resource('users', 'UserController')->only(['index']);
 
-    Route::resource('products', 'ProductController')->only(['index']);
+    Route::resource('products', 'ProductController')->only(['index', 'create', 'store']);
+    
+// Route::get('/products', 'ProductController@create');
+// Route::post('/products','ProductController@store');
 });
 
