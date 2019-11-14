@@ -55,23 +55,23 @@
                                 @endif
                             </td>
                             <td class="d-flex align-items-center justify-content-around">
-                            <a href="{{route('users.show', $user->id)}}" method="get">
+                            <a href="{{route('users.show', $user->id)}}">
                                 <button class="btn btn-sm btn-primary   rounded-0">
                                 Show
                                 </button>
                             </a>
-                            <a href="{{route('users.edit',$user->id)}}" method="get">
+                            <a href="{{route('users.edit',$user->id)}}">
                                 <button class="btn btn-sm btn-warning   rounded-0">
                                 Edit
                                 </button>
                             </a>
-                            <a href="" method="post">
+                            <form action="" method="post">
                                 <input type="hidden" name="_method" value="delete" /> 
                                 {{csrf_field()}}
                                 <button class="btn btn-sm btn-danger   rounded-0">
                                 Delete
                                 </button>
-                            </a>
+                            </form>
                             </td>
                         </tr>
                     @endforeach

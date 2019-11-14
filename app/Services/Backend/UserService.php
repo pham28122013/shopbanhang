@@ -21,8 +21,8 @@ class UserService
     /**
      * Create new users
      *
-     * @param request
-     * @return new Model
+     * @param \Illuminate\Http\Request  $request
+     * @return void
      */
     public function createUsers($request)
     {   
@@ -39,7 +39,7 @@ class UserService
     /**
      * Show users
      *
-     * @param id
+     * @param int $id User id
      * @return Model
      */
     public function showUsers($id)
@@ -50,7 +50,7 @@ class UserService
     /**
      * Edit users
      *
-     * @param id
+     * @param int $id User id
      * @return new Model
      */
     public function getDataByUserId($id)
@@ -61,9 +61,9 @@ class UserService
     /**
      * Update users
      *
-     * @param Request
-     * @param id
-     * @return Model
+     * @param \Illuminate\Http\Request  $request
+     * @param int $id User id
+     * @return void
      */
     public function updateUser($request, $id)
     {   

@@ -26,7 +26,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'name'=>'required|min:3',
             'phone' => 'required|min:10|max:11',
-            'email'=>'required|email',
+            'email'=>'required|email|unique:users,email',
         ];
     }
 
@@ -45,6 +45,7 @@ class UpdateUserRequest extends FormRequest
                 'phone.max'=>'Số điện thoại này không đúng',
                 'email.required'=>'Bạn phải nhập email',
                 'email.email'=>'Email bạn nhập ko đúng',
+                'email.unique'=>'Email bạn nhập đã tồn tại',
         ];
     }
 }
