@@ -15,25 +15,27 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function() {
-    return view('pages.index');
+    return view('products.index');
 });
 
-Route::get('/admin', function(){
-    return view('admin.index');
+Route::namespace('Frontend')->group(function () {
+    Route::get('/detail-sanpham/{id}','ProductController@product');
+    Route::get('/phukien/{id}','ProductController@accessory');
+    Route::get('/sanpham-highlight','ProductController@highlight');
+    Route::get('/sanpham-sale','ProductController@sale');
+    Route::get('/giohang','ProductController@cart');
+    Route::get('/phukien','ProductController@accessoriesList');
+    Route::get('/thanhtoan','ProductController@checkout');
 });
 
-Route::get('/product-highlights/list', function(){
-    return view('admin.product-highlights.list');
+Route::namespace('Backend')->group(function(){
+    Route::get('/admin','AdminController@index');
+
+    Route::resource('users', 'UserController')->only(['index', 'create', 'store', 'show']);
 });
 
-Route::get('/product-highlights/edit', function(){
-    return view('admin.product-highlights.edit');
-});
-
-Route::get('/product-highlights/add', function(){
-    return view('admin.product-highlights.add');
-});
 
 Route::get('/home/login', function(){
     return view('admin.login');
 });
+
