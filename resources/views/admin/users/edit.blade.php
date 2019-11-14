@@ -13,7 +13,8 @@
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
                     <form action="{{route('users.update',$user->id)}}" method="POST">
-                    <input type="hidden" name="_method" value="put" /> {{csrf_field()}}
+                        <input type="hidden" name="_method" value="put" /> 
+                        {{csrf_field()}}
                         <div class="form-group">
                             <label>Name</label>
                             <input class="form-control" value="{{$user->name}}" name="name" placeholder="" />

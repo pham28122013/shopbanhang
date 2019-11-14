@@ -13,19 +13,23 @@
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
                     <form action="{{route('users.store')}}" method="POST">
-                        <input type="hidden" name="_method" value="post" /> 
-                            {{csrf_field()}}
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group">
                                 <label>User Role</label>
                                 <label class="radio-inline">
-                                    <input name="role_id" value="1" checked="" type="radio">Admin
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="role_id" value="2" type="radio">Sub_Admin
-                                </label>
-                                <label class="radio-inline">
                                     <input name="role_id" value="3" type="radio">User
                                 </label>
+                                <label class="radio-inline">
+                                    <input name="role_id" value="2" type="radio">Sub Admin
+                                </label>
+                                <label class="radio-inline">
+                                    <input name="role_id" value="1"  type="radio">Admin
+                                </label>
+                                @if ($errors->has('role_id'))
+                                    <div class="alert alert-danger">
+                                        <strong>{{$errors->first('role_id')}}</strong>
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label>Name</label>
@@ -57,19 +61,15 @@
                             <div class="form-group">
                                 <label>Password</label>
                                 <input type="password" class="form-control" name="password" placeholder="Please Enter Password" required="required" />
+                                @if ($errors->has('password'))
+                                    <div class="alert alert-danger">
+                                        <strong>{{$errors->first('password')}}</strong>
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label>Status</label>
-                                <label class="radio-inline">
-                                    <input name="is_active" value="0" checked="" type="radio">Inactive
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="is_active" value="1" type="radio">Active
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label>Remember</label>
-                                <input type="password" class="form-control" name="remember_token" placeholder="" />
+                                <label>Re-password</label>
+                                <input type="password" class="form-control" name="password_confirmation" placeholder="Please Enter Password" required="required" />
                             </div>
                         <button type="submit" class="btn btn-default">Create</button>
                     <form>

@@ -11,11 +11,11 @@
                     </h1>
                 </div>
                 <div class="col-lg-6">
-                <form action="{{route('users.create')}}" method="get">
+                <a href="{{route('users.create')}}">
                         <button class="btn btn-sm btn-primary   rounded-0 new-users">
                             Add new User
                         </button>
-                    </form>
+                </a>
                 </div>
                 <!-- /.col-lg-12 -->
                 <div style="clear: both;"></div>
@@ -55,7 +55,7 @@
                                 @endif
                             </td>
                             <td class="d-flex align-items-center justify-content-around">
-                            <form action="{{route('users.show',$user->id)}}" method="get">
+                            <form action="{{route('users.show', $user->id)}}" method="get">
                                 <button class="btn btn-sm btn-primary   rounded-0">
                                 Show
                                 </button>
