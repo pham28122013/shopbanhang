@@ -3,6 +3,8 @@
 namespace App\Services\Backend;
 
 use App\Models\User;
+use Illuminate\Http\Request;
+use Hash;
 
 class UserService
 {
@@ -19,17 +21,26 @@ class UserService
     /**
      * Create new users
      *
-     * @return new Model
+     * @param \Illuminate\Http\Request  $request
+     * @return void
      */
-    public function newUsers()
+    public function createUsers($request)
     {   
-        return new User;
+        $user =  new User;
+        $user->role_id = $request->role_id;
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->is_active = User::ACTIVE;
+        $user->save();
     }
 
     /**
      * Show users
      *
-     * @return new Model
+     * @param int $id User id
+     * @return Model
      */
     public function showUsers($id)
     {   
@@ -39,9 +50,10 @@ class UserService
     /**
      * Edit users
      *
+     * @param int $id User id
      * @return new Model
      */
-    public function editUsers($id)
+    public function getDataByUserId($id)
     {   
         return User::find($id);
     }
@@ -49,20 +61,29 @@ class UserService
     /**
      * Update users
      *
-     * @return new Model
+     * @param \Illuminate\Http\Request  $request
+     * @param int $id User id
+     * @return void
      */
-    public function updateUsers($id)
+    public function updateUser($request, $id)
     {   
-        return User::find($id);
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->is_active = $request->is_active;
+        $user->save();
     }
 
     /**
-     * Delete users
+     * Destroy users
      *
-     * @return new Model
+     * @param int $id User id
+     * @return void
      */
-    public function destroyUsers($id)
+    public function destroyUser($id)
     {   
-        return User::find($id);
+        $user = User::find($id);
+        $user->delete();
     }
 }

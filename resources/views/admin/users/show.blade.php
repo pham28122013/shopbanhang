@@ -27,19 +27,34 @@
                     <tbody>
                     <tr class="text-center">
                         <th scope="row">{{$user->id}}</th>
-                        <td>{{$user->role_id}}</td>
+                        <td>     
+                            @if ($user->role_id == App\Models\User::ROLE['ADMIN'] ) 
+                                    <button class="btn btn-sm btn-danger   rounded-0">Admin</button>
+                            @elseif ($user->role_id == App\Models\User::ROLE['SUB_ADMIN'] ) 
+                                <button class="btn btn-sm btn-success   rounded-0">Sub Admin</button>
+                            @else 
+                                <button class="btn btn-sm btn-primary   rounded-0">User</button>
+                            @endif                          
+                        </td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->phone}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->is_active}}</td>
+                        <td>
+                            @if ($user->is_active == App\Models\User::INACTIVE ) 
+                                <button class="btn btn-sm btn-danger   rounded-0">Inactive</button>
+                            @else 
+                                <button class="btn btn-sm btn-success   rounded-0">Active</button>
+                            @endif
+                        </td>
                         <td class="d-flex align-items-center justify-content-around">
-                        <form action="" method="get">
+                        <a href="{{route('users.edit',$user->id)}}">
                             <button class="btn btn-sm btn-warning   rounded-0">
                             Edit
                             </button>
-                        </form>
-                        <form action="" method="post">
-                            <input type="hidden" name="_method" value="delete" /> {{csrf_field()}}
+                        </a>
+                        <form action="{{route('users.destroy',$user->id)}}" method="post">
+                            <input type="hidden" name="_method" value="delete" /> 
+                            {{csrf_field()}}
                             <button class="btn btn-sm btn-danger   rounded-0">
                             Delete
                             </button>

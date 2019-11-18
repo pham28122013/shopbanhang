@@ -11,11 +11,11 @@
                     </h1>
                 </div>
                 <div class="col-lg-6">
-                <form action="{{route('users.create')}}" method="get">
+                <a href="{{route('users.create')}}">
                         <button class="btn btn-sm btn-primary   rounded-0 new-users">
                             Add new User
                         </button>
-                    </form>
+                </a>
                 </div>
                 <!-- /.col-lg-12 -->
                 <div style="clear: both;"></div>
@@ -55,16 +55,16 @@
                                 @endif
                             </td>
                             <td class="d-flex align-items-center justify-content-around">
-                            <form action="{{route('users.show',$user->id)}}" method="get">
+                            <a href="{{route('users.show', $user->id)}}">
                                 <button class="btn btn-sm btn-primary   rounded-0">
                                 Show
                                 </button>
-                            </form>
-                            <form action="{{route('users.edit',$user->id)}}" method="get">
+                            </a>
+                            <a href="{{route('users.edit',$user->id)}}">
                                 <button class="btn btn-sm btn-warning   rounded-0">
                                 Edit
                                 </button>
-                            </form>
+                            </a>
                             <form action="{{route('users.destroy',$user->id)}}" method="post">
                                 <input type="hidden" name="_method" value="delete" /> 
                                 {{csrf_field()}}
