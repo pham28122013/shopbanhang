@@ -21,7 +21,8 @@ class UserService
     /**
      * Create new users
      *
-     * @return new Model
+     * @param \Illuminate\Http\Request  $request
+     * @return void
      */
     public function createUsers($request)
     {   
@@ -38,10 +39,39 @@ class UserService
     /**
      * Show users
      *
+     * @param int $id User id
      * @return Model
      */
     public function showUsers($id)
     {   
         return User::find($id);
+    }
+
+    /**
+     * Edit users
+     *
+     * @param int $id User id
+     * @return new Model
+     */
+    public function getDataByUserId($id)
+    {   
+        return User::find($id);
+    }
+
+    /**
+     * Update users
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param int $id User id
+     * @return void
+     */
+    public function updateUser($request, $id)
+    {   
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->is_active = $request->is_active;
+        $user->save();
     }
 }

@@ -55,16 +55,16 @@
                                 @endif
                             </td>
                             <td class="d-flex align-items-center justify-content-around">
-                            <form action="{{route('users.show', $user->id)}}" method="get">
+                            <a href="{{route('users.show', $user->id)}}">
                                 <button class="btn btn-sm btn-primary   rounded-0">
                                 Show
                                 </button>
-                            </form>
-                            <form action="" method="get">
+                            </a>
+                            <a href="{{route('users.edit',$user->id)}}">
                                 <button class="btn btn-sm btn-warning   rounded-0">
                                 Edit
                                 </button>
-                            </form>
+                            </a>
                             <form action="" method="post">
                                 <input type="hidden" name="_method" value="delete" /> 
                                 {{csrf_field()}}
