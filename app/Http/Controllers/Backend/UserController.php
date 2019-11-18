@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -56,7 +57,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $user = $this->userService->createUsers($request);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success','Create user successfully');
     }
 
     /**
@@ -91,17 +92,17 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, $id){
         $user = $this->userService->updateUser($request, $id);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success','Update user successfully');
     }
 
      /**
-     * Edit for the user.
+     * Destroy for the user.
      *
      * @param int $id User id
      * @return route
      */
     public function destroy($id){
         $user = $this->userService->destroyUser($id);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success','Destroy user successfully');
     }
 }

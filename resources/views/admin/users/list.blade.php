@@ -19,6 +19,14 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 <div style="clear: both;"></div>
+                <div class="col-lg-12">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>	
+                                <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                </div>
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                         <tr align="center">
