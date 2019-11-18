@@ -31,8 +31,8 @@
                         <h3 class="panel-title">Đăng nhập</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="" method="POST">
-                            <input type="hidden" name="_token" value="">
+                    <form role ="form" action="{{route('admin.postlogin')}}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>

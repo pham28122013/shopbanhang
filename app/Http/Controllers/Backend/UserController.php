@@ -8,6 +8,8 @@ use Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -68,5 +70,23 @@ class UserController extends Controller
     {
         $user = $this->userService->showUsers($id);
         return view('admin.users.show', ['user' => $user]);
+    }
+    public function getlogin (){
+    	return view('Admin.login');
+    }
+    
+    public function postlogin (Request $request) {
+        
+        $email = $request->post('email');
+        $password = $request->post('password');
+        if (Auth::attempt(['email'=>$email,'password'=>$password])) {
+            return redirect()->route('users.index');
+        } else {
+            return redirect()->back();
+        }
+    }
+    public function logout(){
+        Auth::logout();
+        return view('layout.login');
     }
 }

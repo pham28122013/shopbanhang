@@ -35,7 +35,11 @@ Route::namespace('Backend')->group(function(){
 });
 
 
-Route::get('/home/login', function(){
-    return view('admin.login');
-});
+// Route::get('/home/login', function(){
+//     return view('admin.login');
+// });
+
+Route::get('/login','Backend\UserController@getlogin');
+Route::post('/login','Backend\UserController@postlogin')->name('admin.postlogin');
+
 
