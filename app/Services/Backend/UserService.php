@@ -74,4 +74,16 @@ class UserService
         $user->is_active = $request->is_active;
         $user->save();
     }
+
+    /**
+     * Destroy users
+     *
+     * @param int $id User id
+     * @return void
+     */
+    public function destroyUser($id)
+    {   
+        $user = User::find($id);
+        $user->delete();
+    }
 }
