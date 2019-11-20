@@ -31,21 +31,21 @@
                         <h3 class="panel-title">Đăng nhập</h3>
                     </div>
                     <div class="panel-body">
-                    <form role ="form" action="{{route('admin.postlogin')}}" method="POST">
+                        <form role ="form" action="{{route('users.postlogin')}}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input type="checkbox" id="remember" name="remember"> 
-                                    <label for="remember">Nhớ tài khoản</label>
-                                </div>
-                                <button type="submit" class="btn btn-lg btn-success btn-block">Đăng nhập</button>
-                            </fieldset>
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" id="remember" name="remember"> 
+                                        <label for="remember">Nhớ tài khoản</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-lg btn-success btn-block">Đăng nhập</button>
+                                </fieldset>
                         </form>
                     </div>
                 </div>

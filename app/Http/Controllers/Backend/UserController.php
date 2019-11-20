@@ -8,8 +8,9 @@ use Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UpdateUserRequest;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -51,19 +52,19 @@ class UserController extends Controller
     /**
      * Store for the user.
      *
-     * @param Request
+     * @param \Illuminate\Http\Request  $request
      * @return route
      */
     public function store(UserRequest $request)
     {
         $user = $this->userService->createUsers($request);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success','Create user successfully');
     }
 
     /**
      * Show for the user.
      *
-     * @param id
+     * @param int $id User id
      * @return view
      */
     public function show($id)
@@ -71,22 +72,42 @@ class UserController extends Controller
         $user = $this->userService->showUsers($id);
         return view('admin.users.show', ['user' => $user]);
     }
-    public function getlogin (){
-    	return view('Admin.login');
-    }
     
-    public function postlogin (Request $request) {
-        
-        $email = $request->post('email');
-        $password = $request->post('password');
-        if (Auth::attempt(['email'=>$email,'password'=>$password])) {
-            return redirect()->route('users.index');
-        } else {
-            return redirect()->back();
-        }
+
+     /**
+     * Edit for the user.
+     *
+     * @param int $id User id
+     * @return view
+     */
+    public function edit($id)
+    {
+        $user = $this->userService->getDataByUserId($id);
+        return view('admin.users.edit', ['user' => $user]);
     }
-    public function logout(){
-        Auth::logout();
-        return view('layout.login');
+
+    /**
+     * Update for the user.
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param int $id User id
+     * @return route
+     */
+    public function update(UpdateUserRequest $request, $id)
+    {
+        $user = $this->userService->updateUser($request, $id);
+        return redirect()->route('users.index')->with('success','Update user successfully');
     }
+
+     /**
+     * Destroy for the user.
+     *
+     * @param int $id User id
+     * @return route
+     */
+    public function destroy($id)
+    {
+        $user = $this->userService->destroyUser($id);
+        return redirect()->route('users.index')->with('success','Destroy user successfully');
+    } 
 }

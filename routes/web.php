@@ -28,18 +28,19 @@ Route::namespace('Frontend')->group(function () {
     Route::get('/thanhtoan','ProductController@checkout');
 });
 
-Route::namespace('Backend')->group(function(){
-    Route::get('/admin','AdminController@index');
 
-    Route::resource('users', 'UserController')->only(['index', 'create', 'store', 'show']);
+Route::get('/login','Auth\LoginController@getLogin')->name('users.getlogin');
+Route::post('/login','Auth\LoginController@postLogin')->name('users.postlogin');
+Route::get('/logout','Auth\LoginController@logout')->name('logout');
+
+Route::namespace('Backend')->middleware('login')->group(function(){
+    Route::get('/admin','AdminController@index')->name('admin.index');
+
+    Route::resource('users', 'UserController');
+    
 });
 
 
-// Route::get('/home/login', function(){
-//     return view('admin.login');
-// });
 
-Route::get('/login','Backend\UserController@getlogin');
-Route::post('/login','Backend\UserController@postlogin')->name('admin.postlogin');
 
 
