@@ -8,7 +8,6 @@ use Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 

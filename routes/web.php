@@ -28,16 +28,16 @@ Route::namespace('Frontend')->group(function () {
     Route::get('/thanhtoan','ProductController@checkout');
 });
 
-
-Route::get('/login','Auth\LoginController@getLogin')->name('users.getlogin');
-Route::post('/login','Auth\LoginController@postLogin')->name('users.postlogin');
-Route::get('/logout','Auth\LoginController@logout')->name('logout');
+Route::namespace('Auth')->group(function () {
+    Route::get('/login','LoginController@getLogin')->name('users.getlogin');
+    Route::post('/login','LoginController@postLogin')->name('users.postlogin');
+    Route::get('/logout','LoginController@logout')->name('logout');
+});
 
 Route::namespace('Backend')->middleware('login')->group(function(){
     Route::get('/admin','AdminController@index')->name('admin.index');
 
-    Route::resource('users', 'UserController');
-    
+    Route::resource('users', 'UserController');  
 });
 
 

@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '';
 
     /**
      * Create a new controller instance.
@@ -44,7 +44,8 @@ class LoginController extends Controller
      *
      * @return view
      */
-    public function getLogin(){
+    public function getLogin()
+    {
     	return view('admin.login');
     }
     
@@ -54,17 +55,16 @@ class LoginController extends Controller
      * @param \Illuminate\Http\Request  $request
      * @return route
      */
-    public function postLogin (Request $request) {
+    public function postLogin (Request $request) 
+    {
         $email = $request['email'];
         $password = $request['password'];
-        if(Auth::attempt([
-                'email' => $email,
-                'password' => $password
-                ])) {
-                return redirect()->route('users.index')->with('success','Login admin successfully');;
-        } else 
+        if(Auth::attempt(['email' => $email,'password' => $password])) 
         {
-                return redirect()->back();
+            return redirect()->route('users.index')->with('success','Login admin successfully');
+        }else 
+        {
+            return redirect()->back();
         }
     }
 
@@ -73,7 +73,8 @@ class LoginController extends Controller
      *
      * @return view
      */
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return view('admin.login');
     }
