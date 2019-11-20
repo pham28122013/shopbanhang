@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Services\Backend\UserService;
 
 class LoginController extends Controller
 {
@@ -27,16 +28,22 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/home';
+    
+    /**
+     * @var UserService
+     */
+    private $userService;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserService $userservice)
     {
         $this->middleware('guest')->except('logout');
+        $this->userService = $userservice;
     }
 
     /**
@@ -57,9 +64,8 @@ class LoginController extends Controller
      */
     public function postLogin (Request $request) 
     {
-        $email = $request['email'];
-        $password = $request['password'];
-        if(Auth::attempt(['email' => $email,'password' => $password])) 
+         $this->userService->login($request);
+        if(Auth::attempt($this->userService->login($request))) 
         {
             return redirect()->route('users.index')->with('success','Login admin successfully');
         }else 
@@ -75,7 +81,7 @@ class LoginController extends Controller
      */
     public function logout()
     {
-        Auth::logout();
+        $this->userService->logout();
         return view('admin.login');
     }
 }

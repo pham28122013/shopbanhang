@@ -5,6 +5,7 @@ namespace App\Services\Backend;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserService
 {
@@ -85,5 +86,30 @@ class UserService
     {   
         $user = User::find($id);
         $user->delete();
+    }
+
+    /**
+     * Login admin
+     *
+     * @return array
+     */
+    public function login($request)
+    {   
+        $email = $request['email'];
+        $password = $request['password'];
+        return $login = [
+            'email' => $email,
+            'password' => $password
+        ];
+    }
+
+    /**
+     * Logout admin
+     *
+     * @return Auth
+     */
+    public function logout()
+    {   
+        return Auth::logout();
     }
 }
