@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use App\Services\Backend\UserService;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -64,13 +65,18 @@ class LoginController extends Controller
      */
     public function postLogin (Request $request) 
     {
-         $this->userService->login($request);
-        if(Auth::attempt($this->userService->login($request))) 
+        $email = $request['email'];
+        $password = $request['password'];
+        if(Auth::attempt(['email' => $email,'password' => $password])) 
         {
-            return redirect()->route('users.index')->with('success','Login admin successfully');
-        }else 
-        {
-            return redirect()->back();
+            if(Auth::user()->is_active == User::ACTIVE)
+            {
+                return redirect()->route('users.index')->with('success','Login admin successfully');
+            }
+            else 
+            {
+                return redirect()->back();
+            }
         }
     }
 
@@ -81,7 +87,7 @@ class LoginController extends Controller
      */
     public function logout()
     {
-        $this->userService->logout();
+        Auth::logout();
         return view('admin.login');
     }
 }

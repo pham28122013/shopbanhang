@@ -34,7 +34,7 @@ Route::namespace('Auth')->group(function () {
     Route::get('/logout','LoginController@logout')->name('logout');
 });
 
-Route::namespace('Backend')->middleware('login')->group(function(){
+Route::namespace('Backend')->middleware('admin','auth')->group(function(){
     Route::get('/admin','AdminController@index')->name('admin.index');
 
     Route::resource('users', 'UserController');  

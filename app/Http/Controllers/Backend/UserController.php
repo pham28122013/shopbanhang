@@ -107,5 +107,11 @@ class UserController extends Controller
     {
         $user = $this->userService->destroyUser($id);
         return redirect()->route('users.index')->with('success','Destroy user successfully');
-    } 
+    }
+    
+    /**
+     * Login to the admin page.
+     *
+     * @return route
+     */
 }
