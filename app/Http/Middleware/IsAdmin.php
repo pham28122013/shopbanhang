@@ -21,7 +21,7 @@ class IsAdmin
             if(Auth::user()->role_id == User::ACTIVE )
             {
                 return $next($request);
-            }else if(Auth::user()->role_id == User::ACTIVE )
+            }else if(Auth::user()->role_id == User::SUP_ADMIN )
             {
                 return $next($request);
             }else 

@@ -41,10 +41,9 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct(UserService $userservice)
+    public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->userService = $userservice;
     }
 
     /**
@@ -75,7 +74,7 @@ class LoginController extends Controller
             }
             else 
             {
-                return redirect()->back();
+                return redirect()->route('users.getlogin');
             }
         }
     }
