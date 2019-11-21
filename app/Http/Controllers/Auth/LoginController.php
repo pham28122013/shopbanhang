@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
-use App\Services\Backend\UserService;
 use App\Models\User;
 
 class LoginController extends Controller
@@ -30,11 +29,6 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
-    
-    /**
-     * @var UserService
-     */
-    private $userService;
 
     /**
      * Create a new controller instance.
@@ -53,7 +47,7 @@ class LoginController extends Controller
      */
     public function getLogin()
     {
-    	return view('admin.login');
+    	return view('admin.auth.login');
     }
     
     /**
@@ -66,17 +60,10 @@ class LoginController extends Controller
     {
         $email = $request['email'];
         $password = $request['password'];
-        if(Auth::attempt(['email' => $email,'password' => $password])) 
-        {
-            if(Auth::user()->is_active == User::ACTIVE)
-            {
-                return redirect()->route('users.index')->with('success','Login admin successfully');
-            }
-            else 
-            {
-                return redirect()->route('users.getlogin');
-            }
+        if(Auth::attempt(['email' => $email,'password' => $password, 'is_active' => User::ACTIVE], $request->has('remember'))) {
+            return redirect()->route('users.index')->with('success','Login admin successfully');
         }
+        return redirect()->route('users.getlogin')->with('fail','Login admin failed');
     }
 
     /**
@@ -87,6 +74,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return view('admin.login');
+        return view('admin.auth.login');
     }
 }

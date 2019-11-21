@@ -17,17 +17,9 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check()) {
-            if(Auth::user()->role_id == User::ACTIVE )
-            {
-                return $next($request);
-            }else if(Auth::user()->role_id == User::SUP_ADMIN )
-            {
-                return $next($request);
-            }else 
-            {
-                return view('products.index');
-            }
-        } 
+        if (Auth::user()->role_id == User::ROLE['ADMIN'] || Auth::user()->role_id == User::ROLE['SUB_ADMIN']) {
+            return $next($request);
+        }
+        return redirect('/');
     }
 }

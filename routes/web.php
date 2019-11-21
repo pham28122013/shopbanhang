@@ -10,11 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', function() {
+Route::get('/', function() {
     return view('products.index');
 });
 
@@ -34,10 +30,9 @@ Route::namespace('Auth')->group(function () {
     Route::get('/logout','LoginController@logout')->name('logout');
 });
 
-Route::namespace('Backend')->middleware('admin','auth')->group(function(){
-    Route::get('/admin','AdminController@index')->name('admin.index');
-
-    Route::resource('users', 'UserController');  
+Route::namespace('Backend')->prefix('admin')->middleware(['auth', 'admin'])->group(function() {
+    Route::get('/','AdminController@index')->name('admin.index');
+    Route::resource('users', 'UserController');
 });
 
 

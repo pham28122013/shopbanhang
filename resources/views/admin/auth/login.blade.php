@@ -33,20 +33,26 @@
                     <div class="panel-body">
                         <form role ="form" action="{{route('users.postlogin')}}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="remember" name="remember"> 
-                                        <label for="remember">Nhớ tài khoản</label>
-                                    </div>
-                                    <button type="submit" class="btn btn-lg btn-success btn-block">Đăng nhập</button>
-                                </fieldset>
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" id="remember" name="remember"> 
+                                    <label for="remember">Nhớ tài khoản</label>
+                                </div>
+                                <button type="submit" class="btn btn-lg btn-success btn-block">Đăng nhập</button>
+                            </fieldset>                           
                         </form>
+                        @if ($message = Session::get('fail'))
+                            <div class="alert alert-danger alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>	
+                                    <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
