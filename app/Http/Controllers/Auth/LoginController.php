@@ -29,7 +29,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
-
+    
     /**
      * Create a new controller instance.
      *
@@ -60,7 +60,8 @@ class LoginController extends Controller
     {
         $email = $request['email'];
         $password = $request['password'];
-        if(Auth::attempt(['email' => $email,'password' => $password, 'is_active' => User::ACTIVE], $remember =  $request->has('remember'))) {
+        $remember = $request->has('remember');
+        if(Auth::attempt(['email' => $email,'password' => $password, 'is_active' => User::ACTIVE], $remember)) {
             return redirect()->route('users.index')->with('success','Login admin successfully');
         }
         return redirect()->route('users.getlogin')->with('fail','Login admin failed');
