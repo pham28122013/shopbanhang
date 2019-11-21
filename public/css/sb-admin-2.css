@@ -16399,6 +16399,9 @@ body {
   border: 1px solid #6E6C6C;
 }
 
+.login-admin {
+  margin: 50px auto;
+}
 button.new-users {
   float: right;
   margin-top: 10px;

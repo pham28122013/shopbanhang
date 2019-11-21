@@ -70,6 +70,7 @@ class UserController extends Controller
         $user = $this->userService->showUsers($id);
         return view('admin.users.show', ['user' => $user]);
     }
+    
 
      /**
      * Edit for the user.
@@ -77,7 +78,8 @@ class UserController extends Controller
      * @param int $id User id
      * @return view
      */
-    public function edit($id){
+    public function edit($id)
+    {
         $user = $this->userService->getDataByUserId($id);
         return view('admin.users.edit', ['user' => $user]);
     }
@@ -89,7 +91,8 @@ class UserController extends Controller
      * @param int $id User id
      * @return route
      */
-    public function update(UpdateUserRequest $request, $id){
+    public function update(UpdateUserRequest $request, $id)
+    {
         $user = $this->userService->updateUser($request, $id);
         return redirect()->route('users.index')->with('success','Update user successfully');
     }
@@ -100,8 +103,15 @@ class UserController extends Controller
      * @param int $id User id
      * @return route
      */
-    public function destroy($id){
+    public function destroy($id)
+    {
         $user = $this->userService->destroyUser($id);
         return redirect()->route('users.index')->with('success','Destroy user successfully');
     }
+    
+    /**
+     * Login to the admin page.
+     *
+     * @return route
+     */
 }
