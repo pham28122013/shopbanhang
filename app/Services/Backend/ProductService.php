@@ -13,6 +13,6 @@ class ProductService
      */
     public function getAllProduct()
     {
-        return Product::paginate(10);
+        return Product::paginate(Product::ITEMS_PER_PAGE);
     }
 }

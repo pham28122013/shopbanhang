@@ -21,6 +21,10 @@ class User extends Authenticatable
 
     const INACTIVE = 0;
 
+    const ACTIVE = 1;
+
+    const SUP_ADMIN = 2;
+
     const ROLE = [ 'ADMIN' => 1 , 'SUB_ADMIN' => 2, 'USER' => 3];
     
     protected $fillable = [

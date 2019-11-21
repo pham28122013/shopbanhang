@@ -20,8 +20,7 @@ class UsersTableSeeder extends Seeder
                 'phone' => $faker->phoneNumber,
                 'email' => $faker->freeEmail,
                 'is_active' => ('0'),
-                'password' => $faker->password,
-                'remember_token' => $faker->md5
+                'password' => $faker->password
             ]);
         }
     }

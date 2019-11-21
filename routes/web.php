@@ -10,11 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', function() {
+Route::get('/', function() {
     return view('products.index');
 });
 
@@ -28,11 +24,19 @@ Route::namespace('Frontend')->group(function () {
     Route::get('/thanhtoan','ProductController@checkout');
 });
 
-Route::namespace('Backend')->group(function(){
-    Route::get('/admin','AdminController@index');
+Route::namespace('Auth')->group(function () {
+    Route::get('/login','LoginController@getLogin')->name('users.getlogin');
+    Route::post('/login','LoginController@postLogin')->name('users.postlogin');
+    Route::get('/logout','LoginController@logout')->name('logout');
+});    
 
-    Route::resource('users', 'UserController')->only(['index']);
-
+Route::namespace('Backend')->prefix('admin')->middleware(['auth', 'admin'])->group(function() {
+    Route::get('/','AdminController@index')->name('admin.index');
+    Route::resource('users', 'UserController');
     Route::resource('products', 'ProductController')->only(['index']);
 });
+
+
+
+
 
