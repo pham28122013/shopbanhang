@@ -11,14 +11,22 @@
                     </h1>
                 </div>
                 <div class="col-lg-6">
-                    <form action="" method="get">
+                <a href="{{route('users.create')}}">
                         <button class="btn btn-sm btn-primary   rounded-0 new-users">
                             Add new User
                         </button>
-                    </form>
+                </a>
                 </div>
                 <!-- /.col-lg-12 -->
                 <div style="clear: both;"></div>
+                <div class="col-lg-12">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>	
+                                <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                </div>
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                         <tr align="center">
@@ -55,17 +63,17 @@
                                 @endif
                             </td>
                             <td class="d-flex align-items-center justify-content-around">
-                            <form action="" method="get">
+                            <a href="{{route('users.show', $user->id)}}">
                                 <button class="btn btn-sm btn-primary   rounded-0">
                                 Show
                                 </button>
-                            </form>
-                            <form action="" method="get">
+                            </a>
+                            <a href="{{route('users.edit',$user->id)}}">
                                 <button class="btn btn-sm btn-warning   rounded-0">
                                 Edit
                                 </button>
-                            </form>
-                            <form action="" method="post">
+                            </a>
+                            <form action="{{route('users.destroy',$user->id)}}" method="post">
                                 <input type="hidden" name="_method" value="delete" /> 
                                 {{csrf_field()}}
                                 <button class="btn btn-sm btn-danger   rounded-0">
