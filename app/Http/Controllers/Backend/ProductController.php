@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Services\Backend\ProductService;
+use Illuminate\Http\Request;
+use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
 { 
@@ -28,5 +30,15 @@ class ProductController extends Controller
     public function index(){
         $products = $this->productService->getAllProduct();
         return view('admin.products.list',['products' => $products]);
+    }
+
+    public function edit($id){
+        $product = $this->productService->getDataByProductId($id);
+        return view('admin.products.edit',['product'=> $product]);
+    }
+
+    public function update(UpdateProductRequest $request, $id){
+        $product = $this->productService->updateProduct($request, $id);
+        return redirect()->route('products.index')->with('success','Update Product success');
     }
 }
