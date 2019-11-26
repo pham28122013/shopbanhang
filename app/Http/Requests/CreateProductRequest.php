@@ -25,8 +25,8 @@ class CreateProductRequest extends FormRequest
     {
         return [
             'name'=>'required|min:3',
-            'price' => 'required|min:6',
-            'code'=>'required|unique:products,code',
+            'price' => 'required|min:6|max:8',
+            'code'=>'required|unique:products,code|min:8|max:10',
             'quantity'=>'required|min:2',
             'image' => 'required',
         ];
@@ -39,8 +39,11 @@ class CreateProductRequest extends FormRequest
             'name.min' => 'Tên sản phẩm bạn nhập ko hợp lệ',
             'price.required' => 'Bạn Phải nhập giá tiền cho sản phẩm',
             'price.min' => 'Bạn nhập giá tiền ko hợp lệ',
+            'price.max' => 'Bạn nhập giá tiền ko hợp lệ',
             'code' => 'Bạn phải nhập mã code cho nó',
             'code.unique' => 'Mã code đã tồn tại',
+            'code.min' => 'Mã code sai',
+            'code.max' => 'Mã code sai',
             'quantity.required' => 'Bạn phải nhập vào số lượng',
             'quantity.min' => 'Số lượng ko hợp lệ',
             'image.required' => 'Bạn phải chọn image',
