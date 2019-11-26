@@ -12,27 +12,51 @@
                     <form action="{{route('products.store')}}" method="POST">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
-                            <label>Tên</label>
+                            <label>Name</label>
                             <input class="form-control" value="" name="name" placeholder="Please Enter Username" />
+                            @if ($errors->has('name'))
+                                <div class="alert alert-danger">
+                                    <strong>{{$errors->first('name')}}</strong>
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group">
-                            <label>Giá</label>
+                            <label>Price</label>
                             <input type="text" min="0" value="" class="form-control" name="price" placeholder="Please Enter Price" />
+                            @if ($errors->has('price'))
+                                <div class="alert alert-danger">
+                                    <strong>{{$errors->first('price')}}</strong>
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group">
-                            <label>Giảm %</label>
-                            <input type="text" min="0" value="" class="form-control" name="code" placeholder="Please Enter Sale" />
+                            <label>Code</label>
+                            <input type="text" min="0" value="" class="form-control" name="code" placeholder="Please Enter Code" />
+                            @if ($errors->has('code'))
+                                <div class="alert alert-danger">
+                                    <strong>{{$errors->first('code')}}</strong>
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group">
-                            <label>so luong</label>
-                            <input type="text" min="0" value="" class="form-control" name="quantity" placeholder="Please Enter Sale" />
+                            <label>Quantity</label>
+                            <input type="text" min="0" value="" class="form-control" name="quantity" placeholder="Please Enter Quantity" />
+                            @if ($errors->has('quantity'))
+                                <div class="alert alert-danger">
+                                    <strong>{{$errors->first('quantity')}}</strong>
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group">
-                            <label>Up hình sản phẩm</label>
+                            <label>Up Image Product</label>
                             <input type="file" accept="image/*" name="image">
+                            @if ($errors->has('image'))
+                                <div class="alert alert-danger">
+                                    <strong>{{$errors->first('image')}}</strong>
+                                </div>
+                            @endif
                         </div>
-                        <button type="submit" class="btn btn-default">Thêm</button>
-                        <button type="reset" class="btn btn-default">Reset</button>  
+                        <button type="submit" class="btn btn-default">Create</button> 
                     <form>
                     </div>
                 </div>

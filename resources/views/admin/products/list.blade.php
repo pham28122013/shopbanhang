@@ -11,7 +11,7 @@
                     </h1>
                 </div>
                 <div class="col-lg-6">
-                    <a href="">
+                <a href="{{route('products.create')}}">
                         <button class="btn btn-sm btn-primary   rounded-0 new-users">
                             Add new Product
                         </button>
@@ -37,10 +37,9 @@
                         <tr class="text-center">
                             <th scope="row">{{$product->id}}</th>
                             <td>{{$product->name}}</td>
-                            <td>{{$product->price}}</td>
+                            <td><?php echo number_format($product->price)?> VNĐ</td>
                             <td>{{$product->code}}</td>
-                            <td>{{$product->quantity}}</td>
-                            
+                            <td>{{$product->quantity}}</td> 
                             <td><img width="80px" src="{{ asset('/images/product/'.$product->images->first()->url) }}"></td>
                             <td class="d-flex align-items-center justify-content-around boder border-bottom-none">
                                 <a href="">

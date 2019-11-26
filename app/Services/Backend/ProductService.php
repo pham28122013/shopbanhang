@@ -26,8 +26,11 @@ class ProductService
         $product->price = $request->price;
         $product->code = $request->code;
         $product->quantity = $request->quantity;
-        $image = $request->image;
         $product->save();
-       
+        $product_id = $product->id;
+        $productImage = new ProductImage;
+        $productImage->product_id = $product_id;
+        $productImage->url = $request->image;
+        $productImage->save();
     }
 }

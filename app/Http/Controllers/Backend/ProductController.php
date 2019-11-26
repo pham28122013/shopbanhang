@@ -11,12 +11,13 @@ class ProductController extends Controller
 {
     private $productService;
     public function __construct(ProductService $productservice){
-         $this->productService = $productservice;
+        $this->productService = $productservice;
     }
 
     public function index(){
         $products = $this->productService->getAllProduct();
         return view('admin.products.list',['products' => $products]);
+
     }
 
     public function create(){
