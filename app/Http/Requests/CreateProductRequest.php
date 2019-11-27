@@ -31,16 +31,21 @@ class CreateProductRequest extends FormRequest
             'image' => 'required',
         ];
     }
-
+    
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [
             'name.required' => 'Bạn phải nhập tên sản phẩm',
             'name.min' => 'Tên sản phẩm bạn nhập ko hợp lệ',
-            'price.required' => 'Bạn Phải nhập giá tiền cho sản phẩm',
+            'price.required' => 'Bạn phải nhập giá tiền cho sản phẩm',
             'price.min' => 'Bạn nhập giá tiền ko hợp lệ',
             'price.max' => 'Bạn nhập giá tiền ko hợp lệ',
-            'code' => 'Bạn phải nhập mã code cho nó',
+            'code.required' => 'Bạn phải nhập mã code',
             'code.unique' => 'Mã code đã tồn tại',
             'code.min' => 'Mã code sai',
             'code.max' => 'Mã code sai',

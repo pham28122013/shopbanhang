@@ -12,14 +12,6 @@
                 <i class="nav-icon icon-drop"></i>Product</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="colors.html">
-                <i class="nav-icon icon-drop"></i>Product-highlights</a>
-              </li>
-            <li class="nav-item">
-              <a class="nav-link" href="colors.html">
-                <i class="nav-icon icon-drop"></i>Product-sale</a>
-            </li> 
-            <li class="nav-item">
             <a class="nav-link" href="{{route('users.index')}}">
                 <i class="nav-icon icon-drop"></i>Users</a>
             </li>

@@ -16409,3 +16409,7 @@ button.new-users {
 label.radio-inline {
   width: 100%;
 }
+
+.border-bottom-none.justify-content-around {
+  border-bottom: none;
+}
