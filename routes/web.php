@@ -28,11 +28,12 @@ Route::namespace('Auth')->group(function () {
     Route::get('/login','LoginController@getLogin')->name('users.getlogin');
     Route::post('/login','LoginController@postLogin')->name('users.postlogin');
     Route::get('/logout','LoginController@logout')->name('logout');
-});
+});    
 
 Route::namespace('Backend')->prefix('admin')->middleware(['auth', 'admin'])->group(function() {
     Route::get('/','AdminController@index')->name('admin.index');
     Route::resource('users', 'UserController');
+    Route::resource('products', 'ProductController')->only(['index']);
 });
 
 
