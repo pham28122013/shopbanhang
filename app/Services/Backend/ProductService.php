@@ -36,7 +36,12 @@ class ProductService
         $product_id = $product->id;
         $productImage = new ProductImage;
         $productImage->product_id = $product_id;
-        $productImage->url = $request->image;
+        if($request->hasFile('image')){
+			$file = $request->file('image');
+			$name = $file->getClientOriginalName();
+            $file->move("images/product",$name);
+            $productImage->url = $name;
+        }
         $productImage->save();
     }
 }
