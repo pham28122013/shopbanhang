@@ -28,6 +28,7 @@
                             <th>Price</th>
                             <th>Code</th>
                             <th>Quantity</th>
+                            <th>Size</th>
                             <th>Image</th>
                             <th>Action</th>
                         </tr>
@@ -40,6 +41,7 @@
                             <td><?php echo number_format($product->price)?> VNĐ</td>
                             <td>{{$product->code}}</td>
                             <td>{{$product->quantity}}</td> 
+                            <td>{{$product->sizes->first()->size}}</td> 
                             <td><img width="80px" src="{{ asset('/images/product/'.$product->images->first()->url) }}"></td>
                             <td class="d-flex align-items-center justify-content-around boder border-bottom-none">
                                 <a href="">
