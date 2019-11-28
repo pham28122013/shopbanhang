@@ -15,7 +15,7 @@ class ProductService
      */
     public function getAllProduct()
     {
-        return Product::paginate(10);
+        return Product::with('images')->paginate(Product::ITEMS_PER_PAGE);
     }
 
     public function createProduct($request)

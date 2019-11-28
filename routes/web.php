@@ -35,6 +35,7 @@ Route::namespace('Backend')->prefix('admin')->middleware(['auth', 'admin'])->gro
     Route::resource('users', 'UserController');
     Route::resource('products', 'ProductController')->only(['index', 'create', 'store']);
     Route::resource('orders', 'OrderController')->only('index');
+    Route::resource('products', 'ProductController')->only(['index']);
 });
 
 
