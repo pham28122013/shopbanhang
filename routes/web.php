@@ -34,6 +34,7 @@ Route::namespace('Backend')->prefix('admin')->middleware(['auth', 'admin'])->gro
     Route::get('/','AdminController@index')->name('admin.index');
     Route::resource('users', 'UserController');
     Route::resource('products', 'ProductController')->only(['index', 'create', 'store']);
+    Route::resource('orders', 'OrderController')->only('index');
 });
 
 
