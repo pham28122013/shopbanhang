@@ -15,4 +15,14 @@ class ProductService
     {
         return Product::with('images')->paginate(Product::ITEMS_PER_PAGE);
     }
+    
+    /**
+     * Show Products
+     *
+     * @param int $id Product id
+     * @return Model
+     */
+    public function showProduct($id){
+        return Product::find($id);
+    }
 }

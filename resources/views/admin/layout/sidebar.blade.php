@@ -8,7 +8,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="colors.html">
+              <a class="nav-link" href="{{route('products.index')}}">
                 <i class="nav-icon icon-drop"></i>Product</a>
             </li>
             <li class="nav-item">
