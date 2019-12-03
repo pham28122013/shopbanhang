@@ -11,7 +11,11 @@
                     </h1>
                 </div>
                 <div class="col-lg-6">
+<<<<<<< HEAD
+                <a href="{{route('products.create')}}">
+=======
                     <a href="">
+>>>>>>> 7fbc696034263afa8ba35c03e1f0c45d8ed6ccbb
                         <button class="btn btn-sm btn-primary   rounded-0 new-users">
                             Add new Product
                         </button>
@@ -28,6 +32,10 @@
                             <th>Price</th>
                             <th>Code</th>
                             <th>Quantity</th>
+<<<<<<< HEAD
+                            <th>Size</th>
+=======
+>>>>>>> 7fbc696034263afa8ba35c03e1f0c45d8ed6ccbb
                             <th>Image</th>
                             <th>Action</th>
                         </tr>
@@ -39,7 +47,12 @@
                             <td>{{$product->name}}</td>
                             <td><?php echo number_format($product->price)?> VNĐ</td>
                             <td>{{$product->code}}</td>
+<<<<<<< HEAD
+                            <td>{{$product->quantity}}</td> 
+                            <td>{{$product->sizes->first()->size}}</td> 
+=======
                             <td>{{$product->quantity}}</td>
+>>>>>>> 7fbc696034263afa8ba35c03e1f0c45d8ed6ccbb
                             <td><img width="80px" src="{{ asset('/images/product/'.$product->images->first()->url) }}"></td>
                             <td class="d-flex align-items-center justify-content-around boder border-bottom-none">
                                 <a href="">
