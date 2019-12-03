@@ -10,10 +10,10 @@
                             <small>products</small>
                         </h1>
                     <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        @csrf
                         <div class="form-group">
                             <label>Name</label>
-                            <input class="form-control" value="" name="name" placeholder="Please Enter Username" />
+                            <input class="form-control" value="{{ old('name') }}" name="name" placeholder="Please Enter Username" />
                             @if ($errors->has('name'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('name')}}</strong>
@@ -22,7 +22,7 @@
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="text" min="0" value="" class="form-control" name="price" placeholder="Please Enter Price" />
+                            <input type="text" min="0" value="{{ old('price') }}" class="form-control" name="price" placeholder="Please Enter Price" />
                             @if ($errors->has('price'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('price')}}</strong>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label>Code</label>
-                            <input type="text" min="0" value="" class="form-control" name="code" placeholder="Please Enter Code" />
+                            <input type="text" min="0" value="{{ old('code') }}" class="form-control" name="code" placeholder="Please Enter Code" />
                             @if ($errors->has('code'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('code')}}</strong>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="text" min="0" value="" class="form-control" name="quantity" placeholder="Please Enter Quantity" />
+                            <input type="text" min="0" value="{{ old('quantity') }}" class="form-control" name="quantity" placeholder="Please Enter Quantity" />
                             @if ($errors->has('quantity'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('quantity')}}</strong>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group">
                             <label>Up Image Product</label>
-                            <input type="file" accept="image/*" name="image">
+                            <input type="file" accept="image/*" value="{{ old('image') }}" name="image">
                             @if ($errors->has('image'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('image')}}</strong>

@@ -28,7 +28,7 @@ class CreateProductRequest extends FormRequest
             'price' => 'required|min:6|max:8',
             'code'=>'required|unique:products,code|min:8|max:10',
             'quantity'=>'required|min:2',
-            'image' => 'required',
+            'image' => 'required|image',
         ];
     }
     
@@ -52,6 +52,7 @@ class CreateProductRequest extends FormRequest
             'quantity.required' => 'Bạn phải nhập vào số lượng',
             'quantity.min' => 'Số lượng ko hợp lệ',
             'image.required' => 'Bạn phải chọn image',
+            'image.image' => 'Hình ảnh upload ko đúng',
         ];
     }
 }

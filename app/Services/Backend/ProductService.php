@@ -24,8 +24,19 @@ class ProductService
      * @param \Illuminate\Http\Request  $request
      * @return void
      */
-    public function createProduct($request)
+    public function handleCreateProduct($request)
     {
+        $product_id = $this->insertData($request);
+        $this->handleUploadImage($request,$product_id);
+    }
+
+    /**
+     * insert data for the products
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @return $product->id
+     */
+    public function insertData($request){
         $product = new Product;
         $product->name = $request->name;
         $product->product_type_id = 1;
@@ -33,7 +44,16 @@ class ProductService
         $product->code = $request->code;
         $product->quantity = $request->quantity;
         $product->save();
-        $product_id = $product->id;
+        return $product->id;   
+    }
+    
+    /**
+     * upload image for the products
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @return void
+     */
+    public function handleUploadImage($request,$product_id){
         $productImage = new ProductImage;
         $productImage->product_id = $product_id;
         if($request->hasFile('image')){
@@ -43,5 +63,5 @@ class ProductService
             $productImage->url = $name;
         }
         $productImage->save();
-    }
+    }   
 }
