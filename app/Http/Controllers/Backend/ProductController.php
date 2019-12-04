@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Services\Backend\ProductService;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateProductRequest;
+use App\Models\Product;
+use App\Models\ProductType;;
 
 class ProductController extends Controller
 { 
@@ -37,8 +39,9 @@ class ProductController extends Controller
      *
      * @return view
      */
-    public function create(){
-        return view('admin.products.create');
+    public function create()
+    {
+        return view('admin.products.create');  
     } 
     
     /**
@@ -47,8 +50,9 @@ class ProductController extends Controller
      * @param \Illuminate\Http\Request  $request
      * @return route
      */
-    public function store(CreateProductRequest $request){
-        $product = $this->productService->handleCreateProduct($request);
+    public function store(CreateProductRequest $request)
+    {
+        $this->productService->handleCreateProduct($request);
         return redirect()->route('products.index')->with('success','Create product successfully');
     }
 }

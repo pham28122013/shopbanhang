@@ -4,7 +4,9 @@ namespace App\Services\Backend;
 
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
+
 
 class ProductService
 {
@@ -26,20 +28,21 @@ class ProductService
      */
     public function handleCreateProduct($request)
     {
-        $product_id = $this->insertData($request);
-        $this->handleUploadImage($request,$product_id);
+        $productId = $this->insertData($request);
+        $this->handleUploadImage($request, $productId);
     }
 
     /**
      * insert data for the products
      *
      * @param \Illuminate\Http\Request  $request
-     * @return $product->id
+     * @return $id
      */
-    public function insertData($request){
+    public function insertData($request)
+    {
         $product = new Product;
         $product->name = $request->name;
-        $product->product_type_id = 1;
+        $product->product_type_id = $request->product_type_id;
         $product->price = $request->price;
         $product->code = $request->code;
         $product->quantity = $request->quantity;
@@ -48,18 +51,20 @@ class ProductService
     }
     
     /**
-     * upload image for the products
+     * upload image for the product_images
      *
      * @param \Illuminate\Http\Request  $request
      * @return void
      */
-    public function handleUploadImage($request,$product_id){
+    public function handleUploadImage($request, $productId)
+    {   
+        $value = config('define.url');
         $productImage = new ProductImage;
-        $productImage->product_id = $product_id;
+        $productImage->product_id = $productId;
         if($request->hasFile('image')){
 			$file = $request->file('image');
 			$name = $file->getClientOriginalName();
-            $file->move("images/product",$name);
+            $file->move($value ,$name);
             $productImage->url = $name;
         }
         $productImage->save();

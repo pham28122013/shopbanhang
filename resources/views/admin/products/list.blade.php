@@ -31,6 +31,7 @@
                     <thead>
                         <tr align="center">
                             <th>ID</th>
+                            <th>Category</th>
                             <th>Name</th>
                             <th>Price</th>
                             <th>Code</th>
@@ -43,6 +44,7 @@
                         @foreach($products as $product)
                         <tr class="text-center">
                             <th scope="row">{{$product->id}}</th>
+                            <td>{{$product->type->name}}</td>
                             <td>{{$product->name}}</td>
                             <td><?php echo number_format($product->price)?> VNĐ</td>
                             <td>{{$product->code}}</td>

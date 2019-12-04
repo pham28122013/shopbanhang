@@ -24,10 +24,11 @@ class CreateProductRequest extends FormRequest
     public function rules()
     {
         return [
+            'product_type_id' => 'required',
             'name'=>'required|min:3',
-            'price' => 'required|min:6|max:8',
+            'price' => 'required|min:6',
             'code'=>'required|unique:products,code|min:8|max:10',
-            'quantity'=>'required|min:2',
+            'quantity'=>'required|min:1',
             'image' => 'required|image',
         ];
     }
@@ -40,11 +41,11 @@ class CreateProductRequest extends FormRequest
     public function messages()
     {
         return [
+            'product_type_id.required' => 'Bạn phải chọn thể loại cho sản phẩm',
             'name.required' => 'Bạn phải nhập tên sản phẩm',
             'name.min' => 'Tên sản phẩm bạn nhập ko hợp lệ',
             'price.required' => 'Bạn phải nhập giá tiền cho sản phẩm',
             'price.min' => 'Bạn nhập giá tiền ko hợp lệ',
-            'price.max' => 'Bạn nhập giá tiền ko hợp lệ',
             'code.required' => 'Bạn phải nhập mã code',
             'code.unique' => 'Mã code đã tồn tại',
             'code.min' => 'Mã code sai',

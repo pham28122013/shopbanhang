@@ -12,8 +12,25 @@
                     <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
+                            <label>Product Category</label>
+                            <label class="radio-inline">
+                                <input name="product_type_id" value="{{App\Models\Product::CATEGORY['SPORT_SHOES']}}" type="radio">Sport Shoes
+                            </label>
+                            <label class="radio-inline">
+                                <input name="product_type_id" value="{{App\Models\Product::CATEGORY['KID_SHOES']}}" type="radio">Kid Shoes
+                            </label>
+                            <label class="radio-inline">
+                                <input name="product_type_id" value="{{App\Models\Product::CATEGORY['ADULT_SHOES']}}" type="radio">Adult Shoes
+                            </label>
+                            @if ($errors->has('product_type_id'))
+                                <div class="alert alert-danger">
+                                    <strong>{{$errors->first('product_type_id')}}</strong>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <label>Name</label>
-                            <input class="form-control" value="{{ old('name') }}" name="name" placeholder="Please Enter Username" />
+                            <input class="form-control" value="{{ old('name') }}" name="name" placeholder="Please Enter Name" />
                             @if ($errors->has('name'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('name')}}</strong>
