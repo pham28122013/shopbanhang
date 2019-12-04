@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Services\Backend\ProductService;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateProductRequest;
-use App\Models\Product;
-use App\Models\ProductType;;
 
 class ProductController extends Controller
 { 
@@ -20,7 +18,8 @@ class ProductController extends Controller
      * initialize the function __construct
      * 
      */
-    public function __construct(ProductService $productservice){
+    public function __construct(ProductService $productservice)
+    {
         $this->productService = $productservice;
     }
     
@@ -29,7 +28,8 @@ class ProductController extends Controller
      *
      * @return view
      */
-    public function index(){
+    public function index()
+    {
         $products = $this->productService->getAllProduct();
         return view('admin.products.list',['products' => $products]);
     }
