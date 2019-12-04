@@ -14,13 +14,13 @@
                         <div class="form-group">
                             <label>Product Category</label>
                             <label class="radio-inline">
-                                <input name="product_type_id" value="{{App\Models\Product::CATEGORY['SPORT_SHOES']}}" type="radio">Sport Shoes
+                                <input name="product_type_id" value="{{App\Models\ProductType::find(1)->id}}" type="radio">Sport Shoes
                             </label>
                             <label class="radio-inline">
-                                <input name="product_type_id" value="{{App\Models\Product::CATEGORY['KID_SHOES']}}" type="radio">Kid Shoes
+                                <input name="product_type_id" value="{{App\Models\ProductType::find(2)->id}}" type="radio">Kid Shoes
                             </label>
                             <label class="radio-inline">
-                                <input name="product_type_id" value="{{App\Models\Product::CATEGORY['ADULT_SHOES']}}" type="radio">Adult Shoes
+                                <input name="product_type_id" value="{{App\Models\ProductType::find(3)->id}}" type="radio">Adult Shoes
                             </label>
                             @if ($errors->has('product_type_id'))
                                 <div class="alert alert-danger">
