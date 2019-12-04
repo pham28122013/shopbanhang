@@ -13,15 +13,11 @@
                         @csrf
                         <div class="form-group">
                             <label>Product Category</label>
-                            <label class="radio-inline">
-                                <input name="product_type_id" value="{{App\Models\ProductType::find(1)->id}}" type="radio">Sport Shoes
-                            </label>
-                            <label class="radio-inline">
-                                <input name="product_type_id" value="{{App\Models\ProductType::find(2)->id}}" type="radio">Kid Shoes
-                            </label>
-                            <label class="radio-inline">
-                                <input name="product_type_id" value="{{App\Models\ProductType::find(3)->id}}" type="radio">Adult Shoes
-                            </label>
+                            @foreach($product_type as $item)
+                                <label class="radio-inline">
+                                    <input name="product_type_id" value="{{ $item->id }}" type="radio">{{ $item->name }}
+                                </label>
+                            @endforeach
                             @if ($errors->has('product_type_id'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('product_type_id')}}</strong>

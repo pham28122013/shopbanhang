@@ -9,4 +9,6 @@ class ProductType extends Model
 {
     protected $table = 'product_types';
 
+    const ITEMS_PER_PAGE = 10;
+
 }

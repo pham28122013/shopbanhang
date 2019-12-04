@@ -19,6 +19,16 @@ class ProductService
     {
         return Product::with('images')->paginate(Product::ITEMS_PER_PAGE);
     }
+
+    /**
+     * View create Product
+     *
+     * @return Model
+     */
+    public function viewCreateProduct()
+    {
+        return ProductType::paginate(ProductType::ITEMS_PER_PAGE);
+    }
     
     /**
      * create for the products
