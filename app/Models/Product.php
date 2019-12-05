@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ProductImage;
+use App\Models\ProductType;
 
 class Product extends Model
 { 
@@ -23,5 +24,14 @@ class Product extends Model
      */
     public function images() {
         return $this->hasMany(ProductImage::class);
+    }
+
+     /**
+     * Get the type for the products.
+     *
+     * @return $this
+     */
+    public function type() {
+        return $this->belongsTo(ProductType::class,'product_type_id');
     }
 }
