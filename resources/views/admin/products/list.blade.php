@@ -26,6 +26,12 @@
                                 <strong>{{ $message }}</strong>
                         </div>
                     @endif
+                    @if ($message = Session::get('failed'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>	
+                                <strong>{{ $failed }}</strong>
+                        </div>
+                    @endif
                 </div>
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>

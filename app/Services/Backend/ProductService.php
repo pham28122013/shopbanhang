@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductType;
 use Illuminate\Http\Request;
+use DB;
 
 
 class ProductService
@@ -17,7 +18,7 @@ class ProductService
      */
     public function getAllProduct()
     {
-        return Product::with('images','type')->paginate(Product::ITEMS_PER_PAGE);
+        return Product::with('images','type')->orderBy('id', 'desc')->paginate(Product::ITEMS_PER_PAGE);
     }
 
     /**
@@ -34,12 +35,21 @@ class ProductService
      * create for the products
      *
      * @param \Illuminate\Http\Request  $request
-     * @return void
+     * @return bool
      */
     public function handleCreateProduct($request)
     {
-        $productId = $this->insertData($request);
-        $this->handleUploadImage($request, $productId);
+        DB::beginTransaction();
+        try {
+            $productId = $this->insertData($request);
+            $this->handleUploadImage($request, $productId);
+            DB::commit();
+            return true;
+        } 
+        catch (\Exception $ex){
+            DB::rollBack();
+            return false;
+        }
     }
 
     /**
@@ -64,6 +74,7 @@ class ProductService
      * upload image for the product_images
      *
      * @param \Illuminate\Http\Request  $request
+     * @param int $productId Product_Id
      * @return void
      */
     public function handleUploadImage($request, $productId)
@@ -71,6 +82,7 @@ class ProductService
         $path = config('define.product_images_path');
         $productImage = new ProductImage;
         $productImage->product_id = $productId;
+
         if($request->hasFile('image')){
 			$file = $request->file('image');
 			$name = $file->getClientOriginalName();
