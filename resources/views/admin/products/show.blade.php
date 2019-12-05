@@ -41,7 +41,7 @@
                             <td><?php echo number_format($product->price)?> VNĐ</td>
                             <td>{{$product->code}}</td>
                             <td>{{$product->quantity}}</td>
-                            <td><img width="80px" src="{{ asset('/images/product/'.$product->images->first()->url) }}"></td>
+                            <td><img width="80px" src="{{ asset(config('define.product_images_path').$product->images->first()->url) }}"></td>
                             <td class="d-flex align-items-center justify-content-around boder border-bottom-none">
                                 <a href="">
                                     <button class="btn btn-sm btn-warning   rounded-0">

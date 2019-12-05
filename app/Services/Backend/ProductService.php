@@ -99,6 +99,6 @@ class ProductService
      */
     public function showProduct($id)
     {   
-        return Product::find($id);
+        return Product::with('images','type')->find($id);
     }
 }
