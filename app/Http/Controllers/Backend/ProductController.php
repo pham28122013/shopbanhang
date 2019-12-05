@@ -59,4 +59,16 @@ class ProductController extends Controller
         }
         return redirect()->route('products.index')->with('failed','Create product failed');
     }
+
+    /**
+     * Show for the Product.
+     *
+     * @param int $id Product id
+     * @return view
+     */
+    public function show($id)
+    {
+        $product = $this->productService->showProduct($id);
+        return view('admin.products.show', ['product' => $product]);
+    }
 }
