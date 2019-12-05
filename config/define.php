@@ -2,6 +2,6 @@
 
 return [
 
-    'url' => 'images/product',
+    'product_images_path' => 'images/product',
 
 ];

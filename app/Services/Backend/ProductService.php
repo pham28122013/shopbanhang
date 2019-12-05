@@ -17,7 +17,7 @@ class ProductService
      */
     public function getAllProduct()
     {
-        return Product::with('images')->paginate(Product::ITEMS_PER_PAGE);
+        return Product::with('images','type')->paginate(Product::ITEMS_PER_PAGE);
     }
 
     /**
@@ -25,9 +25,9 @@ class ProductService
      *
      * @return Model
      */
-    public function viewCreateProduct()
+    public function getProductTypeList()
     {
-        return ProductType::paginate(ProductType::ITEMS_PER_PAGE);
+        return ProductType::get();
     }
     
     /**
@@ -68,13 +68,13 @@ class ProductService
      */
     public function handleUploadImage($request, $productId)
     {   
-        $value = config('define.url');
+        $path = config('define.product_images_path');
         $productImage = new ProductImage;
         $productImage->product_id = $productId;
         if($request->hasFile('image')){
 			$file = $request->file('image');
 			$name = $file->getClientOriginalName();
-            $file->move($value ,$name);
+            $file->move($path ,$name);
             $productImage->url = $name;
         }
         $productImage->save();

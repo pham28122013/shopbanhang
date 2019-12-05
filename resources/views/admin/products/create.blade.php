@@ -13,9 +13,9 @@
                         @csrf
                         <div class="form-group">
                             <label>Product Category</label>
-                            @foreach($product_type as $item)
+                            @foreach($productType as $iTem)
                                 <label class="radio-inline">
-                                    <input name="product_type_id" value="{{ $item->id }}" type="radio">{{ $item->name }}
+                                    <input name="product_type_id" value="{{ $iTem->id }}" type="radio">{{ $iTem->name }}
                                 </label>
                             @endforeach
                             @if ($errors->has('product_type_id'))

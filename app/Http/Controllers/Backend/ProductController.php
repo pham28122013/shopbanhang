@@ -41,8 +41,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $product_type = $this->productService->viewCreateProduct();
-        return view('admin.products.create',['product_type' => $product_type]);  
+        $productType = $this->productService->getProductTypeList();
+        return view('admin.products.create',['productType' => $productType]);  
     } 
     
     /**
