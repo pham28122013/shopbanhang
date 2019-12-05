@@ -82,7 +82,6 @@ class ProductService
         $path = config('define.product_images_path');
         $productImage = new ProductImage;
         $productImage->product_id = $productId;
-
         if($request->hasFile('image')){
 			$file = $request->file('image');
 			$name = $file->getClientOriginalName();
