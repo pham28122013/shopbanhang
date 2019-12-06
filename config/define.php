@@ -2,5 +2,5 @@
 
 return [
 
-    'product_images_path' => 'images/product',
+    'product_images_path' => 'images/product/',
 ];

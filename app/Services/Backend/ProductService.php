@@ -90,4 +90,15 @@ class ProductService
         }
         $productImage->save();
     }   
+
+    /**
+     * Show for the Product.
+     *
+     * @param int $id Products id
+     * @return Model
+     */
+    public function showProduct($id)
+    {   
+        return Product::with('images','type')->find($id);
+    }
 }
