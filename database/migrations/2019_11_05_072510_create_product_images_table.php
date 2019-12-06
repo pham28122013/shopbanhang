@@ -13,7 +13,7 @@ class CreateProductImagesTable extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable('product_images')) {
+        if (!Schema::hasTable('product_images')) {
             Schema::create('product_images', function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('product_id')->index();

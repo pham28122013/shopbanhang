@@ -4,6 +4,9 @@ namespace App\Services\Backend;
 
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\ProductType;
+use Illuminate\Http\Request;
+use DB;
 
 class ProductService
 {
@@ -14,29 +17,159 @@ class ProductService
      */
     public function getAllProduct()
     {
-        return Product::paginate(Product::ITEMS_PER_PAGE);
+        return Product::with('images','type')->orderBy('id', 'desc')->paginate(Product::ITEMS_PER_PAGE);
     }
 
-    public function getDataByProductId($id)
+    /**
+     * View create,edit Product
+     *
+     * @return Model
+     */
+    public function getProductTypeList()
     {
-        return Product::find($id);
+        return ProductType::get();
+    }
+    
+    /**
+     * create for the products
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    public function handleCreateProduct($request)
+    {
+        DB::beginTransaction();
+        try {
+            $productId = $this->insertData($request);
+            $this->handleUploadImage($request, $productId);
+            DB::commit();
+            return true;
+        } 
+        catch (\Exception $ex){
+            DB::rollBack();
+            return false;
+        }
     }
 
-    public function updateProduct($request, $id){
-        $product = Product::find($id);
+    /**
+     * insert data for the products
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @return $id
+     */
+    public function insertData($request)
+    {
+        $product = new Product;
         $product->name = $request->name;
+        $product->product_type_id = $request->product_type_id;
         $product->price = $request->price;
         $product->code = $request->code;
         $product->quantity = $request->quantity;
         $product->save();
-        $product_id = $product->id;
-        $productImage = ProductImage::find($id);
-        $productImage->product_id = $product_id;
-        if($request->image){
-			$productImage->url = $request->image;
-		}else{
-            $productImage->url = $product->images->first()->url;
+        return $product->id;   
+    }
+    
+    /**
+     * upload image for the product_images
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param int $productId Product_Id
+     * @return void
+     */
+    public function handleUploadImage($request, $productId)
+    {   
+        $path = config('define.product_images_path');
+        $productImage = new ProductImage;
+        $productImage->product_id = $productId;
+        if($request->hasFile('image')){
+			$file = $request->file('image');
+			$name = $file->getClientOriginalName();
+            $file->move($path ,$name);
+            $productImage->url = $name;
         }
         $productImage->save();
+    }   
+
+    /**
+     * Show for the Product.
+     *
+     * @param int $id Products id
+     * @return Model
+     */
+    public function showProduct($id)
+    {   
+        return Product::with('images','type')->find($id);
     }
+    
+    /**
+     * Take id the Product.
+     *
+     * @param int $id Products id
+     * @return Model
+     */
+    public function getDataByProductId($id)
+    {
+        return Product::with('images','type')->find($id);
+    }
+
+    /**
+     * update for the products
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param int $id Products id
+     * @return bool
+     */
+    public function updateProduct($request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $productId = $this->updateData($request, $id);
+            $this->updateUploadImage($request, $id, $productId);
+            DB::commit();
+            return true;
+        } 
+        catch (\Exception $ex){
+            DB::rollBack();
+            return false;
+        }
+    }
+
+    /**
+     * update data for the products
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @return $id
+     */
+    public function updateData($request, $id)
+    {
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->product_type_id = $request->product_type_id;
+        $product->price = $request->price;
+        $product->code = $request->code;
+        $product->quantity = $request->quantity;
+        $product->save();
+        return $product->id = Product::find(144)->images->first()->id;   
+    }
+    
+    /**
+     * update upload image for the product_images
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param int $productId Product_Id
+     * @return void
+     */
+    public function updateUploadImage($request, $id, $productId)
+    {   
+        $path = config('define.product_images_path');
+        $productImage = ProductImage::find($productId);
+        $productImage->product_id = $id;
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $name = $file->getClientOriginalName();
+            $file->move($path ,$name);
+            $productImage->url = $name;
+        }
+        $productImage->save();
+    }  
 }
