@@ -67,11 +67,13 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label>Image Product</label>
-                                @foreach ($productImage as $productImage)
+                            @foreach ($productImage as $productImage)
+                                <div class="images">
+                                    <label>Image Product</label>
                                     <img width="80px" src="{{ asset(config('define.product_images_path') .$productImage->url)}}">  
                                     <input type="file" accept="image/*" name="image" value="{{$productImage->url}}"> 
-                                @endforeach
+                                </div>
+                            @endforeach
                         </div>
                         <button type="submit" class="btn btn-default">Update</button>
                     <form>

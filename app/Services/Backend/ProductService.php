@@ -138,6 +138,7 @@ class ProductService
      * update data for the products
      *
      * @param \Illuminate\Http\Request  $request
+     * @param int $id Products id
      * @return $id
      */
     public function updateData($request, $id)
@@ -149,18 +150,20 @@ class ProductService
         $product->code = $request->code;
         $product->quantity = $request->quantity;
         $product->save();
-        return $product->id = Product::with('images')->find($id)->images->first()->id;   
+        return $product->id = Product::with('images')->find($id)->images->first()->id;  
     }
     
     /**
      * update upload image for the product_images
      *
      * @param \Illuminate\Http\Request  $request
+     * @param int $id ProductImages id
      * @param int $productId Product_Id
      * @return void
      */
     public function updateUploadImage($request, $id, $productId)
     {   
+        dd($productId);
         $path = config('define.product_images_path');
         $productImage = ProductImage::find($productId);
         $productImage->product_id = $id;
