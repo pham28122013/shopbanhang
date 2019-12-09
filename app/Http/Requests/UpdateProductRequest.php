@@ -27,6 +27,7 @@ class UpdateProductRequest extends FormRequest
             'name' => 'required|min:3',
             'price' => 'required|min:6',
             'code'=>'required|unique:products,code',
+            'size'=>'required|max:45',
             'quantity'=>'required|min:2',
         ];
     }
@@ -45,6 +46,7 @@ class UpdateProductRequest extends FormRequest
             'price.min' => 'Bạn đã nhập sai giá product',
             'code.required' => 'Bạn phải nhập mã code vào',
             'code.unique' => 'Mã code đã tồn tại',
+            'size.max' => 'Số size giày sai',
             'quantity.required' => 'Bạn phải nhập vào số lượng',
             'quantity.min' => 'Số lượng ko hợp lệ',
         ];

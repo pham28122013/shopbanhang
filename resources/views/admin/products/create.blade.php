@@ -52,6 +52,15 @@
                             @endif
                         </div>
                         <div class="form-group">
+                            <label>Size</label>
+                            <input type="text" min="0" value="{{ old('size') }}" class="form-control" name="size" placeholder="Please Enter Size" />
+                            @if ($errors->has('size'))
+                                <div class="alert alert-danger">
+                                    <strong>{{$errors->first('size')}}</strong>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <label>Quantity</label>
                             <input type="text" min="0" value="{{ old('quantity') }}" class="form-control" name="quantity" placeholder="Please Enter Quantity" />
                             @if ($errors->has('quantity'))

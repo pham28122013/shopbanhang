@@ -58,6 +58,17 @@
                             @endif
                         </div>
                         <div class="form-group">
+                            @foreach ($productSize as $size)
+                                <label>Size</label>
+                                <input type="text" value="{{$size->size}}" class="form-control" name="size" placeholder="">
+                            @endforeach
+                            @if ($errors->has('size'))
+                                <div class="alert alert-danger">
+                                    <strong>{{$errors->first('size')}}</strong>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <label>Quantity</label>
                             <input type="text" value="{{$product->quantity}}" class="form-control" name="quantity" placeholder="" />
                             @if ($errors->has('quantity'))

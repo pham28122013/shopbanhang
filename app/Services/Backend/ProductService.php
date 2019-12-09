@@ -5,6 +5,7 @@ namespace App\Services\Backend;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductType;
+use App\Models\ProductSize;
 use Illuminate\Http\Request;
 use DB;
 
@@ -17,7 +18,7 @@ class ProductService
      */
     public function getAllProduct()
     {
-        return Product::with('images','type')->orderBy('id', 'desc')->paginate(Product::ITEMS_PER_PAGE);
+        return Product::with('images','type', 'sizes')->orderBy('id', 'desc')->paginate(Product::ITEMS_PER_PAGE);
     }
 
     /**
@@ -41,6 +42,7 @@ class ProductService
         DB::beginTransaction();
         try {
             $productId = $this->insertData($request);
+            $this->insertSize($request, $productId);
             $this->handleUploadImage($request, $productId);
             DB::commit();
             return true;
@@ -67,6 +69,21 @@ class ProductService
         $product->quantity = $request->quantity;
         $product->save();
         return $product->id;   
+    }
+
+    /**
+     * insert size for the productsize
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param int $productId Product_Id
+     * @return void
+     */
+    public function insertSize($request, $productId)
+    {
+        $productsize = new ProductSize;
+        $productsize->product_id = $productId;
+        $productsize->size = $request->size;
+        $productsize->save();
     }
     
     /**
@@ -98,7 +115,7 @@ class ProductService
      */
     public function showProduct($id)
     {   
-        return Product::with('images','type')->find($id);
+        return Product::with('images','type','sizes')->find($id);
     }
     
     /**
@@ -109,7 +126,7 @@ class ProductService
      */
     public function getDataByProductId($id)
     {
-        return Product::with('images','type')->find($id);
+        return Product::with('images','type', 'sizes')->find($id);
     }
 
     /**
@@ -150,8 +167,13 @@ class ProductService
         $product->code = $request->code;
         $product->quantity = $request->quantity;
         $product->save();
+        $product_id = Product::with('sizes')->find($id)->sizes->first()->id;
+        $productSize = ProductSize::find($product_id);
+        $productSize->product_id = $id;
+        $productSize->size = $request->size;
+        $productSize->save();
         return $product->id = Product::with('images')->find($id)->images->first()->id;  
-    }
+    }  
     
     /**
      * update upload image for the product_images
@@ -163,7 +185,6 @@ class ProductService
      */
     public function updateUploadImage($request, $id, $productId)
     {   
-        dd($productId);
         $path = config('define.product_images_path');
         $productImage = ProductImage::find($productId);
         $productImage->product_id = $id;
