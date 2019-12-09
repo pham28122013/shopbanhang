@@ -33,7 +33,7 @@ Route::namespace('Auth')->group(function () {
 Route::namespace('Backend')->prefix('admin')->middleware(['auth', 'admin'])->group(function() {
     Route::get('/','AdminController@index')->name('admin.index');
     Route::resource('users', 'UserController');
-    Route::resource('products', 'ProductController')->only(['index', 'create', 'store', 'show']);
+    Route::resource('products', 'ProductController')->except(['destroy']);
 });
 
 
