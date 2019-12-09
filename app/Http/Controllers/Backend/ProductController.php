@@ -71,4 +71,16 @@ class ProductController extends Controller
         $product = $this->productService->showProduct($id);
         return view('admin.products.show', ['product' => $product]);
     }
+
+    /**
+     * destroy for the product.
+     *
+     * @param int $id Product id
+     * @return route
+     */
+    public function destroy($id)
+    {
+        $delete = $this->productService->destroyProduct($id);
+        return redirect()->route('products.index')->with('success','Destroy product successfully');
+    }
 }

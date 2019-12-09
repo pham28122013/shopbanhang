@@ -5,6 +5,7 @@ namespace App\Services\Backend;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductType;
+use App\Models\ProductSize;
 use Illuminate\Http\Request;
 use DB;
 
@@ -100,5 +101,19 @@ class ProductService
     public function showProduct($id)
     {   
         return Product::with('images','type')->find($id);
+    }
+
+    /**
+     * destroy for the Product.
+     *
+     * @param int $id Products id
+     * @return Model
+     */
+    public function destroyProduct($id)
+    {
+        $product = Product::find($id);
+        $productImage = ProductImage::where('product_id',$id)->get();
+        $productSize = ProductSize::where('product_id',$id)->get();
+        $product->delete();
     }
 }
