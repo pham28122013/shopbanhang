@@ -149,7 +149,7 @@ class ProductService
         $product->code = $request->code;
         $product->quantity = $request->quantity;
         $product->save();
-        return $product->id = Product::find(144)->images->first()->id;   
+        return $product->id = Product::with('images')->find($id)->images->first()->id;   
     }
     
     /**

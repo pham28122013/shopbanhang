@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Requests\CreateProductRequest;
 use App\Models\ProductType;
-use App\Models\ProductImage;
+use App\Models\Product;
 
 
 class ProductController extends Controller
@@ -86,7 +86,7 @@ class ProductController extends Controller
     {
         $product = $this->productService->getDataByProductId($id);
         $productType = $this->productService->getProductTypeList();
-        $productImage = ProductImage::get();
+        $productImage = $this->productService->getDataByProductId($id)->images;  
         return view('admin.products.edit',['product'=> $product, 'productType' => $productType, 'productImage' => $productImage]);
     }
 
