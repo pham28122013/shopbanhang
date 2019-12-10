@@ -28,6 +28,7 @@ class CreateProductRequest extends FormRequest
             'name'=>'required|min:3',
             'price' => 'required|min:6',
             'code'=>'required|unique:products,code|min:8|max:10',
+            'size'=>'required|max:45',
             'quantity'=>'required|min:1',
             'image' => 'required|image',
         ];
@@ -50,6 +51,7 @@ class CreateProductRequest extends FormRequest
             'code.unique' => 'Mã code đã tồn tại',
             'code.min' => 'Mã code sai',
             'code.max' => 'Mã code sai',
+            'size.max' => 'Số size giày sai',
             'quantity.required' => 'Bạn phải nhập vào số lượng',
             'quantity.min' => 'Số lượng ko hợp lệ',
             'image.required' => 'Bạn phải chọn image',

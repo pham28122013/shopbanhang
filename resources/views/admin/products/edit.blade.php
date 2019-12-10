@@ -4,20 +4,26 @@
 <main class="main">
     <div id="page-wrapper">
         <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header"> Create
-                            <small>products</small>
-                        </h1>
-                    <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Edit
+                        <small>Product</small>
+                    </h1>
+                </div>
+                <!-- /.col-lg-12 -->
+                <div class="col-lg-7" style="padding-bottom:120px">
+                    <form action="{{route('products.update',$product->id)}}" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="_method" value="put" /> 
+                        {{csrf_field()}}
                         <div class="form-group">
                             <label>Product Category</label>
-                            @foreach($productType as $item)
                                 <label class="radio-inline">
-                                    <input name="product_type_id" value="{{ $item->id }}" type="radio">{{ $item->name }}
+                                    @foreach($productType as $item)
+                                        <label class="radio-inline">
+                                            <input @if($product->product_type_id == $item->id) checked @endif name="product_type_id" value="{{ $item->id }}" type="radio">{{ $item->name }}
+                                        </label>
+                                    @endforeach
                                 </label>
-                            @endforeach
                             @if ($errors->has('product_type_id'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('product_type_id')}}</strong>
@@ -26,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input class="form-control" value="{{ old('name') }}" name="name" placeholder="Please Enter Name" />
+                            <input class="form-control" value="{{$product->name}}" name="name" placeholder="" />
                             @if ($errors->has('name'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('name')}}</strong>
@@ -35,7 +41,7 @@
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="text" min="0" value="{{ old('price') }}" class="form-control" name="price" placeholder="Please Enter Price" />
+                            <input  class="form-control" value="{{$product->price}}" name="price" placeholder="" />
                             @if ($errors->has('price'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('price')}}</strong>
@@ -44,7 +50,7 @@
                         </div>
                         <div class="form-group">
                             <label>Code</label>
-                            <input type="text" min="0" value="{{ old('code') }}" class="form-control" name="code" placeholder="Please Enter Code" />
+                            <input type="text" value="{{$product->code}}" class="form-control" name="code" placeholder="" />
                             @if ($errors->has('code'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('code')}}</strong>
@@ -52,8 +58,10 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label>Size</label>
-                            <input type="text" min="0" value="{{ old('size') }}" class="form-control" name="size" placeholder="Please Enter Size" />
+                            @foreach ($product->sizes as $size)
+                                <label>Size</label>
+                                <input type="text" value="{{$size->size}}" class="form-control" name="size" placeholder="">
+                            @endforeach
                             @if ($errors->has('size'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('size')}}</strong>
@@ -62,7 +70,7 @@
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="text" min="0" value="{{ old('quantity') }}" class="form-control" name="quantity" placeholder="Please Enter Quantity" />
+                            <input type="text" value="{{$product->quantity}}" class="form-control" name="quantity" placeholder="" />
                             @if ($errors->has('quantity'))
                                 <div class="alert alert-danger">
                                     <strong>{{$errors->first('quantity')}}</strong>
@@ -70,18 +78,18 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label>Up Image Product</label>
-                            <input type="file" accept="image/*" value="{{ old('image') }}" name="image">
-                            @if ($errors->has('image'))
-                                <div class="alert alert-danger">
-                                    <strong>{{$errors->first('image')}}</strong>
+                            @foreach ($product->images as $productImage)
+                                <div class="images">
+                                    <label>Image Product</label>
+                                    <img width="80px" src="{{ asset(config('define.product_images_path') .$productImage->url)}}">  
+                                    <input type="file" accept="image/*" name="image" value="{{$productImage->url}}"> 
                                 </div>
-                            @endif
+                            @endforeach
                         </div>
-                        <button type="submit" class="btn btn-default">Create</button> 
+                        <button type="submit" class="btn btn-default">Update</button>
                     <form>
-                    </div>
                 </div>
+            </div>
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->

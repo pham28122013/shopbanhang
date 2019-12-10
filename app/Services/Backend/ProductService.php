@@ -5,9 +5,9 @@ namespace App\Services\Backend;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductType;
+use App\Models\ProductSize;
 use Illuminate\Http\Request;
 use DB;
-
 
 class ProductService
 {
@@ -18,11 +18,10 @@ class ProductService
      */
     public function getAllProduct()
     {
-        return Product::with('images','type')->orderBy('id', 'desc')->paginate(Product::ITEMS_PER_PAGE);
+        return Product::with('images','type', 'sizes')->orderBy('id', 'desc')->paginate(Product::ITEMS_PER_PAGE);
     }
-
     /**
-     * View create Product
+     * View create,edit Product
      *
      * @return Model
      */
@@ -42,6 +41,7 @@ class ProductService
         DB::beginTransaction();
         try {
             $productId = $this->insertData($request);
+            $this->insertSize($request, $productId);
             $this->handleUploadImage($request, $productId);
             DB::commit();
             return true;
@@ -51,7 +51,6 @@ class ProductService
             return false;
         }
     }
-
     /**
      * insert data for the products
      *
@@ -68,6 +67,20 @@ class ProductService
         $product->quantity = $request->quantity;
         $product->save();
         return $product->id;   
+    }
+    /**
+     * insert size for the productsize
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param int $productId Product_Id
+     * @return void
+     */
+    public function insertSize($request, $productId)
+    {
+        $productsize = new ProductSize;
+        $productsize->product_id = $productId;
+        $productsize->size = $request->size;
+        $productsize->save();
     }
     
     /**
@@ -90,7 +103,6 @@ class ProductService
         }
         $productImage->save();
     }   
-
     /**
      * Show for the Product.
      *
@@ -99,6 +111,83 @@ class ProductService
      */
     public function showProduct($id)
     {   
-        return Product::with('images','type')->find($id);
+        return Product::with('images','type','sizes')->find($id);
     }
+    
+    /**
+     * Take id the Product.
+     *
+     * @param int $id Products id
+     * @return Model
+     */
+    public function getDataByProductId($id)
+    {
+        return Product::with('images','type', 'sizes')->find($id);
+    }
+    /**
+     * update for the products
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param int $id Products id
+     * @return bool
+     */
+    public function updateProduct($request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $productId = $this->updateData($request, $id);
+            $this->updateUploadImage($request, $id, $productId);
+            DB::commit();
+            return true;
+        } 
+        catch (\Exception $ex){
+            DB::rollBack();
+            return false;
+        }
+    }
+    /**
+     * update data for the products
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param int $id Products id
+     * @return $id
+     */
+    public function updateData($request, $id)
+    {
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->product_type_id = $request->product_type_id;
+        $product->price = $request->price;
+        $product->code = $request->code;
+        $product->quantity = $request->quantity;
+        $product->save();
+        $product_id = Product::with('sizes')->find($id)->sizes->first()->id;
+        $productSize = ProductSize::find($product_id);
+        $productSize->product_id = $id;
+        $productSize->size = $request->size;
+        $productSize->save();
+        return $product->id = Product::with('images')->find($id)->images->first()->id;  
+    }  
+    
+    /**
+     * update upload image for the product_images
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param int $id ProductImages id
+     * @param int $productId Product_Id
+     * @return void
+     */
+    public function updateUploadImage($request, $id, $productId)
+    {   
+        $path = config('define.product_images_path');
+        $productImage = ProductImage::find($productId);
+        $productImage->product_id = $id;
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $name = $file->getClientOriginalName();
+            $file->move($path ,$name);
+            $productImage->url = $name;
+        }
+        $productImage->save();
+    }  
 }
