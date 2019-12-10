@@ -10,11 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function() {
-    return view('products.index');
-});
 
 Route::namespace('Frontend')->group(function () {
+    Route::get('/','ProductController@index');
     Route::get('/detail-sanpham/{id}','ProductController@product');
     Route::get('/phukien/{id}','ProductController@accessory');
     Route::get('/sanpham-highlight','ProductController@highlight');
