@@ -16,7 +16,6 @@ class Product extends Model
      */
     protected $table = 'products';
     const ITEMS_PER_PAGE = 10;
-    const CATEGORY = [ 'SPORT_SHOES' => 1 , 'KID_SHOES' => 2, 'ADULT_SHOES' => 3];
     
     /**
      * Get the images for the products.
