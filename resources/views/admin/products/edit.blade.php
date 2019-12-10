@@ -58,7 +58,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            @foreach ($productSize as $size)
+                            @foreach ($product->sizes as $size)
                                 <label>Size</label>
                                 <input type="text" value="{{$size->size}}" class="form-control" name="size" placeholder="">
                             @endforeach
@@ -78,7 +78,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            @foreach ($productImage as $productImage)
+                            @foreach ($product->images as $productImage)
                                 <div class="images">
                                     <label>Image Product</label>
                                     <img width="80px" src="{{ asset(config('define.product_images_path') .$productImage->url)}}">  

@@ -80,9 +80,7 @@ class ProductController extends Controller
     {
         $product = $this->productService->getDataByProductId($id);
         $productType = $this->productService->getProductTypeList();
-        $productImage = $this->productService->getDataByProductId($id)->images; 
-        $productSize = $this->productService->getDataByProductId($id)->sizes; 
-        return view('admin.products.edit',['product'=> $product, 'productType' => $productType, 'productImage' => $productImage, 'productSize' => $productSize]);
+        return view('admin.products.edit',['product'=> $product, 'productType' => $productType]);
     }
     /**
      * update for the products
