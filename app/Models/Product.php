@@ -34,4 +34,13 @@ class Product extends Model
     public function type() {
         return $this->belongsTo(ProductType::class,'product_type_id');
     }
+
+    /**
+     * Get the sizes for the products.
+     *
+     * @return $this
+     */
+    public function sizes() {
+        return $this->hasMany(ProductSize::class);
+    }
 }
