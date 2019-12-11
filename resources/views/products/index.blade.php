@@ -158,10 +158,9 @@
 									<a href=""><h6 class="name-product">{{$product->name}}</h6></a>
 									<div class="price">
 									<h6>{{$product->price}}</h6>
-										<h6 class="l-through">$210.00</h6>
+										<h6 class="l-through">$2.100.000</h6>
 									</div>
 									<div class="prd-bottom">
-
 										<a href="" class="social-info">
 											<span class="ti-bag"></span>
 											<p class="hover-text">add to bag</p>
@@ -211,8 +210,8 @@
 								<div class="product-details">
 								<h6>{{$product->name}}</h6>
 									<div class="price">
-										<a href=""><h6 class="name-product">{{$product->name}}</h6></a>
-										<h6 class="l-through">$210.00</h6>
+										<a href=""><h6 class="name-product">{{$product->price}}</h6></a>
+										<h6 class="l-through">$2.100.000</h6>
 									</div>
 									<div class="prd-bottom">
 										<a href="" class="social-info">
