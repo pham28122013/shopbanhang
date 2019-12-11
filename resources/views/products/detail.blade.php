@@ -8,13 +8,13 @@
 				<div class="col-lg-6">
 					<div class="s_Product_carousel">
 						<div class="single-prd-item">
-							<img class="img-fluid" src="{{asset('./images/category/s-p1.jpg')}}" alt="">
+							<img class="img-fluid" src="{{asset(config('define.product_images_path').$product->images->first()->url)}}" alt="">
 						</div>
 						<div class="single-prd-item">
-							<img class="img-fluid" src="{{asset('./images/category/s-p1.jpg')}}" alt="">
+							<img class="img-fluid" src="{{asset(config('define.product_images_path').$product->images->first()->url)}}" alt="">
 						</div>
 						<div class="single-prd-item">
-							<img class="img-fluid" src="{{asset('./images/category/s-p1.jpg')}}" alt="">
+							<img class="img-fluid" src="{{asset(config('define.product_images_path').$product->images->first()->url)}}" alt="">
 						</div>
 					</div>
 				</div>

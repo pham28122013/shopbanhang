@@ -205,7 +205,7 @@
 					@foreach ($products as $product)
 						<div class="col-lg-3 col-md-6">
 							<div class="single-product">
-								<a href="">
+							    <a href="">
 									<img class="img-fluid" src="{{asset(config('define.product_images_path') .$product->images->first()->url)}}" alt="">
 								</a>
 								<div class="product-details">
@@ -215,7 +215,6 @@
 										<h6 class="l-through">$210.00</h6>
 									</div>
 									<div class="prd-bottom">
-
 										<a href="" class="social-info">
 											<span class="ti-bag"></span>
 											<p class="hover-text">add to bag</p>
@@ -288,9 +287,21 @@
 	<section class="brand-area section_gap">
 		<div class="container">
 			<div class="row">
-				@for ($i = 0; $i < 5; $i++)
-				<img class="img-fluid" src="{{asset(config('define.product_images_path') .$product->images->first()->url)}}" alt="">
-				@endfor
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="{{asset('./images/brand/1.png')}}" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="{{asset('./images/brand/2.png')}}" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="{{asset('./images/brand/3.png')}}" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="{{asset('./images/brand/4.png')}}" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="{{asset('./images/brand/5.png')}}" alt="">
+				</a>
 			</div>
 		</div>
 	</section>
