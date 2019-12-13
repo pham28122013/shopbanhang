@@ -164,7 +164,7 @@
 								<div class="review_item">
 									<div class="media">
 										<div class="d-flex">
-											<img src="{{asset('./images/product/p1.jpg')}}" alt="">
+											<img src="{{ asset(config('define.product_images_path') .$product->images->first()->url) }}" alt="">
 										</div>
 										<div class="media-body">
 											<h4>Blake Ruiz</h4>
