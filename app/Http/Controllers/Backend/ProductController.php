@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Services\Backend\ProductService;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateProductRequest;
 use App\Http\Requests\CreateProductRequest;
 
 class ProductController extends Controller
@@ -71,4 +72,36 @@ class ProductController extends Controller
         $product = $this->productService->showProduct($id);
         return view('admin.products.show', ['product' => $product]);
     }
+
+    /**
+     * Edit for the Product.
+     *
+     * @param int $id Products id
+     * @return view
+     */
+    public function edit($id)
+    {
+        $product = $this->productService->getDataByProductId($id);
+        $productType = $this->productService->getProductTypeList();
+        $productImage = $this->productService->getDataByProductId($id)->images; 
+        $productSize = $this->productService->getDataByProductId($id)->sizes; 
+        return view('admin.products.edit',['product'=> $product, 'productType' => $productType, 'productImage' => $productImage, 'productSize' => $productSize]);
+    }
+
+    /**
+     * update for the products
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param int $id Products id
+     * @return route
+     */
+    public function update(UpdateProductRequest $request, $id)
+    {
+        $product = $this->productService->updateProduct($request, $id);
+        if ($product) {
+            return redirect()->route('products.index')->with('success','Update product successfully');
+        }
+        return redirect()->route('products.index')->with('failed','Update product failed');
+    }
+
 }

@@ -40,6 +40,7 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>Code</th>
+                            <th>Size</th>
                             <th>Quantity</th>
                             <th>Image</th>
                             <th>Action</th>
@@ -53,25 +54,26 @@
                             <td>{{$product->name}}</td>
                             <td><?php echo number_format($product->price)?> VNĐ</td>
                             <td>{{$product->code}}</td>
+                            <td>{{$product->sizes->first()->size}}</td>
                             <td>{{$product->quantity}}</td> 
                             <td><img width="80px" src="{{ asset(config('define.product_images_path') .$product->images->first()->url) }}"></td>
                             <td class="d-flex align-items-center justify-content-around boder border-bottom-none">
                             <a href="{{route('products.show', $product->id)}}">
-                                    <button class="btn btn-sm btn-primary   rounded-0">
-                                    Show
-                                    </button>
+                                <button class="btn btn-sm btn-primary   rounded-0">
+                                Show
+                                </button>
                                 </a>
-                                <a href="">
-                                    <button class="btn btn-sm btn-warning   rounded-0">
-                                    Edit
-                                    </button>
-                                </a>
-                                <form action="" method="post">
-                                    <input type="hidden" name="_method" value="delete" /> {{csrf_field()}}
-                                    <button class="btn btn-sm btn-danger   rounded-0">
-                                    Delete
-                                    </button>
-                                </form>
+                            <a href="{{route('products.edit', $product->id)}}">
+                                <button class="btn btn-sm btn-warning   rounded-0">
+                                Edit
+                                </button>
+                            </a>
+                            <form action="" method="post">
+                                <input type="hidden" name="_method" value="delete" /> {{csrf_field()}}
+                                <button class="btn btn-sm btn-danger   rounded-0">
+                                Delete
+                                </button>
+                            </form>
                             </td>
                         </tr>
                         @endforeach
