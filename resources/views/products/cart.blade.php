@@ -29,84 +29,23 @@
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="{{asset('./images/product/p1.jpg')}}" alt="">
+                                            <img src="{{ asset(config('define.product_images_path') .$product->images->first()->url) }}" alt="">
                                         </div>
                                         <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
+                                            <p>{{$product->name}}</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>$360.00</h5>
+                                    <h5><?php echo number_format($product->price)?> VNĐ</h5>
                                 </td>
                                 <td>
                                     <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                                            <input class="qty" type="number" value="" name="qty" min="1">
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="{{asset('./images/product/p1.jpg')}}" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="{{asset('./images/product/p1.jpg')}}" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
+                                    <h5>{{number_format($product->qty*$product->price)}} VNĐ</h5>
                                 </td>
                             </tr>
                             <tr class="bottom_button">
