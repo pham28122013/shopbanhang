@@ -159,7 +159,7 @@
 										<h6 class="l-through">$2.100.000</h6>
 									</div>
 									<div class="prd-bottom">
-									    <a href="{{route('cart.list', $product->id)}}" class="social-info">
+									    <a href="{{route('cart.add', $product->id)}}" class="social-info">
 											<span class="ti-bag"></span>
 											<p class="hover-text">add to bag</p>
 										</a>
@@ -209,7 +209,7 @@
 										<h6 class="l-through">$2.100.000</h6>
 									</div>
 									<div class="prd-bottom">
-										<a href="{{route('cart.list', $product->id)}}" class="social-info">
+										<a href="{{route('cart.add', $product->id)}}" class="social-info">
 											<span class="ti-bag"></span>
 											<p class="hover-text">add to bag</p>
 										</a>

@@ -15,58 +15,62 @@
         <div class="container">
             <div class="cart_inner">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-cart">
                         <thead>
                             <tr>
-                                <th scope="col">Product</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total</th>
+                                <th scope="col">Delete</th>
+                                <th scope="col">Update</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($content as $product)
+                                <tr>
+                                    <td>
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img src="{{ asset(config('define.product_images_path') .$product->attributes->img) }}" alt="">
+                                            </div> 
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <p>{{$product->name}}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5><?php echo number_format($product->price)?> VNĐ</h5>
+                                    </td>
+                                    <td>
+                                        <div class="product_count">
+                                        <input class="qty" type="number" value="{{$product->quantity}}" name="quantity" min="1">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>{{number_format($product->quantity*$product->price)}} VNĐ</h5>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('cart.destroy', $product->id)}}">
+                                            <img width="20px" src="{{asset('images/cart/delete.png')}}">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="update-cart" href="{{route('cart.update', $product->id)}}">
+                                            <img width="25px" src="{{asset('images/cart/update.png')}}">
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="{{ asset(config('define.product_images_path') .$product->images->first()->url) }}" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>{{$product->name}}</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5><?php echo number_format($product->price)?> VNĐ</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                            <input class="qty" type="number" value="" name="qty" min="1">
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>{{number_format($product->qty*$product->price)}} VNĐ</h5>
-                                </td>
-                            </tr>
-                            <tr class="bottom_button">
-                                <td>
-                                    <a class="gray_btn" href="#">Update Cart</a>
-                                </td>
                                 <td>
 
                                 </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <div class="cupon_text d-flex align-items-center">
-                                        <input type="text" placeholder="Coupon Code">
-                                        <a class="primary-btn" href="#">Apply</a>
-                                        <a class="gray_btn" href="#">Close Coupon</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
 
                                 </td>
@@ -77,7 +81,7 @@
                                     <h5>Subtotal</h5>
                                 </td>
                                 <td>
-                                    <h5>$2160.00</h5>
+                                    <h5>{{number_format($total)}} VNĐ</h5>
                                 </td>
                             </tr>
                             <tr class="shipping_area">
@@ -114,23 +118,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="out_button_area">
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="#">Continue Shopping</a>
-                                        <a class="primary-btn" href="#">Proceed to checkout</a>
-                                    </div>
-                                </td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
