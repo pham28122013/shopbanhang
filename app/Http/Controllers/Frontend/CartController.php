@@ -31,9 +31,7 @@ class CartController extends Controller
      */
     public function addCart($id)
     {
-        $product = $this->cartService->addCart($id);
-        Cart::add(array('id' => $product->id, 'name' => $product->name, 'quantity' => 1, 'price' => $product->price,'attributes' => ['img' => $product->images->first()->url]));
-        $content = Cart::getContent();
+        $this->cartService->addCart($id);
         return redirect()->route('cart.list');
     }
     
@@ -42,7 +40,7 @@ class CartController extends Controller
      *
      * @return view
      */
-    public function listCart()
+    public function index()
     {
         $content = Cart::getContent();
         $total = Cart::getSubTotal();
@@ -50,15 +48,4 @@ class CartController extends Controller
         return view('products.cart',['content' => $content, 'total' => $total, 'totalquantity' => $totalquantity]);
     }
     
-    /**
-     * List for the Cart.
-     *
-     * @param int $id Product id
-     * @return route
-     */
-    public function destroyCart($id)
-    {
-        Cart::remove($id);
-        return redirect()->route('cart.list');
-    }
 }

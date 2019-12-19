@@ -14,10 +14,12 @@ class CartService
      * Add for the Cart.
      *
      * @param int $id Product id
-     * @return Model
+     * @return void
      */
     public function addCart($id)
     {
-        return Product::with('images','type')->find($id);
+        $product = Product::with('images','type')->find($id);
+        Cart::add(array('id' => $product->id, 'name' => $product->name, 'quantity' => 1, 'price' => $product->price,'attributes' => ['img' => $product->images->first()->url]));
+        $content = Cart::getContent();
     }
 }
