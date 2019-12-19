@@ -19,8 +19,9 @@ Route::namespace('Frontend')->group(function () {
     Route::get('/sanpham-sale','ProductController@sale');
     Route::get('/giohang/{id}','CartController@addCart')->name('cart.add');
     Route::get('/listgiohang','CartController@index')->name('cart.list');
+    Route::get('/thanhtoan','OrderController@create')->name('order.create');
+    Route::post('/thanhtoan1','OrderController@store')->name('order.store');
     Route::get('/phukien','ProductController@accessoriesList');
-    Route::get('/thanhtoan','ProductController@checkout');
 });
 
 Route::namespace('Auth')->group(function () {

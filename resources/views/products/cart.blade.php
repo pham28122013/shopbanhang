@@ -100,7 +100,7 @@
                                 
                                 <td>
                                     <div class="shipping_box">
-                                        <a class="gray_btn" href="#">Pay</a>
+                                        <a class="gray_btn" href="{{route('order.create')}}">Pay</a>
                                     </div>
                                 </td>
                             </tr>
