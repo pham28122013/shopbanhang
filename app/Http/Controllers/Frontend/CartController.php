@@ -51,14 +51,14 @@ class CartController extends Controller
     }
     
     /**
-     * List for the Cart.
+     * Destroy for the Cart.
      *
      * @param int $id Product id
      * @return route
      */
     public function destroyCart($id)
     {
-        Cart::remove($id);
+        $this->cartService->deleteCart($id);
         return redirect()->route('cart.list');
     }
 }

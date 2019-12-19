@@ -20,4 +20,15 @@ class CartService
     {
         return Product::with('images','type')->find($id);
     }
+
+    /**
+     * Delete for the Cart.
+     *
+     * @param int $id Product id
+     * @return Model
+     */
+    public function deleteCart($id)
+    {
+        return Cart::remove($id);
+    }
 }
