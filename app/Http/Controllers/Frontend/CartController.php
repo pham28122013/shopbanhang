@@ -22,26 +22,31 @@ class CartController extends Controller
     {
         $this->cartService = $cartservice;
     }
-
+    
+    /**
+     * Add for the Cart.
+     *
+     * @param int $id Product id
+     * @return route
+     */
     public function addCart($id)
     {
-        $product = $this->cartService->showCart($id);
+        $product = $this->cartService->addCart($id);
         Cart::add(array('id' => $product->id, 'name' => $product->name, 'quantity' => 1, 'price' => $product->price,'attributes' => ['img' => $product->images->first()->url]));
         $content = Cart::getContent();
         return redirect()->route('cart.list');
     }
-
+    
+    /**
+     * List for the Cart.
+     *
+     * @return view
+     */
     public function listCart()
     {
         $content = Cart::getContent();
         $total = Cart::getSubTotal();
-        return view('products.cart',['content' => $content, 'total' => $total]);
+        $totalquantity = Cart::getTotalQuantity();
+        return view('products.cart',['content' => $content, 'total' => $total, 'totalquantity' => $totalquantity]);
     }
-
-    public function destroycart($id)
-    {
-        Cart::remove($id);
-        return redirect()->route('cart.list');
-    }
-
 }

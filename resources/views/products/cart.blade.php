@@ -15,6 +15,9 @@
         <div class="container">
             <div class="cart_inner">
                 <div class="table-responsive">
+                    @if($totalquantity == App\Models\User::INACTIVE)
+                        <span> Trang giỏ hàng trống </span>
+                    @else
                     <table class="table table-cart">
                         <thead>
                             <tr>
@@ -56,7 +59,7 @@
                                         <h5>{{number_format($product->quantity*$product->price)}} VNĐ</h5>
                                     </td>
                                     <td>
-                                        <a href="{{route('cart.destroy', $product->id)}}">
+                                        <a href="">
                                             <img width="20px" src="{{asset('images/cart/delete.png')}}">
                                         </a>
                                     </td>
@@ -69,13 +72,10 @@
                             @endforeach
                             <tr>
                                 <td>
-
                                 </td>
                                 <td>
-
                                 </td>
                                 <td>
-
                                 </td>
                                 <td>
                                     <h5>Subtotal</h5>
@@ -92,35 +92,22 @@
 
                                 </td>
                                 <td>
-                                    <h5>Shipping</h5>
+
                                 </td>
                                 <td>
+
+                                </td>
+                                
+                                <td>
                                     <div class="shipping_box">
-                                        <ul class="list">
-                                            <li><a href="#">Flat Rate: $5.00</a></li>
-                                            <li><a href="#">Free Shipping</a></li>
-                                            <li><a href="#">Flat Rate: $10.00</a></li>
-                                            <li class="active"><a href="#">Local Delivery: $2.00</a></li>
-                                        </ul>
-                                        <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
-                                        <select class="shipping_select">
-                                            <option value="1">Bangladesh</option>
-                                            <option value="2">India</option>
-                                            <option value="4">Pakistan</option>
-                                        </select>
-                                        <select class="shipping_select">
-                                            <option value="1">Select a State</option>
-                                            <option value="2">Select a State</option>
-                                            <option value="4">Select a State</option>
-                                        </select>
-                                        <input type="text" placeholder="Postcode/Zipcode">
-                                        <a class="gray_btn" href="#">Update Details</a>
+                                        <a class="gray_btn" href="#">Pay</a>
                                     </div>
                                 </td>
                             </tr>
                             
                         </tbody>
                     </table>
+                    @endif
                 </div>
             </div>
         </div>

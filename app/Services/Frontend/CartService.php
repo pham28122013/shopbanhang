@@ -10,7 +10,13 @@ use Cart;
 
 class CartService
 {
-    public function showCart($id)
+    /**
+     * Add for the Cart.
+     *
+     * @param int $id Product id
+     * @return Model
+     */
+    public function addCart($id)
     {
         return Product::with('images','type')->find($id);
     }
