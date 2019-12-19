@@ -59,12 +59,12 @@
                                         <h5>{{number_format($product->quantity*$product->price)}} VNĐ</h5>
                                     </td>
                                     <td>
-                                        <a href="">
+                                        <a href="{{route('cart.destroy', $product->id)}}">
                                             <img width="20px" src="{{asset('images/cart/delete.png')}}">
                                         </a>
                                     </td>
                                     <td>
-                                        <a class="update-cart" href="{{route('cart.update', $product->id)}}">
+                                        <a class="update-cart" href="">
                                             <img width="25px" src="{{asset('images/cart/update.png')}}">
                                         </a>
                                     </td>

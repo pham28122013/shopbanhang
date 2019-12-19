@@ -49,4 +49,16 @@ class CartController extends Controller
         $totalquantity = Cart::getTotalQuantity();
         return view('products.cart',['content' => $content, 'total' => $total, 'totalquantity' => $totalquantity]);
     }
+    
+    /**
+     * List for the Cart.
+     *
+     * @param int $id Product id
+     * @return route
+     */
+    public function destroyCart($id)
+    {
+        Cart::remove($id);
+        return redirect()->route('cart.list');
+    }
 }
