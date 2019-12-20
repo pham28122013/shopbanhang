@@ -146,6 +146,23 @@
 						</div>
 					</div>
 				</div>
+				<div class="row justify-content-center">
+					<div class="col-lg-12 text-center">
+						<div class="section-title">
+							@if ($message = Session::get('success'))
+								<div class="alert alert-success alert-block">
+									<button type="button" class="close" data-dismiss="alert">×</button>	
+										<strong>{{ $message }}</strong>
+								</div>
+							@elseif ($message = Session::get('failed'))
+								<div class="alert alert-danger alert-block">
+									<button type="button" class="close" data-dismiss="alert">×</button>	
+										<strong>{{ $message }}</strong>
+								</div>
+							@endif
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<!-- single product -->
 					@foreach ($products as $product)

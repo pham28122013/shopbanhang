@@ -20,20 +20,16 @@
                         <div class="col-lg-8">
                             <h3>Billing Details</h3>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="add1" name="name">
-                                    <span class="placeholder" data-placeholder="Name"></span>
+                                    <input type="text" class="form-control" id="add1" name="name" placeholder="Please Enter Name" required="required">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="add2" name="phone">
-                                    <span class="placeholder" data-placeholder="Phone"></span>
+                                    <input type="text" class="form-control" id="add2" name="phone" placeholder="Please Enter Phone" required="required">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="add1" name="address">
-                                    <span class="placeholder" data-placeholder="Address"></span>
+                                    <input type="text" class="form-control" id="add1" name="address" placeholder="Please Enter Address" required="required">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="add2" name="email">
-                                    <span class="placeholder" data-placeholder="Email"></span>
+                                    <input type="text" class="form-control" id="add2" name="email" placeholder="Please Enter Email" required="required">
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <textarea class="form-control" name="note" id="message" rows="1" placeholder="Order Notes"></textarea>
@@ -51,8 +47,6 @@
                                 </ul>
                                 <ul class="list list_2">
                                     <li><a href="#">Subtotal <span>{{number_format($total)}} VNĐ</span></a></li>
-                                    <li><a href="#">Shipping <span>Flat rate: $50.00</span></a></li>
-                                    <li><a href="#">Total <span>$2210.00</span></a></li>
                                 </ul>
                                 <div class="payment_item">
                                     <div class="radion_btn">

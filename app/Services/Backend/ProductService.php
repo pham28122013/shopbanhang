@@ -8,7 +8,6 @@ use App\Models\ProductType;
 use Illuminate\Http\Request;
 use DB;
 
-
 class ProductService
 {
     /**

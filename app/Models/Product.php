@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ProductImage;
 use App\Models\ProductType;
+use App\Models\ProductSize;
 
 class Product extends Model
 { 
@@ -33,5 +34,14 @@ class Product extends Model
      */
     public function type() {
         return $this->belongsTo(ProductType::class,'product_type_id');
+    }
+
+     /**
+     * Get the sizes for the products.
+     *
+     * @return $this
+     */
+    public function size() {
+        return $this->hasMany(ProductSize::class);
     }
 }
