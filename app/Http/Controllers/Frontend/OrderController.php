@@ -4,12 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\OrderRequest;
 use App\Services\Frontend\OrderService;
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\OrderDetail;
 use Cart;
-use Auth;
 
 class OrderController extends Controller
 {
@@ -40,12 +37,12 @@ class OrderController extends Controller
      * @param \Illuminate\Http\Request  $request
      * @return route
      */
-    public function store(Request $request)
+    public function store(OrderRequest $request)
     {
         $result = $this->orderService->handleCreateOrder($request);
         if ($result) {
-            return redirect()->route('home.index')->with('success','Created product successfully');
+            return redirect()->route('home.index')->with('success','The product is successful');
         }
-        return redirect()->route('home.index')->with('failed','Create product failed');
+        return redirect()->route('home.index')->with('failed','The product is failed');
     }
 }
