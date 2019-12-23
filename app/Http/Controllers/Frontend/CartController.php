@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\CartRequest;
 use App\Services\Frontend\CartService;
 use Cart;
 
@@ -40,12 +41,11 @@ class CartController extends Controller
      *
      * @return view
      */
-    public function index()
+    public function index(CartRequest $request)
     {
         $content = Cart::getContent();
         $total = Cart::getSubTotal();
         $totalquantity = Cart::getTotalQuantity();
         return view('products.cart',['content' => $content, 'total' => $total, 'totalquantity' => $totalquantity]);
     }
-    
 }

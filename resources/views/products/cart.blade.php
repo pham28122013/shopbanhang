@@ -52,7 +52,12 @@
                                     </td>
                                     <td>
                                         <div class="product_count">
-                                        <input class="qty" type="number" value="{{$product->quantity}}" name="quantity" min="1">
+                                            <input class="qty" type="number" value="{{$product->quantity}}" name="quantity" min="1">
+                                            @if ($errors->has('quantity'))
+                                                <div class="alert alert-danger">
+                                                    <strong>{{$errors->first('quantity')}}</strong>
+                                                </div>
+                                            @endif   
                                         </div>
                                     </td>
                                     <td>
