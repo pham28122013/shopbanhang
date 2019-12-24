@@ -29,7 +29,6 @@ class OrderRequest extends FormRequest
             'email'=>'required|email|unique:orders,email',
             'address' => 'required|max:100',
             'note' => 'max:100',
-            'quantity' => 'required|max:products,quantity',
         ];
     }
 
@@ -52,8 +51,6 @@ class OrderRequest extends FormRequest
                 'address.required' => 'Bạn phải nhập address',
                 'address.max' => 'Bạn nhập address ko đúng',
                 'note.max' => 'Bạn nhập note ko đúng',
-                'quantity.required' => 'Bạn phải nhập số quantity',
-                'quantity.max' => 'Bạn đã nhập quá số lượng quy định',
         ];
     }
 }

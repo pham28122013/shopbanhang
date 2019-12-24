@@ -69,9 +69,10 @@
                                         <li><a href="#">{{$content->name}}<span class="last">{{number_format($content->quantity*$content->price)}} VNĐ</span></a></li>
                                         <span>Số lượng</span>
                                         <input class="qty" type="number" value="{{$content->quantity}}" name="quantity">
-                                        @if ($errors->has('quantity'))
-                                            <div class="alert alert-danger">
-                                                <strong>{{$errors->first('quantity')}}</strong>
+                                        @if ($message = Session::get('success'))
+                                            <div class="alert alert-success alert-block">
+                                                <button type="button" class="close" data-dismiss="alert">×</button>	
+                                                    <strong>{{ $message }}</strong>
                                             </div>
                                         @endif
                                     @endforeach

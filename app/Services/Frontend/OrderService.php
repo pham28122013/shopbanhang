@@ -75,7 +75,13 @@ class OrderService
             $order_details->code =  Product::find($value->id)->first()->code;
             $order_details->size = Product::find($value->id)->size->first()->size;
             $order_details->price = $value->price;
+            $quantityProduct = Product::find($value->id)->first()->quantity;
+            $quantityOrder = $value->quantity;
+            if($quantityProduct < $quantityOrder){
+                return redirect()->rollback()->with('success','Số lượng bạn chọn không đúng');
+            }else{
             $order_details->save();
+            }
         }
     }
 
