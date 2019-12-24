@@ -66,7 +66,14 @@
                                 <ul class="list">
                                     <li><a href="#">Product <span>Total</span></a></li>
                                     @foreach ($content as $content)                              
-                                        <li><a href="#">{{$content->name}}<span class="middle">x {{$content->quantity}}</span> <span class="last">{{number_format($content->quantity*$content->price)}} VNĐ</span></a></li>
+                                        <li><a href="#">{{$content->name}}<span class="last">{{number_format($content->quantity*$content->price)}} VNĐ</span></a></li>
+                                        <span>Số lượng</span>
+                                        <input class="qty" type="number" value="{{$content->quantity}}" name="quantity">
+                                        @if ($errors->has('quantity'))
+                                            <div class="alert alert-danger">
+                                                <strong>{{$errors->first('quantity')}}</strong>
+                                            </div>
+                                        @endif
                                     @endforeach
                                 </ul>
                                 <ul class="list list_2">
