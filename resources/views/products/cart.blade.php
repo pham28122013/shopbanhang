@@ -59,12 +59,12 @@
                                         <h5>{{number_format($product->quantity*$product->price)}} VNĐ</h5>
                                     </td>
                                     <td>
-                                        <a href="{{route('cart.destroy', $product->id)}}">
+                                        <a href="{{route('cart.delete', $product->id)}}">
                                             <img width="20px" src="{{asset('images/cart/delete.png')}}">
                                         </a>
                                     </td>
                                     <td>
-                                        <a class="update-cart" href="">
+                                        <a class="update-cart" href="{{route('cart.update', $product->id)}}">
                                             <img width="25px" src="{{asset('images/cart/update.png')}}">
                                         </a>
                                     </td>
@@ -82,6 +82,11 @@
                                 </td>
                                 <td>
                                     <h5>{{number_format($total)}} VNĐ</h5>
+                                </td>
+                                <td>
+                                    <a href="{{route('cart.destroy', $product->id)}}">
+                                        <img width="20px" src="{{asset('images/cart/delete.png')}}">
+                                    </a>
                                 </td>
                             </tr>
                             <tr class="shipping_area">

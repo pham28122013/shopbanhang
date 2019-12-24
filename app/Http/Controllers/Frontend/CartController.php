@@ -51,14 +51,32 @@ class CartController extends Controller
     }
     
     /**
+     * Delete for the Cart.
+     *
+     * @param int $id Product id
+     * @return route
+     */
+    public function deleteCart($id)
+    {
+        $this->cartService->deleteCart($id);
+        return redirect()->route('cart.list');
+    }
+
+    /**
      * Destroy for the Cart.
      *
      * @param int $id Product id
      * @return route
      */
-    public function destroyCart($id)
+    public function destroyCart()
     {
-        $this->cartService->deleteCart($id);
+        Cart::destroy();
+        return redirect()->route('cart.list');
+    }
+
+    public function updateCart($id, $data)
+    {
+        Cart::update($id,  array('quantity' => 2));
         return redirect()->route('cart.list');
     }
 }
