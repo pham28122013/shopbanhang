@@ -20,6 +20,7 @@ Route::namespace('Frontend')->group(function () {
     Route::get('/giohang','ProductController@cart');
     Route::get('/phukien','ProductController@accessoriesList');
     Route::get('/thanhtoan','ProductController@checkout');
+    Route::post('/search','ProductController@searchData')->name('home.search');
 });
 
 Route::namespace('Auth')->group(function () {

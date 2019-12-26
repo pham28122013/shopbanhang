@@ -16417,3 +16417,7 @@ label.radio-inline {
 h6.name-product:hover {
   background-color: yellow;
 }
+
+.single-product-slider.margin-top-40px {
+  margin: 40px 0 40px 0;
+}

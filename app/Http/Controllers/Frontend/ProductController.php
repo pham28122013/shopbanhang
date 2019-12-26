@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Services\Frontend\HomeService;
 use Illuminate\Http\Request;
-use App\Models\Product;
 
 class ProductController extends Controller
 {   
@@ -77,16 +76,6 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the list cart.
-     *
-     * @return View
-     */
-    public function cart()
-    {
-        return view('products.cart');
-    }
-
-    /**
      * Show the list accessories.
      *
      * @return View
@@ -97,12 +86,15 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the checkout.
+     * search the product.
      *
+     * @param \Illuminate\Http\Request  $request
      * @return View
      */
-    public function checkout()
+    public function searchData(Request $request)
     {
-        return view('products.checkout');
+       $search = $request->search;
+       $product = $this->homeService->getAllSearch($request);
+       return view('products.search',['product' => $product, 'search' => $search]);
     }
 }
