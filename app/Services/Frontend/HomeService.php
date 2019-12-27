@@ -27,6 +27,6 @@ class HomeService
     public function getAllSearch($request)
     {
         $search = $request->search;
-       return Product::where('name','like',"%$search%")->orwhere('price','like',"%$search%")->get();
+        return Product::where('name','like',"%$search%")->orwhere('price','like',"%$search%")->get();
     }
 }
