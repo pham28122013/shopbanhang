@@ -20,7 +20,7 @@
                         <div class="col-lg-8">
                             <h3>Billing Details</h3>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="add1" name="name" placeholder="Please Enter Name" required="required">
+                                    <input type="text" class="form-control" value="{{ old('name') }}" id="add1" name="name" placeholder="Please Enter Name" required="required">
                                     @if ($errors->has('name'))
                                         <div class="alert alert-danger">
                                             <strong>{{$errors->first('name')}}</strong>
@@ -28,7 +28,7 @@
                                     @endif
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="add2" name="phone" placeholder="Please Enter Phone" required="required">
+                                    <input type="text" class="form-control" value="{{ old('phone') }}" id="add2" name="phone" placeholder="Please Enter Phone" required="required">
                                     @if ($errors->has('phone'))
                                         <div class="alert alert-danger">
                                             <strong>{{$errors->first('phone')}}</strong>
@@ -36,7 +36,7 @@
                                     @endif
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="add1" name="address" placeholder="Please Enter Address" required="required">
+                                    <input type="text" class="form-control" value="{{ old('address') }}" id="add1" name="address" placeholder="Please Enter Address" required="required">
                                     @if ($errors->has('address'))
                                         <div class="alert alert-danger">
                                             <strong>{{$errors->first('address')}}</strong>
@@ -44,7 +44,7 @@
                                     @endif
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="add2" name="email" placeholder="Please Enter Email" required="required">
+                                    <input type="text" class="form-control" value="{{ old('email') }}" id="add2" name="email" placeholder="Please Enter Email" required="required">
                                     @if ($errors->has('email'))
                                         <div class="alert alert-danger">
                                             <strong>{{$errors->first('email')}}</strong>
@@ -52,7 +52,7 @@
                                     @endif
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <textarea class="form-control" name="note" id="message" rows="1" placeholder="Order Notes"></textarea>
+                                    <textarea class="form-control" value="{{ old('note') }}" name="note" id="message" rows="1" placeholder="Order Notes"></textarea>
                                     @if ($errors->has('note'))
                                         <div class="alert alert-danger">
                                             <strong>{{$errors->first('note')}}</strong>
