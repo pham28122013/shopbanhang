@@ -22,6 +22,7 @@
                             <th>Address</th>
                             <th>Email</th>
                             <th>Note</th>
+                            <th>Status</th>
                             <th>Order_Detail</th>
                         </tr>
                     </thead>
@@ -35,6 +36,7 @@
                                 <td>{{$order->address}}</td>
                                 <td>{{$order->email}}</td>
                                 <td>{{$order->note}}</td>
+                                <td>Đang xử lí</td>
                                 <td class="d-flex align-items-center justify-content-around">
                                     <a href="{{route('orderDetails.show', $order->id)}}">
                                         <button class="btn btn-sm btn-primary   rounded-0">
@@ -46,6 +48,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center">{{ $orders->links() }}</div>
             </div>
             <!-- /.row -->
         </div>

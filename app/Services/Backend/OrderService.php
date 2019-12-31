@@ -3,6 +3,7 @@
 namespace App\Services\Backend;
 
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OrderService
@@ -14,7 +15,7 @@ class OrderService
      */
     public function getData()
     {
-        return Order::get();
+        return Order::paginate(User::ITEMS_PER_PAGE);
     }
 
     /**
