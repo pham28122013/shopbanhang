@@ -26,7 +26,7 @@ class OrderRequest extends FormRequest
         return [
             'name'=>'required|min:3',
             'phone' => 'required|min:10|max:11',
-            'email'=>'required|email|unique:orders,email',
+            'email'=>'required|email',
             'address' => 'required|max:100',
             'note' => 'max:100',
         ];
@@ -47,7 +47,6 @@ class OrderRequest extends FormRequest
                 'phone.max'=>'Số điện thoại này không đúng',
                 'email.required'=>'Bạn phải nhập email',
                 'email.email'=>'Email bạn nhập ko đúng',
-                'email.unique'=>'Email bạn nhập đã tồn tại',
                 'address.required' => 'Bạn phải nhập address',
                 'address.max' => 'Bạn nhập address ko đúng',
                 'note.max' => 'Bạn nhập note ko đúng',

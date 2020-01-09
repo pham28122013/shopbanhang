@@ -8,7 +8,7 @@ use App\Models\OrderDetail;
 use App\Models\ProductImage;
 use App\Models\ProductType;
 use Illuminate\Http\Request;
-use DB,Cart,Auth;
+use DB,Cart,Auth,Mail;
 
 class OrderService
 {
@@ -25,6 +25,7 @@ class OrderService
             $orderId = $this->insertInfo($request);
             $this->insertData($orderId);
             $this->updateQuantity($orderId);
+            $this->mailCustomer($request);
             DB::commit();
             return true;
         } 
@@ -100,4 +101,26 @@ class OrderService
             $product->save();
         }      
     }
-}
+
+    /**
+     * send mail in to customer
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @return void
+     */
+    public function mailCustomer(Request $request)
+    {
+       
+        $name = ['hoten' => $request->name, 'email' => $request->email];
+        $data =  Cart::getContent();
+     
+        Mail::send('products.mail', $name, function($msg) use($data) 
+        {
+           
+           $msg->from('15i1nguyendipham@gmail.com','Di Phẩm');
+
+           $msg->to($data['email'],$data['hoten'])->subject('Hang cua ban dang duoc xu li ');
+
+        });
+    }
+} 
