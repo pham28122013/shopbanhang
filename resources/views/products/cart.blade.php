@@ -31,45 +31,48 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($content as $product)
-                                <tr>
-                                    <td>
-                                        <div class="media">
-                                            <div class="d-flex">
-                                                <img src="{{ asset(config('define.product_images_path') .$product->attributes->img) }}" alt="">
-                                            </div> 
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <p>{{$product->name}}</p>
+                            <form method="POST" action="">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                @foreach ($content as $product)
+                                    <tr>
+                                        <td>
+                                            <div class="media">
+                                                <div class="d-flex">
+                                                    <img src="{{ asset(config('define.product_images_path') .$product->attributes->img) }}" alt="">
+                                                </div> 
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <h5><?php echo number_format($product->price)?> VNĐ</h5>
-                                    </td>
-                                    <td>
-                                        <div class="product_count">
-                                        <input class="qty" type="number" value="{{$product->quantity}}" name="quantity" min="1">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <h5>{{number_format($product->quantity*$product->price)}} VNĐ</h5>
-                                    </td>
-                                    <td>
-                                        <a href="{{route('cart.delete', $product->id)}}">
-                                            <img width="20px" src="{{asset('images/cart/delete.png')}}">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a class="update-cart" href="{{route('cart.update', $product->id)}}">
-                                            <img width="25px" src="{{asset('images/cart/update.png')}}">
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        </td>
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p>{{$product->name}}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h5><?php echo number_format($product->price)?> VNĐ</h5>
+                                        </td>
+                                        <td>
+                                            <div class="product_count">
+                                            <input class="quantity" type="number" value="{{$product->quantity}}" name="quantity" size="1">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h5>{{number_format($product->quantity*$product->price)}} VNĐ</h5>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('cart.delete', $product->id)}}">
+                                                <img width="20px" src="{{asset('images/cart/delete.png')}}">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="updatecart" id="{{$product->id}}" >
+                                                <img width="25px" src="{{asset('images/cart/update.png')}}">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </form>
                             <tr>
                                 <td>
                                 </td>

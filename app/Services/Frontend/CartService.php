@@ -31,4 +31,18 @@ class CartService
     {
         return Cart::remove($id);
     }
+
+    /**
+     * Destroy for the Cart.
+     *
+     * @param int $id Product id
+     * @return Model
+     */
+    public function destroyCart($id)
+    { 
+        $destroy = Cart::getContent();
+        foreach ($destroy as $value) {
+            Cart::remove($value->id);
+        }
+    }
 }

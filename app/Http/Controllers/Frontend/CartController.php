@@ -68,15 +68,16 @@ class CartController extends Controller
      * @param int $id Product id
      * @return route
      */
-    public function destroyCart()
+    public function destroyCart($id)
     {
-        Cart::destroy();
+        $this->cartService->destroyCart($id);
         return redirect()->route('cart.list');
     }
 
-    public function updateCart($id, $data)
+    public function updateCart(Request $request)
     {
-        Cart::update($id,  array('quantity' => 2));
-        return redirect()->route('cart.list');
+        if(Request::ajax()){
+            echo "oke";
+        }
     }
 }
