@@ -16,6 +16,7 @@ return [
 
     'thousands_sep' => env('SHOPPING_THOUSANDS_SEP', ','),
 
+    'lifetime' => 300,
     /*
      * ---------------------------------------------------------------
      * persistence

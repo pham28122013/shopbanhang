@@ -27,7 +27,7 @@
   @yield('content')
 
   @include('products.layout.footer')
-  <script src="{{asset('./js/jquery-2.2.4.min.js')}}"></script>
+  <script src="{{asset('./js/jquery.min.js')}}"></script>
   <script src="{{asset('./js/bootstrap.min.js')}}"></script>
 	<!--gmaps Js-->
 	

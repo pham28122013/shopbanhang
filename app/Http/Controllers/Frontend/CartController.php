@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Frontend\CartService;
-use Cart;
+use Cart,Session;
 
 class CartController extends Controller
 {
@@ -33,7 +33,6 @@ class CartController extends Controller
     {
         $product = $this->cartService->addCart($id);
         Cart::add(array('id' => $product->id, 'name' => $product->name, 'quantity' => 1, 'price' => $product->price,'attributes' => ['img' => $product->images->first()->url]));
-        $content = Cart::getContent();
         return redirect()->route('cart.list');
     }
     
@@ -76,8 +75,11 @@ class CartController extends Controller
 
     public function updateCart(Request $request)
     {
-        if(Request::ajax()){
-            echo "oke";
-        }
+       if($request->ajax()){
+           $id = $request::get('id');
+           $quantity = $request::get('quantity');
+           Cart::update($id,$quantity);
+           echo "ok";
+       }
     }
 }

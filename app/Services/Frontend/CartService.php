@@ -39,7 +39,7 @@ class CartService
      * @return Model
      */
     public function destroyCart($id)
-    { 
+    {
         $destroy = Cart::getContent();
         foreach ($destroy as $value) {
             Cart::remove($value->id);

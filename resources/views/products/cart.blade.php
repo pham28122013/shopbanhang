@@ -31,8 +31,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <form method="POST" action="">
-                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                           
                                 @foreach ($content as $product)
                                     <tr>
                                         <td>
@@ -54,7 +53,7 @@
                                         </td>
                                         <td>
                                             <div class="product_count">
-                                            <input class="quantity" type="number" value="{{$product->quantity}}" name="quantity" size="1">
+                                            <input class="quantity" type="text" value="{{$product->quantity}}" name="quantity" min="1">
                                             </div>
                                         </td>
                                         <td>
@@ -72,7 +71,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            </form>
+                       
                             <tr>
                                 <td>
                                 </td>
