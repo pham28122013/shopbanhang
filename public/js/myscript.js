@@ -11,7 +11,10 @@ $(document).ready(function (){
               data:{},
               success: function(data){
                   if(data){
-                    window.location = "listgiohang"
+                    var product_price = data.price * data.quantity;
+                    // var product_total
+                    $(".product_price_"+ rowid).html(product_price)
+                    // $(".product_total").html(product_total)
                   }
               }
         });

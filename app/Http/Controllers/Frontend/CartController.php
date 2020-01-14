@@ -90,7 +90,7 @@ class CartController extends Controller
                 'value' => $quantity
             ),
           ));
-           return response()->json();
+           return response()->json(Cart::get($id),$quantity);
        }
     }
 }
