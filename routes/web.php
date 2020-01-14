@@ -18,9 +18,6 @@ Route::namespace('Frontend')->group(function () {
     Route::get('/sanpham-highlight','ProductController@highlight');
     Route::get('/sanpham-sale','ProductController@sale');  
     Route::get('/phukien','ProductController@accessoriesList');
-});
-
-Route::namespace('Frontend')->group(function () {
     Route::get('/giohang/{id}','CartController@addCart')->name('cart.add');
     Route::get('/listgiohang','CartController@listCart')->name('cart.list');
     Route::get('/deletegiohang/{id}','CartController@deleteCart')->name('cart.delete');

@@ -73,6 +73,14 @@ class CartController extends Controller
         return redirect()->route('cart.list');
     }
 
+    /**
+     * Update for the Cart.
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @param int $id Product id
+     * @param int $quantity Product quantity
+     * @return response
+     */
     public function updateCart(Request $request, $id, $quantity)
     {
        if($request->ajax()){
