@@ -46,7 +46,7 @@ return [
     'argon' => [
         'memory' => 8192,
         'threads' => 2,
-        'time' => 2,
+        'time' => 20,
     ],
 
 ];

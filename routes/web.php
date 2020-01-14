@@ -16,13 +16,16 @@ Route::namespace('Frontend')->group(function () {
     Route::get('/detail-sanpham/{id}','ProductController@product');
     Route::get('/phukien/{id}','ProductController@accessory');
     Route::get('/sanpham-highlight','ProductController@highlight');
-    Route::get('/sanpham-sale','ProductController@sale');
+    Route::get('/sanpham-sale','ProductController@sale');  
+    Route::get('/phukien','ProductController@accessoriesList');
+});
+
+Route::namespace('Frontend')->group(function () {
     Route::get('/giohang/{id}','CartController@addCart')->name('cart.add');
     Route::get('/listgiohang','CartController@listCart')->name('cart.list');
     Route::get('/deletegiohang/{id}','CartController@deleteCart')->name('cart.delete');
     Route::get('/destroygiohang/{id}','CartController@destroyCart')->name('cart.destroy');
     Route::get('/updategiohang/{id}/{quantity}','CartController@updateCart')->name('cart.update');
-    Route::get('/phukien','ProductController@accessoriesList');
     Route::get('/thanhtoan','ProductController@checkout');
 });
 

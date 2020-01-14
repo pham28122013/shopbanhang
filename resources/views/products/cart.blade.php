@@ -31,7 +31,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
                                 @foreach ($content as $product)
                                     <tr>
                                         <td>
@@ -53,11 +52,11 @@
                                         </td>
                                         <td>
                                             <div class="product_count">
-                                            <input class="quantity" type="text" value="{{$product->quantity}}" name="quantity" min="1">
+                                            <input class="quantity" type="number" value="{{$product->quantity}}" name="quantity">
                                             </div>
                                         </td>
                                         <td>
-                                            <h5>{{number_format($product->quantity*$product->price)}} VNĐ</h5>
+                                            <h5 class="product_price_{{$product->id}}">{{number_format($product->quantity*$product->price)}} VNĐ</h5>
                                         </td>
                                         <td>
                                             <a href="{{route('cart.delete', $product->id)}}">
@@ -71,7 +70,6 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                       
                             <tr>
                                 <td>
                                 </td>
@@ -83,7 +81,7 @@
                                     <h5>Subtotal</h5>
                                 </td>
                                 <td>
-                                    <h5>{{number_format($total)}} VNĐ</h5>
+                                    <h5 class="product_total">{{number_format($total)}} VNĐ</h5>
                                 </td>
                                 <td>
                                     <a href="{{route('cart.destroy', $product->id)}}">

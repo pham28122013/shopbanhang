@@ -15,8 +15,8 @@ return [
     'dec_point' => env('SHOPPING_DEC_POINT', '.'),
 
     'thousands_sep' => env('SHOPPING_THOUSANDS_SEP', ','),
-
-    'lifetime' => 300,
+    
+    'lifetime' => env('SHOPPING_LIFETIME', 120),
     /*
      * ---------------------------------------------------------------
      * persistence

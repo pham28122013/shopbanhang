@@ -27,7 +27,7 @@
   @yield('content')
 
   @include('products.layout.footer')
-  <script src="{{asset('./js/jquery.min.js')}}"></script>
+  <script src="{{asset('./js/jquery-3.4.1.min.js')}}"></script>
   <script src="{{asset('./js/bootstrap.min.js')}}"></script>
 	<!--gmaps Js-->
 	
@@ -37,7 +37,6 @@
 	<script src="{{asset('./js/jquery.nice-select.min.js')}}"></script>
 	<script src="{{asset('./js/jquery.sticky.js')}}"></script>
 	<script src="{{asset('./js/nouislider.min.js')}}"></script>
-	<script src="{{asset('./js/countdown.js')}}"></script>
 	<script src="{{asset('./js/jquery.magnific-popup.min.js')}}"></script>
 	<script src="{{asset('./js/owl.carousel.min.js')}}"></script>
 	<!--gmaps Js-->

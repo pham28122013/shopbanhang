@@ -73,13 +73,16 @@ class CartController extends Controller
         return redirect()->route('cart.list');
     }
 
-    public function updateCart(Request $request)
+    public function updateCart(Request $request, $id, $quantity)
     {
        if($request->ajax()){
-           $id = $request::get('id');
-           $quantity = $request::get('quantity');
-           Cart::update($id,$quantity);
-           echo "ok";
+           Cart::update($id,array(
+            'quantity' => array(
+                'relative' => false,
+                'value' => $quantity
+            ),
+          ));
+           return response()->json();
        }
     }
 }
