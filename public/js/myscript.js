@@ -4,6 +4,9 @@ $(document).ready(function (){
         var quantity =$(this).parent().parent().find(".quantity").val();
         var token = $("input[name='_token']").val();    
         var me = $(this);
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+         }
         $.ajax({
               url:'/updategiohang/'+rowid+'/'+quantity,
               type:'GET',
@@ -11,10 +14,10 @@ $(document).ready(function (){
               data:{},
               success: function(data){
                   if(data){
-                    var product_price = data.price * data.quantity;
-                    // var product_total
-                    $(".product_price_"+ rowid).html(product_price)
-                    // $(".product_total").html(product_total)
+                    var product_price = formatNumber(data.get.price * data.get.quantity);
+                    var product_total = formatNumber(data.total);
+                    $(".product_price_"+ rowid).html(product_price + " " + "VNĐ") ;
+                    $(".product_total_").html(product_total + " " + "VNĐ");
                   }
               }
         });

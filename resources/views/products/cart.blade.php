@@ -81,7 +81,7 @@
                                     <h5>Subtotal</h5>
                                 </td>
                                 <td>
-                                    <h5 class="product_total">{{number_format($total)}} VNĐ</h5>
+                                    <h5 class="product_total_">{{number_format($total)}} VNĐ</h5>
                                 </td>
                                 <td>
                                     <a href="{{route('cart.destroy', $product->id)}}">

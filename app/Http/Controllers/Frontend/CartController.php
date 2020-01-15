@@ -84,13 +84,17 @@ class CartController extends Controller
     public function updateCart(Request $request, $id, $quantity)
     {
        if($request->ajax()){
-           Cart::update($id,array(
+         Cart::update($id,array(
             'quantity' => array(
                 'relative' => false,
                 'value' => $quantity
             ),
           ));
-           return response()->json(Cart::get($id),$quantity);
+          $get = Cart::get($id);
+          $total = Cart::getSubTotal();
+        return response()->json([
+            'get' => $get , 'total' => $total
+        ]);
        }
     }
 }
