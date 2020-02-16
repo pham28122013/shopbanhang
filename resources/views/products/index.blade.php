@@ -1,4 +1,4 @@
-@extends('pages.master')
+@extends('products.master')
 @section('content')
 
 
@@ -889,7 +889,7 @@
 				</div>
 				<div class="col-lg-3">
 					<div class="ctg-right">
-						<a href="#" target="_blank">
+						<a href="{{ url('admin') }}" target="_blank">
 							<img class="img-fluid d-block mx-auto" src="{{asset('./images/category/c5.jpg')}}" alt="">
 						</a>
 					</div>
