@@ -22,4 +22,9 @@ class OkController extends Controller
     {
 
     }
+
+    public function edit()
+    {
+
+    }
 }
