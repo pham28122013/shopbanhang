@@ -13,4 +13,13 @@ class OkController extends Controller
     {
 
     }
+    public function create()
+    {
+
+    }
+
+    public function store()
+    {
+
+    }
 }
